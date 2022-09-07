@@ -17,10 +17,10 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'comma-dangle': [
-      'error',
-      'always-multiline',
-    ],
+    // 'comma-dangle': [
+    //   'error',
+    //   'always-multiline',
+    // ],
     'radix': ['error', 'as-needed'],
     'no-var': 'error',
     'no-unused-vars': 'warn',
