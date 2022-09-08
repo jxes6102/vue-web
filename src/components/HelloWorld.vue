@@ -38,6 +38,33 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  setup() {
+    // const gain = [-4,-3,-2,-1,4,3,2]
+    // let base = 0
+    // let ans = 0
+    // for(let i = 0;i<gain.length;i++) {
+    //   base += gain[i]
+    //   if (ans < base) ans = base
+    // }
+    // console.log(ans)
+
+
+    // 1725. Number Of Rectangles That Can Form The Largest Square
+    // let arr = []
+    // let map = {}
+    // for(let i = 0;i<rectangles.length;i++) {
+    //   arr[i] = Math.min(...rectangles[i])
+    //   if (Object.keys(map).map(item => parseInt(item)).includes(arr[i])) map[arr[i]]++
+    //   else map[arr[i]] = 1
+    // }
+    // console.log(Math.max(...Object.values(map)))
+    // console.log(map[Math.max(...arr)])
+    // 1266. Minimum Time Visiting All Points
+    // let ans = 0
+    // for(let i = 0;i<points.length - 1;i++) ans += Math.max(...[Math.abs(points[i][0] - points[i + 1][0]), Math.abs(points[i][1] - points[i + 1][1])])
+    // console.log(ans)
+
   }
 }
 </script>

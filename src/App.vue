@@ -9,23 +9,9 @@ router-view
   // @ is an alias to /src
   export default {
     name: 'HomeView',
-    setup() {
-      let num = 9669
-      let arr = num.toString().split('')
-      let base = []
-      for(let i = 0;i<arr.length;i++) {
-        let temp = num.toString().split('')
-        if (arr[i] === '6') temp[i] = '9'
-        if (!base.includes(parseInt(temp.join('')))) base.push(parseInt(temp.join('')))
-      }
-      console.log(Math.max(...base))
-      console.log(base)
-
-      // for(let i = 0;i<points.length - 1;i++) ans += Math.max(...[Math.abs(points[i][0] - points[i + 1][0]), Math.abs(points[i][1] - points[i + 1][1])])
-
-    }
+    setup() {}
   }
-  </script>
+</script>
 
 <style lang="scss">
 #app {
