@@ -4,14 +4,14 @@ div(class="w-auto h-[100vh] border-r-2")
     el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
   el-menu(
     class=""
-    default-active='2'
+    default-active='0'
     :collapse='isCollapse'
     background-color="#ffffff"
     @open='handleOpen'
     @close='handleClose'
     style="border-right: 0px;"
     )
-    component(v-for="(item, index) of menuData" :key="index" :is="item.child ? 'el-sub-menu' : 'el-menu-item'" :index='index + 1 + ""')
+    component(v-for="(item, index) of menuData" :key="index" :is="item.child ? 'el-sub-menu' : 'el-menu-item'" :index='index + ""')
       el-icon(v-if="!item.child")
         component(v-if="!item.child" :is="item.icon")
       template(v-if="!item.child" #title) {{item.name}}
