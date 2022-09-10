@@ -12,7 +12,7 @@ div(class="about")
     button(class="rounded-full h-auto w-auto bg-teal-300 block p-2" @click="changeLang") changeLang
 </template>
 <script>
-  import { computed, ref } from 'vue'
+  import {ref } from 'vue'
   import store from '@/store'
   // @ is an alias to /src
   export default {
