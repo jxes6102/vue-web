@@ -4,27 +4,25 @@ div(class="w-auto h-[100vh] border-r-2")
     el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
   el-menu(
     class=""
-    default-active='0'
     :collapse='isCollapse'
     background-color="#ffffff"
     @open='handleOpen'
     @close='handleClose'
     style="border-right: 0px;"
     )
-    component(v-for="(item, index) of menuData" :key="index" :is="item.child ? 'el-sub-menu' : 'el-menu-item'" :index='index + ""')
-      el-icon(v-if="!item.child")
-        component(v-if="!item.child" :is="item.icon")
-      template(v-if="!item.child" #title) {{item.name}}
-      template(v-if="item.child" #title)
-        el-icon
-          component(:is="item.icon")
-        span {{item.name}}
-      el-menu-item-group(v-if="item.child" v-for="(childItem, childIndex) of item.child")
-        el-menu-item(:index='index + "-" + childIndex') {{childItem}}
+    el-menu-item(
+      v-for="(item, index) of menuData" :key="index"
+      :index='index + ""'
+      @click="toLink(item)"
+      )
+      el-icon
+        component(:is="item.icon")
+      template(#title) {{item.name}}
 </template>
   <script>
     // @ is an alias to /src
     import { ref } from 'vue'
+    import { useRoute, useRouter } from 'vue-router'
     import {
       Document,
       Setting,
@@ -46,19 +44,61 @@ div(class="w-auto h-[100vh] border-r-2")
         Handbag,
       },
       setup() {
+        const route = useRoute()
+        const router = useRouter()
+        const routeData = ref({
+          original: [
+            {name: '首頁', icon:'House',route:'/'},
+            {name: '遊戲', icon:'MagicStick',route:'/game'},
+            {name: '報表', icon:'document',route:'/form'},
+            {name: '圖片', icon:'Picture',route:'/picture'},
+            {name: '工具 / 樣式', icon:'Handbag',route:'/tool'}
+          ],
+          game: [
+            {name: '首頁', icon:'House',route:'/'},
+            {name: '猜數字', icon:'MagicStick'},
+            {name: '記憶遊戲', icon:'MagicStick'},
+            {name: '踩地雷', icon:'MagicStick'},
+          ],
+        })
         const menuData = ref([
-          {name: '首頁', icon:'House',},
-          {name: '遊戲', icon:'MagicStick', child: ['猜數字', '記憶遊戲', '踩地雷']},
-          {name: '報表', icon:'document',},
-          {name: '圖片', icon:'Picture',},
-          {name: '工具 / 樣式', icon:'Handbag',}
+          {name: '首頁', icon:'House',route:'/'},
+          {name: '遊戲', icon:'MagicStick',route:'/game'},
+          {name: '報表', icon:'document',route:'/form'},
+          {name: '圖片', icon:'Picture',route:'/picture'},
+          {name: '工具 / 樣式', icon:'Handbag',route:'/tool'}
         ])
         const isCollapse = ref(false)
         const handleOpen = (key, keyPath) => {
-          console.log(key, keyPath)
+          // console.log('open',key, keyPath)
         }
         const handleClose = (key, keyPath) => {
-          console.log(key, keyPath)
+          // console.log('close',key, keyPath)
+        }
+        const toLink = (item) => {
+          if(!item.route) return false
+          // console.log('gogo', item.route)
+          router.push(item.route)
+          // const query = JSON.parse(JSON.stringify(route))
+          if(item.route === '/game') {
+            menuData.value = [
+              {name: '首頁', icon:'House',route:'/'},
+              {name: '猜數字', icon:'MagicStick'},
+              {name: '記憶遊戲', icon:'MagicStick'},
+              {name: '踩地雷', icon:'MagicStick'},
+            ]
+          } else {
+            menuData.value = [
+              {name: '首頁', icon:'House',route:'/'},
+              {name: '遊戲', icon:'MagicStick',route:'/game'},
+              {name: '報表', icon:'document',route:'/form'},
+              {name: '圖片', icon:'Picture',route:'/picture'},
+              {name: '工具 / 樣式', icon:'Handbag',route:'/tool'}
+            ]
+          }
+        }
+        const init = () => {
+
         }
         return {
           isCollapse,
@@ -66,6 +106,7 @@ div(class="w-auto h-[100vh] border-r-2")
           handleClose,
           Switch,
           menuData,
+          toLink,
         }
       }
     }

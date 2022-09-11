@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import mainView from '../views/mainView.vue'
+import formView from '../views/formView.vue'
+import gameView from '../views/gameView.vue'
+import pictureView from '../views/pictureView.vue'
+import toolView from '../views/toolView.vue'
 
 const routes = [
   {
@@ -10,6 +14,22 @@ const routes = [
   {
     path: '/home',
     component: HomeView,
+  },
+  {
+    path: '/form',
+    component: formView,
+  },
+  {
+    path: '/game',
+    component: gameView,
+  },
+  {
+    path: '/picture',
+    component: pictureView,
+  },
+  {
+    path: '/tool',
+    component: toolView,
   },
   {
     path: '/about',
