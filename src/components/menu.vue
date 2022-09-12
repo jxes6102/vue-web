@@ -57,9 +57,9 @@ div(class="w-auto h-[100vh] border-r-2")
           ],
           game: [
             {name: '首頁', icon:'House',route:'/'},
-            {name: '猜數字', icon:'MagicStick'},
-            {name: '記憶遊戲', icon:'MagicStick'},
-            {name: '踩地雷', icon:'MagicStick'},
+            {name: '猜數字', icon:'MagicStick',query:'guess'},
+            {name: '記憶遊戲', icon:'MagicStick',query:'memory'},
+            {name: '踩地雷', icon:'MagicStick',query:'landmine'},
           ],
         })
         const nowMenu = ref([])
@@ -71,22 +71,29 @@ div(class="w-auto h-[100vh] border-r-2")
           // console.log('close',key, keyPath)
         }
         const toLink = (item) => {
+          setQuery(item.query)
           if(!item.route) return false
           router.push(item.route)
-          // const query = JSON.parse(JSON.stringify(route))
           setMenu(item.route)
         }
 
-        const setMenu = (routePath = '') => {
-          if(routePath === '/game') {
-            nowMenu.value = menuData.value.game
-          } else {
-            nowMenu.value = menuData.value.original
-          }
+        const setMenu = (routePath) => {
+          if(routePath === '/game') nowMenu.value = menuData.value.game
+          else nowMenu.value = menuData.value.original
+        }
+
+        const setQuery = (data) => {
+          const query = JSON.parse(JSON.stringify(route.query))
+          if (data) query.gameMode = data
+          else delete query.gameMode
+          router.replace({ query })
         }
 
         const init = () => {
-          setMenu()
+          let url = window.location.hash
+          if (url.indexOf('?')) url = url.substring(url.indexOf('#') + 1,url.indexOf('?'))
+          else url = url.substring(url.indexOf('#') + 1,url.length)
+          setMenu(url)
         }
         init()
 
