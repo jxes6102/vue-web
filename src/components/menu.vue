@@ -1,27 +1,43 @@
 <template lang='pug'>
-div(class="w-auto h-[100vh] border-r-2")
-  div(class="w-auto  p-2")
-    el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
-  el-menu(
-    :default-active='defaultActive'
-    :collapse='isCollapse'
-    background-color="#ffffff"
-    @open='handleOpen'
-    @close='handleClose'
-    style="border-right: 0px;"
-    )
-    el-menu-item(
-      v-for="(item, index) of nowMenu" :key="index"
-      :index='index + ""'
-      @click="toLink(item)"
+div(
+  :class="[ \
+      isMobile ? 'w-screen h-auto' : 'w-auto h-[100vh] border-r-2', \
+    ]"
+  )
+  div(v-if="!isMobile")
+    div(class="w-auto  p-2")
+      el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
+    el-menu(
+      :default-active='defaultActive'
+      :collapse='isCollapse'
+      background-color="#ffffff"
+      @open='handleOpen'
+      @close='handleClose'
+      style="border-right: 0px;"
       )
-      el-icon
-        component(:is="item.icon")
-      template(#title) {{item.name}}
+      el-menu-item(
+        v-for="(item, index) of nowMenu" :key="index"
+        :index='index + ""'
+        @click="toLink(item)"
+        )
+        el-icon
+          component(:is="item.icon")
+        template(#title) {{item.name}}
+  div(v-else)
+    div(class="w-screen h-[100px] bg-orange-400 flex items-center justify-around")
+      div(
+        v-for="(item, index) of nowMenu" :key="index"
+        class="w-[60px]"
+        @click="toLink(item)"
+        )
+        el-icon(:size="28")
+          component(:is="item.icon")
+        div(class="text-xs") {{item.name}}
 </template>
   <script>
     // @ is an alias to /src
-    import { ref } from 'vue'
+    import { ref, watch, computed } from 'vue'
+    import store from '@/store'
     import { useRoute, useRouter } from 'vue-router'
     import {
       Document,
@@ -47,6 +63,7 @@ div(class="w-auto h-[100vh] border-r-2")
         const route = useRoute()
         const router = useRouter()
         const defaultActive = ref(null)
+        const isMobile = computed(() => store.state.isMobile)
         const menuData = ref({
           original: [
             {name: '首頁', icon:'House',route:'/'},
@@ -74,7 +91,6 @@ div(class="w-auto h-[100vh] border-r-2")
           setQuery(item.query)
           if(!item.route) return false
           router.push(item.route)
-          setMenu(item.route)
         }
 
         const setMenu = (routePath) => {
@@ -89,11 +105,11 @@ div(class="w-auto h-[100vh] border-r-2")
           router.replace({ query })
         }
 
+        watch(() => route.path,(val) => {
+          setMenu(val)
+        },{immediate:true})
+
         const init = () => {
-          let url = window.location.hash
-          if (url.indexOf('?')) url = url.substring(url.indexOf('#') + 1,url.indexOf('?'))
-          else url = url.substring(url.indexOf('#') + 1,url.length)
-          setMenu(url)
         }
         init()
 
@@ -101,10 +117,17 @@ div(class="w-auto h-[100vh] border-r-2")
           isCollapse,
           handleOpen,
           handleClose,
+          Document,
+          Setting,
+          House,
           Switch,
+          MagicStick,
+          Picture,
+          Handbag,
           nowMenu,
           toLink,
           defaultActive,
+          isMobile,
         }
       }
     }

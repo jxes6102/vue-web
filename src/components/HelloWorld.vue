@@ -34,20 +34,22 @@
 </template>
 
 <script>
+import { arrayTypeAnnotation } from '@babel/types'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   setup() {
-    // const gain = [-4,-3,-2,-1,4,3,2]
-    // let base = 0
-    // let ans = 0
-    // for(let i = 0;i<gain.length;i++) {
-    //   base += gain[i]
-    //   if (ans < base) ans = base
-    // }
-    // console.log(ans)
+    const word = "abcdefd", ch = "d"
+    let ans = ''
+    const judge = word.indexOf(ch)
+    if (judge) {
+      ans = word.substring(0, judge + 1).split('').reverse().join('') + word.substring(judge + 1, word.length)
+    } else ans = word
+    console.log(ans)
+
 
 
     // 1725. Number Of Rectangles That Can Form The Largest Square
