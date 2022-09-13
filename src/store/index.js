@@ -5,7 +5,7 @@ export default createStore({
   state: {
     lang: 'tw',
     loading: false,
-    isMobile: false,
+    isMobile: null,
   },
   getters: {
   },

@@ -4,7 +4,7 @@ div(
       isMobile ? 'w-screen h-auto' : 'w-auto h-[100vh] border-r-2', \
     ]"
   )
-  div(v-if="!isMobile")
+  div(v-if="!isMobile && (isMobile !== null)")
     div(class="w-auto  p-2")
       el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
     el-menu(
@@ -23,7 +23,7 @@ div(
         el-icon
           component(:is="item.icon")
         template(#title) {{item.name}}
-  div(v-else)
+  div(v-else-if="isMobile !== null")
     div(class="w-screen h-[90px] bg-gradient-to-b from-[#ffb6c1] flex items-center justify-around")
       div(
         v-for="(item, index) of nowMenu" :key="index"
