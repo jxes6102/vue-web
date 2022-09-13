@@ -24,9 +24,12 @@ div(
           component(:is="item.icon")
         template(#title) {{item.name}}
   div(v-else)
-    div(class="w-screen h-[100px] bg-orange-400 flex items-center justify-around")
+    div(class="w-screen h-[90px] bg-gradient-to-b from-[#ffb6c1] flex items-center justify-around")
       div(
         v-for="(item, index) of nowMenu" :key="index"
+        :class="[ \
+          ((nowChose === item.route) || (nowChose === item.query)) ? 'scale-125' : '', \
+        ]"
         class="w-[60px]"
         @click="toLink(item)"
         )
@@ -104,9 +107,14 @@ div(
           else delete query.gameMode
           router.replace({ query })
         }
-
+        const nowChose = ref('')
         watch(() => route.path,(val) => {
+          nowChose.value = val
           setMenu(val)
+        },{immediate:true})
+
+        watch(() => route.query,(val) => {
+          if(val.gameMode) nowChose.value = val.gameMode
         },{immediate:true})
 
         const init = () => {
@@ -128,6 +136,7 @@ div(
           toLink,
           defaultActive,
           isMobile,
+          nowChose,
         }
       }
     }
