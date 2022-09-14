@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import mainView from '../views/mainView.vue'
+import mainView from '../views/mainView'
 import formView from '../views/formView.vue'
 import gameView from '../views/gameView.vue'
 import pictureView from '../views/pictureView.vue'
