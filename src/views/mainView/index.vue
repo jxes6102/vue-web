@@ -1,10 +1,8 @@
 <template lang='pug'>
-div(class="")
-  h1 main view
-  .small__view(
-    class="w-screen md:w-[50vw]"
-  )
+div(class="w-screen h-[100vh] flex items-center justify-center")
+  //- h1 main view
   swiper(
+    class="w-[60vw] md:w-[40vw]"
     :loop="false"
     :autoplay="false"
     :slidesPerView="1"
@@ -16,8 +14,11 @@ div(class="")
       v-for="(item, index) of lists"
       :key="item"
     )
-      //- div {{item}}
-      img(:src="require('./image/img'+item+'.jpg')")
+      div(class="w-[60vw] md:w-[40vw] flex items-center justify-center")
+        img(
+          class="w-full"
+          :src="require('./image/img'+item+'.jpg')"
+        )
 </template>
 <script>
   // @ is an alias to /src

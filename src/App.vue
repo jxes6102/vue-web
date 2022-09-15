@@ -1,10 +1,10 @@
 <template lang='pug'>
 .wrap(
   ref="viewContainer"
-  class="md:w-screen w-full min-h-full flex flex-col md:flex-row h-auto"
+  class="h-[100%] w-screen max-h-[100vh] max-w-screen overflow-hidden flex flex-col md:flex-row"
   )
-  menuView
-  router-view(class="md:w-screen w-full")
+  menuView(class='')
+  router-view(class='')
 
 </template>
 <script>

@@ -19,12 +19,13 @@ div(
         v-for="(item, index) of nowMenu" :key="index"
         :index='index + ""'
         @click="toLink(item)"
+        class="w-[200px]"
         )
         el-icon
           component(:is="item.icon")
         template(#title) {{item.name}}
   div(v-else-if="isMobile !== null")
-    div(class="w-screen h-[90px] bg-gradient-to-b from-[#ffb6c1] flex items-center justify-around")
+    div(class="w-screen h-[80px] bg-gradient-to-b from-[#ffb6c1] flex items-center justify-around")
       div(
         v-for="(item, index) of nowMenu" :key="index"
         :class="[ \
