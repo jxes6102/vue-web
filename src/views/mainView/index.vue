@@ -1,8 +1,8 @@
 <template lang='pug'>
-div(class="w-screen h-[100vh] flex items-center justify-center")
+div(class="w-full h-[100vh] flex items-center justify-center")
   //- h1 main view
   swiper(
-    class="w-[60vw] md:w-[40vw]"
+    class="w-[60vw] md:w-[30vw]"
     :loop="false"
     :autoplay="false"
     :slidesPerView="1"
@@ -14,10 +14,11 @@ div(class="w-screen h-[100vh] flex items-center justify-center")
       v-for="(item, index) of lists"
       :key="item"
     )
-      div(class="w-[60vw] md:w-[40vw] flex items-center justify-center")
+      //- div {{item}}
+      div(class="w-[60vw] md:w-[30vw]")
         img(
           class="w-full"
-          :src="require('./image/img'+item+'.jpg')"
+          :src="require(`${item}`)"
         )
 </template>
 <script>
@@ -33,10 +34,17 @@ div(class="w-screen h-[100vh] flex items-center justify-center")
       SwiperSlide,
     },
     setup() {
-      const lists = ref([1,2,3])
+      const lists = ref([
+        './image/img1.jpg',
+        './image/img2.jpg',
+        './image/img3.jpg',
+        './image/img4.jpg',
+        './image/img5.jpg',
+        './image/img6.jpg',
+      ])
 
       return {
-        lists
+        lists,
       }
     }
   }

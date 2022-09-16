@@ -1,9 +1,9 @@
 <template lang='pug'>
 .wrap(
   ref="viewContainer"
-  class="h-[100%] w-screen max-h-[100vh] max-w-screen overflow-hidden flex flex-col md:flex-row"
+  class="h-[100%] w-screen max-h-[100vh] max-w-screen flex flex-col md:flex-row"
   )
-  menuView(class='')
+  menuView(class='fixed z-[10]')
   router-view(class='')
 
 </template>
