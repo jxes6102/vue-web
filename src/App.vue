@@ -3,7 +3,7 @@
   ref="viewContainer"
   class="h-[100%] w-screen max-h-[100vh] max-w-screen flex flex-col md:flex-row"
   )
-  menuView(class='fixed z-[10]')
+  menuView(class='fixed z-[10] bg-white')
   router-view(class='')
 
 </template>

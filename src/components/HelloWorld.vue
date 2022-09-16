@@ -42,13 +42,13 @@ export default {
     msg: String
   },
   setup() {
-    const word = "abcdefd", ch = "d"
-    let ans = ''
-    const judge = word.indexOf(ch)
-    if (judge) {
-      ans = word.substring(0, judge + 1).split('').reverse().join('') + word.substring(judge + 1, word.length)
-    } else ans = word
+    const words = ["pay","attention","practice","attend"], pref = "at"
+    let ans = 0
+    for(let i = 0;i<words.length;i++) {
+      if(words[i].indexOf(pref) === 0) ans++
+    }
     console.log(ans)
+    // words.filter(el => el.substring(0, pref.length) === pref).length;
 
 
 
