@@ -6,7 +6,7 @@ div(class="w-full h-[100vh] flex items-center justify-center")
     :loop="false"
     :autoplay="false"
     :slidesPerView="1"
-    :initialSlide="1"
+    :initialSlide="0"
     :speed="1000"
     :spaceBetween="1"
   )
@@ -35,12 +35,12 @@ div(class="w-full h-[100vh] flex items-center justify-center")
     },
     setup() {
       const lists = ref([
-        './image/img1.jpg',
         './image/img2.jpg',
         './image/img3.jpg',
-        './image/img4.jpg',
         './image/img5.jpg',
         './image/img6.jpg',
+        './image/img4.jpg',
+        './image/img1.jpg',
       ])
 
       return {
