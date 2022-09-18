@@ -1,5 +1,6 @@
 <template lang='pug'>
 div(
+  ref="menu"
   :class="[ \
       isMobile ? 'w-screen h-auto' : 'w-auto h-[100vh] border-r-2', \
     ]"
@@ -25,7 +26,12 @@ div(
           component(:is="item.icon")
         template(#title) {{item.name}}
   div(v-else-if="isMobile !== null")
-    div(class="w-screen h-[80px] bg-gradient-to-b from-[#ffb6c1] to-[#FBFBEA] flex items-center justify-around")
+    div(
+      :class="[ \
+        `bg-gradient-to-b from-[#ffb6c1] to-[${bgColor}]`, \
+      ]"
+      class="w-screen h-[80px] flex items-center justify-around"
+      )
       div(
         v-for="(item, index) of nowMenu" :key="index"
         :class="[ \
@@ -40,7 +46,7 @@ div(
 </template>
   <script>
     // @ is an alias to /src
-    import { ref, watch, computed } from 'vue'
+    import { ref, watch, computed, onMounted, nextTick } from 'vue'
     import store from '@/store'
     import { useRoute, useRouter } from 'vue-router'
     import {
@@ -62,6 +68,12 @@ div(
         MagicStick,
         Picture,
         Handbag,
+      },
+      props: {
+        bgColor: {
+          type: String,
+          default: () => '#ffffff',
+        },
       },
       setup() {
         const route = useRoute()
@@ -119,8 +131,10 @@ div(
         },{immediate:true})
 
         const init = () => {
+          // 設定因menu偏移
         }
         init()
+
 
         return {
           isCollapse,

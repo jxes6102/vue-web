@@ -58,6 +58,12 @@ div(class="w-full h-[100vh] flex flex-col items-center justify-center ")
       Swiper,
       SwiperSlide,
     },
+    props: {
+      bgColor: {
+        type: String,
+        default: () => '#ffffff',
+      },
+    },
     setup() {
       const lists = ref([
         './image/img2.jpg',

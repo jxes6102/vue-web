@@ -6,19 +6,23 @@ export default createStore({
     lang: 'tw',
     loading: false,
     isMobile: null,
+    offset:0,
   },
   getters: {
   },
   mutations: {
-    setLang(state,language ) {
+    setLang(state,language) {
       state.lang = language;
       localStorage.setItem('locale', language);
       i18n.global.locale = language;
     },
-    setMobile(state,val ) {
+    setMobile(state,val) {
       if (val <= 768) state.isMobile = true
       else state.isMobile = false
-    }
+    },
+    setOffset(state,val) {
+      if (!state.isMobile) state.offset = val
+    },
   },
   actions: {
   },

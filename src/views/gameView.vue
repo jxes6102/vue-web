@@ -1,6 +1,6 @@
 <template lang='pug'>
-div(class="")
-  h1 game view
+div(class="w-full h-[100vh] flex flex-col items-center justify-start")
+  div(class="mt-4 text-3xl") {{displayName}}
   component(:is="gameName")
 </template>
 <script>
@@ -21,6 +21,14 @@ div(class="")
       const route = useRoute()
       const router = useRouter()
       const gameName = computed(() => route.query.gameMode)
+      const displayName = computed(() => {
+        const base = {
+          guess: '猜數字',
+          memory: '記憶遊戲',
+          landmine: '踩地雷'
+        }
+        return base[gameName.value] || '在選單點擊你想玩的遊戲'
+      })
       const init = () => {
         // const query = JSON.parse(JSON.stringify(route.query))
       }
@@ -28,6 +36,7 @@ div(class="")
 
       return {
         gameName,
+        displayName,
       }
     }
   }
