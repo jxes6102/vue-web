@@ -59,10 +59,6 @@ div(class="w-full h-[100vh] flex flex-col items-center justify-center ")
       SwiperSlide,
     },
     props: {
-      bgColor: {
-        type: String,
-        default: () => '#ffffff',
-      },
     },
     setup() {
       const lists = ref([
@@ -88,10 +84,11 @@ div(class="w-full h-[100vh] flex flex-col items-center justify-center ")
         nowSlide.value = key
       }
 
-      const isMobile = computed(() => store.state.isMobile)
+      const offset = computed(() => store.getters['offset'])
       const change = (element) => {
-        // 200 menu 偏移量
-        const screenWidthCenter = isMobile.value ? window.innerWidth / 2 : window.innerWidth / 2 + 200
+        // offset menu 偏移量
+        console.log(offset.value)
+        const screenWidthCenter = window.innerWidth / 2 + offset.value / 2
         if ((screenWidthCenter > element.clientX) && (!swiperElement.isBeginning)) swiperElement.slidePrev(1000, false)
         else if ((screenWidthCenter <= element.clientX) && (!swiperElement.isEnd)) swiperElement.slideNext(1000, false)
       }

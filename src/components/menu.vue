@@ -1,6 +1,5 @@
 <template lang='pug'>
 div(
-  ref="menu"
   :class="[ \
       isMobile ? 'w-screen h-auto' : 'w-auto h-[100vh] border-r-2', \
     ]"
@@ -17,10 +16,12 @@ div(
       style="border-right: 0px;"
       )
       el-menu-item(
+        :class="[ \
+          `w-[${menuPcSize}px]`, \
+        ]"
         v-for="(item, index) of nowMenu" :key="index"
         :index='index + ""'
         @click="toLink(item)"
-        class="w-[200px]"
         )
         el-icon
           component(:is="item.icon")
@@ -28,7 +29,7 @@ div(
   div(v-else-if="isMobile !== null")
     div(
       :class="[ \
-        `bg-gradient-to-b from-[#ffb6c1] to-[${bgColor}]`, \
+        `bg-gradient-to-b from-[#ffb6c1] to-[${endColor}]`, \
       ]"
       class="w-screen h-[80px] flex items-center justify-around"
       )
@@ -46,7 +47,7 @@ div(
 </template>
   <script>
     // @ is an alias to /src
-    import { ref, watch, computed, onMounted, nextTick } from 'vue'
+    import { ref, watch, computed } from 'vue'
     import store from '@/store'
     import { useRoute, useRouter } from 'vue-router'
     import {
@@ -74,10 +75,17 @@ div(
           type: String,
           default: () => '#ffffff',
         },
+        menuSize: {
+          type: Number,
+          default: () => 0,
+        },
       },
-      setup() {
+      setup(props) {
         const route = useRoute()
         const router = useRouter()
+        const endColor = computed(() => props.bgColor)
+        const menuPcSize = computed(() => props.menuSize)
+
         const defaultActive = ref(null)
         const isMobile = computed(() => store.state.isMobile)
         const menuData = ref({
@@ -152,6 +160,8 @@ div(
           defaultActive,
           isMobile,
           nowChose,
+          endColor,
+          menuPcSize,
         }
       }
     }

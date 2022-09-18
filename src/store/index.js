@@ -6,9 +6,12 @@ export default createStore({
     lang: 'tw',
     loading: false,
     isMobile: null,
-    offset:0,
+    menuSize:0,
   },
   getters: {
+    offset (state) {
+      return state.isMobile ? 0 : state.menuSize
+    },
   },
   mutations: {
     setLang(state,language) {
@@ -20,8 +23,8 @@ export default createStore({
       if (val <= 768) state.isMobile = true
       else state.isMobile = false
     },
-    setOffset(state,val) {
-      if (!state.isMobile) state.offset = val
+    setMenuSize(state,val) {
+      state.menuSize = val
     },
   },
   actions: {
