@@ -1,49 +1,21 @@
 <template lang='pug'>
 div(
   :class="[ \
-      isMobile ? 'w-screen h-auto' : 'w-auto h-[100vh] border-r-2', \
-    ]"
+    `bg-gradient-to-b from-[#ffb6c1] to-[#FBFBEA]`, \
+  ]"
+  class="flex items-center justify-around"
   )
-  div(v-if="!isMobile && (isMobile !== null)" class="mt-4")
-    //- div(class="w-auto  p-2")
-    //-   el-button(:icon="Switch" class="w-full" @click="isCollapse = !isCollapse")
-    el-menu(
-      :default-active='defaultActive'
-      :collapse='isCollapse'
-      background-color="#ffffff"
-      @open='handleOpen'
-      @close='handleClose'
-      style="border-right: 0px;"
-      )
-      el-menu-item(
-        :class="[ \
-          `w-[${menuPcSize}px]`, \
-        ]"
-        v-for="(item, index) of nowMenu" :key="index"
-        :index='index + ""'
-        @click="toLink(item)"
-        )
-        el-icon
-          component(:is="item.icon")
-        template(#title) {{item.name}}
-  div(v-else-if="isMobile !== null")
-    div(
-      :class="[ \
-        `bg-gradient-to-b from-[#ffb6c1] to-[${endColor}]`, \
-      ]"
-      class="w-screen h-[80px] flex items-center justify-around"
-      )
-      div(
-        v-for="(item, index) of nowMenu" :key="index"
-        :class="[ \
-          ((nowChose === item.route) || (nowChose === item.query)) ? 'scale-125' : '', \
-        ]"
-        class="w-[60px]"
-        @click="toLink(item)"
-        )
-        el-icon(:size="28")
-          component(:is="item.icon")
-        div(class="text-xs") {{item.name}}
+  div(
+    v-for="(item, index) of nowMenu" :key="index"
+    :class="[ \
+      ((nowChose === item.route) || (nowChose === item.query)) ? 'scale-125' : '', \
+    ]"
+    class="w-[60px]"
+    @click="toLink(item)"
+    )
+    el-icon(:size="28")
+      component(:is="item.icon")
+    div(class="text-xs") {{item.name}}
 </template>
   <script>
     // @ is an alias to /src
@@ -71,20 +43,10 @@ div(
         Handbag,
       },
       props: {
-        bgColor: {
-          type: String,
-          default: () => '#ffffff',
-        },
-        menuSize: {
-          type: Number,
-          default: () => 0,
-        },
       },
-      setup(props) {
+      setup() {
         const route = useRoute()
         const router = useRouter()
-        const endColor = computed(() => props.bgColor)
-        const menuPcSize = computed(() => props.menuSize)
 
         const defaultActive = ref(null)
         const isMobile = computed(() => store.state.isMobile)
@@ -104,13 +66,7 @@ div(
           ],
         })
         const nowMenu = ref([])
-        const isCollapse = ref(false)
-        const handleOpen = (key, keyPath) => {
-          // console.log('open',key, keyPath)
-        }
-        const handleClose = (key, keyPath) => {
-          // console.log('close',key, keyPath)
-        }
+
         const toLink = (item) => {
           setQuery(item.query)
           if(!item.route) return false
@@ -145,9 +101,6 @@ div(
 
 
         return {
-          isCollapse,
-          handleOpen,
-          handleClose,
           Document,
           Setting,
           House,
@@ -160,8 +113,6 @@ div(
           defaultActive,
           isMobile,
           nowChose,
-          endColor,
-          menuPcSize,
         }
       }
     }

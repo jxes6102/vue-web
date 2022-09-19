@@ -1,15 +1,12 @@
 <template lang='pug'>
 .wrap(
   ref="viewContainer"
-  class="h-[100%] w-screen max-h-[100vh] max-w-screen flex flex-col md:flex-row"
+  class="w-screen h-auto max-h-[100vh] max-w-screen"
   )
-  menuView(class='fixed z-[10] bg-white' :bgColor="bgColor" :menuSize="menuSize")
-  router-view(
-    :class="[ \
-      `bg-[${bgColor}]`, \
-    ]"
-  )
-
+  menuView(class='fixed w-screen h-[80px] md:h-[10vh] z-[10]')
+router-view(
+  class="pt-[80px] md:pt-[10vh] bg-[#FBFBEA]"
+)
 </template>
 <script>
   // @ is an alias to /src
@@ -23,27 +20,19 @@
       menuView,
     },
     setup() {
-      const bgColor = ref('#FBFBEA')
-      const menuSize = ref(200)
-
       const viewContainer = ref(null)
       const resizeWidth = new ResizeObserver(entries => {
         getContainerWidth(entries[0].contentRect)
       })
       const getContainerWidth = debounce((el) => {
         store.commit('setMobile', el.width)
-        store.commit('setMenuSize', menuSize.value)
       }, 500)
       onMounted(() => {
         resizeWidth.observe(viewContainer.value)
       })
 
-      // 設定因menu偏移
-
       return {
         viewContainer,
-        bgColor,
-        menuSize,
       }
     }
   }
