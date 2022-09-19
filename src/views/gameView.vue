@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-col items-center justify-center md:justify-start")
+div(class="w-full h-[100vh] flex flex-col items-center justify-start")
   div(class="text-3xl") {{displayName}}
   component(:is="gameName")
 </template>
