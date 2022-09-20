@@ -1,6 +1,6 @@
 <template lang='pug'>
 div(class="w-full h-[100vh] flex flex-col items-center justify-start")
-  div(class="text-3xl") {{displayName}}
+  div(class="text-3xl my-2") {{displayName}}
   component(:is="gameName")
 </template>
 <script>
