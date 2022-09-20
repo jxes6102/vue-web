@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="w-[100vw] md:w-[50vw] h-[70vh] md:h-[90vh] flex flex-col items-center justify-start bg-[#ffffff]")
+div(class="w-[100vw] md:w-[50vw] h-[80vh] md:h-[90vh] flex flex-col items-center justify-start bg-[#ffffff]")
   div(class="flex p-2 justify-center items-center")
     input(
       v-model="guessNum"
@@ -23,16 +23,26 @@ div(class="w-[100vw] md:w-[50vw] h-[70vh] md:h-[90vh] flex flex-col items-center
     div 數字
     div AB
     div 提示
-  div(class="w-full h-[50vh] min-h-[50vh] overflow-auto")
+  div(
+    ref="mainView"
+    class="w-full h-auto max-h-[50vh] md:max-h-[55vh] overflow-auto"
+  )
     div(v-for="item in data" class="w-full flex p-2 justify-around items-center")
       div {{item.guessNum}}
       div {{item.AB}}
       div {{item.tip}}
+  div(v-if="endStatus" class="w-full h-auto overflow-auto flex flex-col")
+    div(class="text-xl text-red-700") 猜中了 共猜了?次
+    div()
+      button(
+        class='bg-green-500 text-white ml-3 py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'
+        @click="madeNum"
+      ) 再玩一次
 
 </template>
 <script>
   // @ is an alias to /src
-  import { ref } from 'vue'
+  import { ref, nextTick } from 'vue'
   import { checkGuessNum } from '@/utils/valid'
   export default {
     name: 'guessView',
@@ -42,16 +52,24 @@ div(class="w-[100vw] md:w-[50vw] h-[70vh] md:h-[90vh] flex flex-col items-center
       const data = ref([])
       const guessNum = ref(null)
       const errorMessage = ref('')
+      const endStatus = ref(false)
       let trueNum = ''
+      const mainView = ref(null)
 
       const action = () => {
         errorMessage.value = checkGuessNum(guessNum.value)
-        if(errorMessage.value) return false
+        if(errorMessage.value || endStatus.value) return false
         madeAB()
+        nextTick(() => {
+          mainView.value.scrollTop = 9999
+        })
       }
 
       const madeNum = () => {
+        endStatus.value = false
+        data.value = []
         let target = ''
+        guessNum.value = null
         const base = ['0','1','2','3','4','5','6','7','8','9']
         while(target.length < 4) {
           const random = base[Math.floor(Math.random() * 10)]
@@ -74,8 +92,8 @@ div(class="w-[100vw] md:w-[50vw] h-[70vh] md:h-[90vh] flex flex-col items-center
         data.value.push(
           {guessNum:guessNum.value, AB:a+'A'+b+'B', tip:'none'}
         )
-        console.log(a+'A'+b+'B')
-
+        if(a === 4) endStatus.value = true
+        // console.log(a+'A'+b+'B')
       }
 
       return {
@@ -84,6 +102,8 @@ div(class="w-[100vw] md:w-[50vw] h-[70vh] md:h-[90vh] flex flex-col items-center
         action,
         errorMessage,
         madeNum,
+        endStatus,
+        mainView,
       }
     }
   }
