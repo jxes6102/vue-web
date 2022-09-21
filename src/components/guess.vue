@@ -25,7 +25,7 @@ div(class="w-[100vw] md:w-[50vw] h-[80vh] md:h-[90vh] flex flex-col items-center
     div(v-if="tipStatus") 提示
   div(
     ref="mainView"
-    class="w-full h-auto max-h-[50vh] md:max-h-[55vh] mt-2 overflow-auto"
+    class="w-full h-auto max-h-[45vh] md:max-h-[55vh] mt-2 overflow-auto"
   )
     div(v-for="item in data" class="w-full flex p-2 justify-around items-center")
       div {{item.guessNum}}

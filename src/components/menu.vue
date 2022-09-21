@@ -10,7 +10,7 @@ div(
     :class="[ \
       ((nowChose === item.route) || (nowChose === item.query)) ? 'scale-125' : '', \
     ]"
-    class="w-[60px]"
+    class="w-[60px] cursor-pointer"
     @click="toLink(item)"
     )
     el-icon(:size="28")
