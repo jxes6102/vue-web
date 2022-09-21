@@ -10,6 +10,7 @@ div(class="w-[350px] md:w-[500px] h-[80vh] md:h-[90vh] flex flex-col items-cente
     div(v-else) {{endText}}
   div(v-if="!viewStatus") 猜{{trueNum}}
   button(
+    v-if="!data.length"
     v-text="hasChange ? '再玩一次' : '開始'"
     class='bg-red-600 text-white ml-3 py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-red-500'
     @click="play"
@@ -76,6 +77,7 @@ div(class="w-[350px] md:w-[500px] h-[80vh] md:h-[90vh] flex flex-col items-cente
           console.log('error')
           endText.value = 'error'
         }
+        data.value = []
 
       }
 
