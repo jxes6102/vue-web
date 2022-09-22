@@ -1,9 +1,9 @@
 <template lang='pug'>
-div(class="w-[300px] md:w-[450px] h-auto flex flex-col items-center justify-start bg-slate-50")
+div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-start bg-slate-50")
   div(class="flex flex-wrap justify-center items-center")
     div(
       v-for="item in data"
-      class="w-[20px] h-[20px] md:w-[35px] md:h-[35px] m-1 flex justify-center items-center bg-lime-400 "
+      class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] m-1 flex justify-center items-center bg-lime-400 "
     ) {{item}}
 </template>
 <script>
@@ -15,8 +15,8 @@ div(class="w-[300px] md:w-[450px] h-auto flex flex-col items-center justify-star
     },
     setup() {
       const data = ref([])
-      // 10 12
-      for(let i = 0;i<120;i++) {
+      // 8 10
+      for(let i = 0;i<80;i++) {
         data.value.push(i + 1)
       }
       console.log(data.value.length)
