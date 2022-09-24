@@ -18,6 +18,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
     },
     setup() {
       const land = ref([])
+      const flagBoom = []
       const init = () => {
         for(let i = 0;i<10;i++) {
           land.value[i] = []
@@ -25,7 +26,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
             land.value[i][j] = {
               isBoom:false,
               flag:false,
-              display:0,
+              display:'',
               check:false,
             }
           }
@@ -40,18 +41,22 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
           const y = Math.floor(Math.random() * 8)
           if(!land.value[x][y].isBoom){
             land.value[x][y].isBoom = true
+            flagBoom.push(x + ',' +y)
             i++
           }
         }
-        console.log(land.value)
+        // console.log(land.value)
+        console.log(flagBoom)
       }
       init()
 
       const action = (x, y) => {
-        land.value[x][y].display = 'q'
+        if (land.value[x][y].isBoom) land.value[x][y].display = 'x'
+        else land.value[x][y].display = 'o'
+        // land.value[x][y].display = 'o'
         land.value[x][y].check = true
-        console.log(land.value)
-        console.log(x, y, land.value[x][y])
+        // console.log(land.value)
+        // console.log(x, y, land.value[x][y])
       }
 
       return {
