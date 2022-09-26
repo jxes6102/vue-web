@@ -42,15 +42,14 @@ export default {
     msg: String
   },
   setup() {
-    const words = ["pay","attention","practice","attend"], pref = "at"
+    const nums = [6,7,9]
     let ans = 0
-    for(let i = 0;i<words.length;i++) {
-      if(words[i].indexOf(pref) === 0) ans++
+    for(let i = 1;i<=Math.min(...nums);i++) {
+      if (Math.min(...nums)%i === 0 && Math.max(...nums)%i === 0) {
+        ans = i
+      }
     }
     console.log(ans)
-    // words.filter(el => el.substring(0, pref.length) === pref).length;
-
-
 
     // 1725. Number Of Rectangles That Can Form The Largest Square
     // let arr = []
