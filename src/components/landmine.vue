@@ -51,11 +51,8 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
       init()
 
       const action = (x, y) => {
-        if (land.value[x][y].isBoom) land.value[x][y].display = 'x'
-        else land.value[x][y].display = 'o'
         count(x,y)
 
-        land.value[x][y].check = true
         // console.log(land.value)
         // console.log(x, y, land.value[x][y])
 
@@ -63,14 +60,15 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
 
       const count = (x,y) => {
         console.log(x,y)
+
         let num = 0
         if (x - 1 >= 0 && y - 1 >= 0) {
           if (land.value[x - 1][y - 1].isBoom) {
             num++
           }
         }
-        if (y - 1 >= 0) {
-          if (land.value[x][y - 1].isBoom) {
+        if (x - 1 >= 0) {
+          if (land.value[x - 1][y].isBoom) {
             num++
           }
         }
@@ -104,9 +102,36 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
             num++
           }
         }
-
-
-        land.value[x][y].display = num
+        land.value[x][y].check = true
+        if (!num) {
+          if (x - 1 >= 0 && y - 1 >= 0) {
+            if (!land.value[x - 1][y - 1].check) count(x - 1,y - 1)
+          }
+          if (x - 1 >= 0 ) {
+            if (!land.value[x - 1][y].check) count(x - 1,y)
+          }
+          if (x - 1 >= 0 && y + 1 < 8) {
+            if (!land.value[x - 1][y + 1].check) count(x - 1,y + 1)
+          }
+          if (y - 1 >= 0) {
+            if (!land.value[x][y - 1].check) count(x,y - 1)
+          }
+          if (y + 1 < 8) {
+            if (!land.value[x][y + 1].check) count(x,y + 1)
+          }
+          if (x + 1 < 10 && y - 1 >= 0) {
+            if (!land.value[x + 1][y - 1].check) count(x + 1,y - 1)
+          }
+          if (x + 1 < 10) {
+            if (!land.value[x + 1][y].check) count(x + 1,y)
+          }
+          if (x + 1 < 10 && y + 1 < 8) {
+            if (!land.value[x + 1][y + 1].check) count(x + 1,y + 1)
+          }
+        } else {
+          land.value[x][y].display = num
+        }
+        console.log('=================================')
 
       }
 
