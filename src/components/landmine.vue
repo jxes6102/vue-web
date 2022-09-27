@@ -103,7 +103,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
         if(land.value[x][y].display === 'F') return false
         // 爆炸時動作
         if (land.value[x][y].isBoom) {
-          land.value[x][y].display = 'x'
+          land.value[x][y].display = 'X'
           land.value[x][y].check = true
           endStatus.value = true
           return false
