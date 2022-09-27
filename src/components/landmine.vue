@@ -50,6 +50,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
       const guessBoom = ref([])
 
       const init = () => {
+        // 初始化格子和炸彈
         endStatus.value = false
         flagStatus.value = false
         land.value = []
@@ -72,6 +73,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
       }
 
       const madeBoom = () => {
+        // 生成炸彈
         let count = 12
         for(let i = 0;i<count;) {
           const x = Math.floor(Math.random() * 10)
@@ -87,6 +89,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
 
       const action = (x,y) => {
         if(endStatus.value) return false
+        // 標記時動作
         if (flagStatus.value && !land.value[x][y].check) {
           if(land.value[x][y].display === 'F') {
             land.value[x][y].display = ''
@@ -98,73 +101,45 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
           return false
         }
         if(land.value[x][y].display === 'F') return false
-
+        // 爆炸時動作
         if (land.value[x][y].isBoom) {
           land.value[x][y].display = 'x'
           land.value[x][y].check = true
           endStatus.value = true
           return false
         }
+        // 計算本格和周圍數字
+        count(x,y)
+      }
 
+      const count = (x,y) => {
         let num = 0
-        if (x - 1 >= 0 && y - 1 >= 0) {
-          if (land.value[x - 1][y - 1].isBoom) num++
-        }
-        if (x - 1 >= 0) {
-          if (land.value[x - 1][y].isBoom) num++
-        }
-        if (x - 1 >= 0 && y + 1 < 8) {
-          if (land.value[x - 1][y + 1].isBoom) num++
-        }
-        if (y - 1 >= 0) {
-          if (land.value[x][y - 1].isBoom) num++
-        }
-        if (y + 1 < 8) {
-          if (land.value[x][y + 1].isBoom) num++
-        }
-        if (x + 1 < 10 && y - 1 >= 0) {
-          if (land.value[x + 1][y - 1].isBoom) num++
-        }
-        if (x + 1 < 10) {
-          if (land.value[x + 1][y].isBoom) num++
-        }
-        if (x + 1 < 10 && y + 1 < 8) {
-          if (land.value[x + 1][y + 1].isBoom) num++
-        }
+        // 本格周圍炸彈數
+        if (x - 1 >= 0 && y - 1 >= 0) if (land.value[x - 1][y - 1].isBoom) num++
+        if (x - 1 >= 0) if (land.value[x - 1][y].isBoom) num++
+        if (x - 1 >= 0 && y + 1 < 8) if (land.value[x - 1][y + 1].isBoom) num++
+        if (y - 1 >= 0) if (land.value[x][y - 1].isBoom) num++
+        if (y + 1 < 8) if (land.value[x][y + 1].isBoom) num++
+        if (x + 1 < 10 && y - 1 >= 0) if (land.value[x + 1][y - 1].isBoom) num++
+        if (x + 1 < 10) if (land.value[x + 1][y].isBoom) num++
+        if (x + 1 < 10 && y + 1 < 8) if (land.value[x + 1][y + 1].isBoom) num++
         land.value[x][y].check = true
 
         if (!num) {
-          if (x - 1 >= 0 && y - 1 >= 0) {
-            if (!land.value[x - 1][y - 1].check) action(x - 1,y - 1)
-          }
-          if (x - 1 >= 0 ) {
-            if (!land.value[x - 1][y].check) action(x - 1,y)
-          }
-          if (x - 1 >= 0 && y + 1 < 8) {
-            if (!land.value[x - 1][y + 1].check) action(x - 1,y + 1)
-          }
-          if (y - 1 >= 0) {
-            if (!land.value[x][y - 1].check) action(x,y - 1)
-          }
-          if (y + 1 < 8) {
-            if (!land.value[x][y + 1].check) action(x,y + 1)
-          }
-          if (x + 1 < 10 && y - 1 >= 0) {
-            if (!land.value[x + 1][y - 1].check) action(x + 1,y - 1)
-          }
-          if (x + 1 < 10) {
-            if (!land.value[x + 1][y].check) action(x + 1,y)
-          }
-          if (x + 1 < 10 && y + 1 < 8) {
-            if (!land.value[x + 1][y + 1].check) action(x + 1,y + 1)
-          }
-        } else {
-          land.value[x][y].display = num
-        }
-
+          // 本格周圍炸彈數0時擴散檢查
+          if (x - 1 >= 0 && y - 1 >= 0) if (!land.value[x - 1][y - 1].check) action(x - 1,y - 1)
+          if (x - 1 >= 0 ) if (!land.value[x - 1][y].check) action(x - 1,y)
+          if (x - 1 >= 0 && y + 1 < 8) if (!land.value[x - 1][y + 1].check) action(x - 1,y + 1)
+          if (y - 1 >= 0) if (!land.value[x][y - 1].check) action(x,y - 1)
+          if (y + 1 < 8) if (!land.value[x][y + 1].check) action(x,y + 1)
+          if (x + 1 < 10 && y - 1 >= 0) if (!land.value[x + 1][y - 1].check) action(x + 1,y - 1)
+          if (x + 1 < 10) if (!land.value[x + 1][y].check) action(x + 1,y)
+          if (x + 1 < 10 && y + 1 < 8) if (!land.value[x + 1][y + 1].check) action(x + 1,y + 1)
+        } else land.value[x][y].display = num
       }
 
       watch(() => guessBoom.value ,() => {
+        // 判斷勝負
         if (flagBoom.sort().toString() === guessBoom.value.sort().toString()) {
           endStatus.value = true
           isWin.value = true
