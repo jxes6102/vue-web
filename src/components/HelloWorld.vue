@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import { arrayTypeAnnotation } from '@babel/types'
-
 export default {
   name: 'HelloWorld',
   props: {

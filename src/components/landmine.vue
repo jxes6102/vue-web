@@ -9,32 +9,52 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
         @click="action(indexs,index)"
       ) {{land[indexs][index].display}}
   div(
-    v-if="endStatus"
-    class="flex flex-wrap justify-center items-center"
-  ) 暴了
+    class="flex flex-col justify-center items-center m-1"
+  )
+    div(
+      class="my-1"
+      v-text="'現在模式: ' + (flagStatus ? '標記' : '點擊')"
+    )
+    button(
+      :class="[flagStatus ? 'bg-green-500 hover:bg-green-400' : 'bg-red-500 hover:bg-red-400']"
+      class='text-white py-2 px-4 font-medium rounded-xl transition-all duration-300'
+      @click="flagStatus = !flagStatus"
+    ) 切換 點擊/標記
   div(
     v-if="endStatus"
-    class="flex flex-wrap justify-center items-center"
+    class="flex flex-col justify-center items-center"
   )
+    div(
+      v-text="isWin ? '贏了' : '暴了'"
+      :class="[isWin ? 'text-green-500' : 'text-red-500']"
+      class="flex flex-col justify-center items-center text-2xl my-1"
+    )
     button(
       class='bg-green-500 text-white py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'
-      @click="re"
+      @click="init"
     ) 再玩一次
 </template>
 <script>
   // @ is an alias to /src
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
   export default {
     name: 'landmineView',
     components: {
     },
     setup() {
+      const flagStatus = ref(false)
       const endStatus = ref(false)
+      const isWin = ref(false)
       const land = ref([])
       let flagBoom = []
+      const guessBoom = ref([])
+
       const init = () => {
         endStatus.value = false
+        flagStatus.value = false
         land.value = []
+        guessBoom.value = []
+        isWin.value = false
         flagBoom = []
 
         for(let i = 0;i<10;i++) {
@@ -52,7 +72,7 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
       }
 
       const madeBoom = () => {
-        let count = 11
+        let count = 12
         for(let i = 0;i<count;) {
           const x = Math.floor(Math.random() * 10)
           const y = Math.floor(Math.random() * 8)
@@ -62,14 +82,22 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
             i++
           }
         }
-        // console.log(land.value)
-        // console.log(flagBoom)
       }
       init()
 
       const action = (x,y) => {
-        // console.log(x,y)
         if(endStatus.value) return false
+        if (flagStatus.value && !land.value[x][y].check) {
+          if(land.value[x][y].display === 'F') {
+            land.value[x][y].display = ''
+            guessBoom.value.splice(guessBoom.value.indexOf(x + ',' + y),1)
+          }else {
+            guessBoom.value.push(x + ',' + y)
+            land.value[x][y].display = 'F'
+          }
+          return false
+        }
+        if(land.value[x][y].display === 'F') return false
 
         if (land.value[x][y].isBoom) {
           land.value[x][y].display = 'x'
@@ -133,20 +161,23 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
         } else {
           land.value[x][y].display = num
         }
-        // console.log('=================================')
 
       }
 
-      const re = () => {
-        console.log('re')
-        init()
-      }
+      watch(() => guessBoom.value ,() => {
+        if (flagBoom.sort().toString() === guessBoom.value.sort().toString()) {
+          endStatus.value = true
+          isWin.value = true
+        }
+      },{deep: true})
 
       return {
         land,
         endStatus,
+        flagStatus,
+        isWin,
         action,
-        re,
+        init,
       }
     }
   }
