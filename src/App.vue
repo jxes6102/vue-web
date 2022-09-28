@@ -7,19 +7,23 @@
 router-view(
   class="pt-[80px] md:pt-[10vh] bg-[#FBFBEA]"
 )
+loadView(v-if="block")
 </template>
 <script>
   // @ is an alias to /src
-  import { ref, onMounted } from 'vue'
+  import { ref,computed,onMounted } from 'vue'
   import store from '@/store'
   import { debounce } from 'lodash'
   import menuView from '@/components/menu.vue'
+  import loadView from '@/components/loadView.vue'
   export default {
     name: 'HomeView',
     components: {
       menuView,
+      loadView,
     },
     setup() {
+      const block = computed(() => store.state.loading)
       const viewContainer = ref(null)
       const resizeWidth = new ResizeObserver(entries => {
         getContainerWidth(entries[0].contentRect)
@@ -31,8 +35,16 @@ router-view(
         resizeWidth.observe(viewContainer.value)
       })
 
+      const loadTest = async () => {
+        store.commit('setLoad', true)
+        await new Promise(resolve => setTimeout(resolve, 3000))
+        store.commit('setLoad', false)
+      }
+      // loadTest()
+
       return {
         viewContainer,
+        block,
       }
     }
   }
