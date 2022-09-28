@@ -5,6 +5,7 @@ import formView from '../views/formView.vue'
 import gameView from '../views/gameView.vue'
 import pictureView from '../views/pictureView.vue'
 import toolView from '../views/toolView.vue'
+import errorView from '../views/errorView.vue'
 
 const routes = [
   {
@@ -41,7 +42,7 @@ const routes = [
   {
     // todo notfound component
     path: '/:catchAll(.*)',
-    redirect: '/',
+    component: errorView,
   },
 ]
 

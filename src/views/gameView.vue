@@ -27,8 +27,14 @@ div(class="w-full h-[100vh] flex flex-col items-center justify-start")
           memory: '記憶遊戲',
           landmine: '踩地雷'
         }
+        if (!base[gameName.value] && gameName.value) back()
         return base[gameName.value] || '在選單點擊你想玩的遊戲'
       })
+
+      const back = () => {
+        router.push('/error')
+      }
+
       const init = () => {
         // const query = JSON.parse(JSON.stringify(route.query))
       }
