@@ -9,6 +9,8 @@ cd dist
 
 # 因為dist資料夾預設是被ignore的，因此在進入dist資料夾後初始化git
 git init
+# 先刪除遠端分支解決快取問題
+git push origin --delete dev
 git add -A
 git commit -m 'deploy'
 
