@@ -1,16 +1,36 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-col items-center justify-center")
-  h1 tool view QQ
+div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
+  div(class="w-auto h-auto flex flex-wrap items-center justify-center")
+    div(
+      class="w-[150px] h-[150px] bg-gray-300 m-3 rounded-sm hover:bg-gray-200 hover:scale-105"
+      v-for="(item, index) in data"
+      @click="action(item)"
+    ) {{item}}
+  component(v-if="choseItem" :is="choseItem")
 </template>
 <script>
   // @ is an alias to /src
+  import { ref,computed,onMounted } from 'vue'
+  import ball from '@/components/ballView.vue'
   export default {
     name: 'toolView',
     components: {
+      ball
     },
     setup() {
+      // const data = ref(['ball', 'bg', 'ball', 'bg', 'bg', 'ball'])
+      const data = ref(['ball'])
+      const choseItem = ref('')
+
+      const action = (name) => {
+        console.log(name)
+        choseItem.value = name
+      }
 
       return {
+        data,
+        choseItem,
+        action,
       }
     }
   }
