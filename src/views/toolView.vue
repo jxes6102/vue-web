@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="")
+div(class="w-full h-[100vh] flex flex-col items-center justify-center")
   h1 tool view
 </template>
 <script>
