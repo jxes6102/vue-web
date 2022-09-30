@@ -2,7 +2,7 @@
 div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
   div(class="w-auto h-auto flex flex-wrap items-center justify-center")
     div(
-      class="w-[150px] h-[150px] bg-gray-300 m-3 rounded-sm hover:bg-gray-200 hover:scale-105"
+      class="w-[150px] h-[150px] bg-gray-300 m-3 rounded-sm hover:bg-gray-200 hover:scale-105 flex items-center justify-center"
       v-for="(item, index) in data"
       @click="action(item)"
     ) {{item}}
@@ -10,7 +10,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 </template>
 <script>
   // @ is an alias to /src
-  import { ref,computed,onMounted } from 'vue'
+  import { ref,computed,onMounted, provide } from 'vue'
   import ball from '@/components/ballView.vue'
   export default {
     name: 'toolView',
@@ -26,6 +26,11 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
         console.log(name)
         choseItem.value = name
       }
+
+      const close = () => {
+        choseItem.value = ''
+      }
+      provide('close', close)
 
       return {
         data,
