@@ -6,7 +6,8 @@ div(
   div(
     class="absolute w-[100px] h-[100px] left-0 bottom-0"
     ref="flyItem"
-    @touchmove="touchmove"
+    @touchmove.prevent="touchmove"
+    @touchend="touchEnd"
   )
     img(
       class="w-full h-full"
@@ -30,10 +31,47 @@ div(
         flyItem.value.style.top = element.changedTouches[0].clientY - 50 + 'px'
         flyItem.value.style.left = element.changedTouches[0].clientX - 50 + 'px'
       }
-      // window.innerWidth
+
+      const touchEnd = (element) => {
+        console.log('w: ', window.innerWidth, 'h',window.innerHeight)
+        // console.log('w: ',flyItem.value.style.left)
+        // console.log('h: ',flyItem.value.style.top)
+        // console.log('w: ',element.changedTouches[0].clientX)
+        // console.log('h: ',element.changedTouches[0].clientY)
+        if (element.changedTouches[0].clientX < 50 ) {
+          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
+          flyItem.value.style.left = 0 + 'px'
+        }
+        if (element.changedTouches[0].clientX >= window.innerWidth - 50 ) {
+          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
+          flyItem.value.style.left = window.innerWidth - 100 + 'px'
+        }
+        if (element.changedTouches[0].clientX < window.innerWidth / 2 ) {
+          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
+          flyItem.value.style.left = 0 + 'px'
+        } else {
+          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
+          flyItem.value.style.left = window.innerWidth - 100 + 'px'
+        }
+      }
+
+      const countY = (y) => {
+
+        if (y < 80 ) {
+          console.log('1',y)
+          return 80 + 'px'
+        } else if (y > window.innerHeight - 100) {
+          console.log('2',y)
+          return window.innerHeight - 100 + 'px'
+        } else {
+          console.log('3',y)
+          return y
+        }
+      }
       return {
         close,
         flyItem,
+        touchEnd,
         touchmove
       }
     }
