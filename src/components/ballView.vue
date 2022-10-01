@@ -57,14 +57,11 @@ div(
 
       const countY = (y) => {
 
-        if (y < 80 ) {
-          console.log('1',y)
-          return 80 + 'px'
+        if (y < 140 ) {
+          return 90 + 'px'
         } else if (y > window.innerHeight - 100) {
-          console.log('2',y)
           return window.innerHeight - 100 + 'px'
         } else {
-          console.log('3',y)
           return y
         }
       }
