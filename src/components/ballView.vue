@@ -4,14 +4,18 @@ div(
   @click.self="close"
 )
   div(
-    :class="[!transitionStatus || 'transition-all duration-200 ease-in-out',]"
+    :class="[!transitionStatus || 'transition-all duration-200 ease-in-out']"
     class="absolute w-[100px] h-[100px] left-0 bottom-0"
     ref="flyItem"
+    draggable="true"
     @touchstart.prevent="touchStart"
     @touchmove.prevent="touchmove"
     @touchend="touchEnd"
+    @dragover="dragover"
+    @dragend="dragend"
   )
     img(
+      :class="[!dargStatus || 'opacity-0']"
       class="w-full h-full"
       src="./images/ball2.png" alt="ball"
     )
@@ -27,7 +31,7 @@ div(
       const close = inject('close')
       const flyItem = ref(null)
       const transitionStatus = ref(false)
-      const moveStatus = ref(false)
+      const dargStatus = ref(false)
       let touchKey = null
 
       const touchStart = (e) => {
@@ -49,10 +53,20 @@ div(
         transitionStatus.value = true
       }
 
+      const dragover = () => {
+        dargStatus.value = true
+      }
+
+      const dragend = (e) => {
+        flyItem.value.style.top = countY(e.clientY)
+        flyItem.value.style.left = countX(e.clientX)
+        dargStatus.value = false
+      }
+
       const countY = (y) => {
         if (y < 140 ) return 90 + 'px'
         else if (y > window.innerHeight - 100) return window.innerHeight - 100 + 'px'
-        else return y
+        else return y + 'px'
       }
 
       const countX = (x) => {
@@ -70,7 +84,9 @@ div(
         close,
         flyItem,
         transitionStatus,
-        moveStatus,
+        dargStatus,
+        dragover,
+        dragend,
         touchEnd,
         touchmove,
         touchStart,

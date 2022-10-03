@@ -10,7 +10,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 </template>
 <script>
   // @ is an alias to /src
-  import { ref,computed,onMounted, provide } from 'vue'
+  import { ref, provide } from 'vue'
   import ball from '@/components/ballView.vue'
   export default {
     name: 'toolView',
