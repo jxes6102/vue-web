@@ -4,8 +4,10 @@ div(
   @click.self="close"
 )
   div(
+    :class="[!transitionStatus || 'transition-all duration-200 ease-in-out',]"
     class="absolute w-[100px] h-[100px] left-0 bottom-0"
     ref="flyItem"
+    @touchstart.prevent="touchStart"
     @touchmove.prevent="touchmove"
     @touchend="touchEnd"
   )
@@ -24,52 +26,54 @@ div(
     setup() {
       const close = inject('close')
       const flyItem = ref(null)
-      // console.log('flyItem', flyItem)
+      const transitionStatus = ref(false)
+      const moveStatus = ref(false)
+      let touchKey = null
+
+      const touchStart = (e) => {
+        if (!touchKey && (touchKey !== 0)) touchKey = e.changedTouches[0].identifier
+        if (multiStatus(e)) return false
+        transitionStatus.value = false
+      }
+
       const touchmove = (element) => {
-        // console.log(flyItem.value.style)
-        // console.log(element.touches[0])
+        if (multiStatus(element)) return false
         flyItem.value.style.top = element.changedTouches[0].clientY - 50 + 'px'
         flyItem.value.style.left = element.changedTouches[0].clientX - 50 + 'px'
       }
 
       const touchEnd = (element) => {
-        console.log('w: ', window.innerWidth, 'h',window.innerHeight)
-        // console.log('w: ',flyItem.value.style.left)
-        // console.log('h: ',flyItem.value.style.top)
-        // console.log('w: ',element.changedTouches[0].clientX)
-        // console.log('h: ',element.changedTouches[0].clientY)
-        if (element.changedTouches[0].clientX < 50 ) {
-          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
-          flyItem.value.style.left = 0 + 'px'
-        }
-        if (element.changedTouches[0].clientX >= window.innerWidth - 50 ) {
-          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
-          flyItem.value.style.left = window.innerWidth - 100 + 'px'
-        }
-        if (element.changedTouches[0].clientX < window.innerWidth / 2 ) {
-          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
-          flyItem.value.style.left = 0 + 'px'
-        } else {
-          flyItem.value.style.top = countY(element.changedTouches[0].clientY)
-          flyItem.value.style.left = window.innerWidth - 100 + 'px'
-        }
+        if (multiStatus(element)) return false
+        flyItem.value.style.top = countY(element.changedTouches[0].clientY)
+        flyItem.value.style.left = countX(element.changedTouches[0].clientX)
+        transitionStatus.value = true
       }
 
       const countY = (y) => {
-
-        if (y < 140 ) {
-          return 90 + 'px'
-        } else if (y > window.innerHeight - 100) {
-          return window.innerHeight - 100 + 'px'
-        } else {
-          return y
-        }
+        if (y < 140 ) return 90 + 'px'
+        else if (y > window.innerHeight - 100) return window.innerHeight - 100 + 'px'
+        else return y
       }
+
+      const countX = (x) => {
+        if (x < window.innerWidth / 2 ) return 0 + 'px'
+        else return window.innerWidth - 100 + 'px'
+      }
+
+      const multiStatus = (e) => {
+        let target = true
+        for (let item of e.changedTouches) if (item.identifier === touchKey) target = false
+        return target
+      }
+
       return {
         close,
         flyItem,
+        transitionStatus,
+        moveStatus,
         touchEnd,
-        touchmove
+        touchmove,
+        touchStart,
       }
     }
   }

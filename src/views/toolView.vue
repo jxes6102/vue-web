@@ -23,7 +23,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       const choseItem = ref('')
 
       const action = (name) => {
-        console.log(name)
+        // console.log(name)
         choseItem.value = name
       }
 
