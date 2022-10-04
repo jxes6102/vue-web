@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import mainView from '../views/mainView'
 import formView from '../views/formView.vue'
 import gameView from '../views/gameView.vue'
-import pictureView from '../views/pictureView.vue'
+import pictureView from '../views/pictureView'
 import toolView from '../views/toolView.vue'
 import errorView from '../views/errorView.vue'
 
