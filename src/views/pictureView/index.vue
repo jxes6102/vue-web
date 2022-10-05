@@ -1,27 +1,36 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex items-center justify-center")
-  div(class="")
+div(class="w-full h-[100vh] flex flex-col md:flex-row items-center justify-center")
+  div(class="w-1/2 h-full flex items-center justify-end p-5")
     canvas(
       ref="drawItem"
       id="canvas"
       :width="size.w" :height="size.h"
       style="border: 1px solid #ccc;"
     )
-  div(class="flex flex-col items-center justify-center")
-    input(type="text" v-model="text1")
-    input(type="text" v-model="text2")
-    input(type="text" v-model="text3")
-    input(type="text" v-model="text4")
-    button(
-      class='bg-blue-500 text-white py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-blue-400'
-      @click="download"
-    ) 下載
-  //- div
-  //-   input(type="text" v-model="editTextArr[0]")
+    div(
+      class="fixed w-[0px] h-[0px] md:w-1/2 md:h-full top-[0px] left-[0px] bg-black opacity-0"
+    )
+  div(class="w-1/2 h-full flex flex-col items-start justify-center ml-5")
+    div(class="w-full 2xl:w-2/3 h-1/3 flex flex-wrap items-center justify-center")
+      div(
+        class="w-1/2 h-auto flex flex-col items-center justify-center"
+        v-for="(item, index) in editTextArr"
+      )
+        div(class="italic text-xl font-extrabold") {{textTitle[index]}}
+        input(
+          class="p-2 bg-white focus:outline-none focus:shadow-outline rounded-md py-2 px-2 block appearance-none leading-normal"
+          type="text" v-model="editTextArr[index]"
+        )
+    div(class="w-full 2xl:w-2/3 h-auto flex items-center justify-center mt-5")
+      button(
+        class='bg-blue-500 text-white py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-blue-400'
+        @click="download"
+      ) 下載
 </template>
 <script>
   import { fabric } from "fabric"
-  import { ref,onMounted,watch } from 'vue'
+  import { ref,onMounted,watch,computed } from 'vue'
+  import store from '@/store'
   import dog from '@/assets/originDog.png'
   // @ is an alias to /src
   export default {
@@ -29,78 +38,68 @@ div(class="w-full h-[100vh] flex items-center justify-center")
     components: {
     },
     setup() {
+      const isMobile = computed(() => store.state.isMobile)
       const drawItem = ref(null)
-      const text1 = ref('111')
-      const text2 = ref('222')
-      const text3 = ref('333')
-      const text4 = ref('444')
-      const editTextArr = ref(new Array(4))
-      const size = ref({
-        w:480,
-        h:440
+      const editTextArr = ref(new Array(4).fill(''))
+      const textTitle = ref(['大狗(上)','小狗(上)','大狗(下)','小狗(下)'])
+      const size = computed(() => {
+        let target = {w:0,h:0}
+        if (isMobile.value) {
+          target.w = 300
+          target.h = 275
+        } else {
+          target.w = 480
+          target.h = 440
+        }
+        return target
       })
+      const block = computed(() => 'w-['+ size.value.w +'px]' + ' h-['+ size.value.h +'px]')
 
-      // 12:11 = 600 : 550  = 300 : 275
       let canvas
       const init = () => {
         canvas = new fabric.Canvas('canvas')
         fabric.Image.fromURL(dog, oImg => {
-          oImg.scaleToWidth(480)
-          oImg.scaleToHeight(440)
+          oImg.scaleToWidth(size.value.w)
+          oImg.scaleToHeight(size.value.h)
           canvas.add(oImg)
           canvas.sendToBack(oImg)
         })
       }
 
-      let editText1,editText2,editText3,editText4
-      // let editItem = new Array(4)
+      let editItem = new Array(4)
       const addText = () => {
-        editText1 = new fabric.IText(text1.value, {
-          top: 0,
-          left: 0
+        editItem[0] = new fabric.IText(editTextArr.value[0], {
+          top: 40,
+          left: 10,
         })
-        editText2 = new fabric.IText(text2.value, {
-          top: 0,
-          left: 200
+        editItem[1] = new fabric.IText(editTextArr.value[1], {
+          top: 40,
+          left: 300,
         })
-        editText3 = new fabric.IText(text3.value, {
-          top: 200,
-          left: 0
+        editItem[2] = new fabric.IText(editTextArr.value[2], {
+          top: 300,
+          left: 10,
         })
-        editText4 = new fabric.IText(text4.value, {
-          top: 200,
-          left: 200
+        editItem[3] = new fabric.IText(editTextArr.value[3], {
+          top: 300,
+          left: 300,
         })
-        canvas.add(editText1,editText2,editText3,editText4)
-        // editItem[0] = new fabric.IText(editTextArr.value[0], {
-        //   top: 100,
-        //   left: 100
-        // })
-        // canvas.add(editItem)
+        canvas.add(editItem[0],editItem[1],editItem[2],editItem[3])
 
       }
 
-      watch(() => text1.value ,() => {
-        editText1.set('text',text1.value)
+      watch(() => editTextArr.value ,() => {
+        for(let index in editTextArr.value) editItem[index].set('text',editTextArr.value[index])
         canvas.renderAll()
-      })
-      watch(() => text2.value ,() => {
-        editText2.set('text',text2.value)
-        canvas.renderAll()
-      })
-      watch(() => text3.value ,() => {
-        editText3.set('text',text3.value)
-        canvas.renderAll()
-      })
-      watch(() => text4.value ,() => {
-        editText4.set('text',text4.value)
-        canvas.renderAll()
-      })
-
-      // watch(() => editTextArr.value ,() => {
-      //   editItem[0].set('text',editTextArr.value[0])
-      //   canvas.renderAll()
-      // },{deep: true})
+      },{deep: true})
+      watch(() => isMobile.value ,() => {
+        // canvas.clear()
+        // editTextArr.value = new Array(4).fill('')
+        // editItem = new Array(4)
+        // canvas.renderAll()
+        // init()
+        // addText()
+      },{deep: true})
 
       const download = () => {
         let item = document.getElementById("canvas")
@@ -117,13 +116,11 @@ div(class="w-full h-[100vh] flex items-center justify-center")
       })
 
       return {
-        text1,
-        text2,
-        text3,
-        text4,
         size,
         download,
         editTextArr,
+        textTitle,
+        block,
       }
     }
   }
