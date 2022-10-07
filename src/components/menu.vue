@@ -55,7 +55,7 @@ div(
             {name: '首頁', icon:'House',route:'/'},
             {name: '報表', icon:'document',route:'/form'},
             {name: '圖片', icon:'Picture',route:'/picture'},
-            {name: '工具 / 樣式', icon:'Handbag',route:'/tool'},
+            {name: '小花樣', icon:'Handbag',route:'/tool'},
             {name: '遊戲', icon:'MagicStick',route:'/game'},
           ],
           game: [

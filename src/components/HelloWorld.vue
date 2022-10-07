@@ -40,14 +40,46 @@ export default {
     msg: String
   },
   setup() {
-    const nums = [6,7,9]
+    const n = 34, k = 6
+    let temp = n
+    let arr = []
+    let str = ''
     let ans = 0
-    for(let i = 1;i<=Math.min(...nums);i++) {
-      if (Math.min(...nums)%i === 0 && Math.max(...nums)%i === 0) {
-        ans = i
+    for(let i = 0;i<8;i++) arr.push(Math.pow(k, i))
+    arr.reverse()
+    for(let i = 0;i<8;i++) {
+      for(let j = k-1;j > 0;j--) {
+        if(temp >= arr[i]*(j)){
+          temp -= arr[i]*(j)
+          str += (j).toString()
+          break
+        }else if(j === 1) str += '0'
       }
     }
+    for(let i = 0;i<str.split('').length;i++) ans += parseInt(str.split('')[i])
     console.log(ans)
+
+
+    // 1837. Sum of Digits in Base K
+    // const n = 34, k = 6
+    // let temp = n
+    // let arr = []
+    // let str = ''
+    // let ans = 0
+    // for(let i = 0;i<8;i++) arr.push(Math.pow(k, i))
+    // arr.reverse()
+    // for(let i = 0;i<8;i++) {
+    //   for(let j = k-1;j > 0;j--) {
+    //     if(temp >= arr[i]*(j)){
+    //       temp -= arr[i]*(j)
+    //       str += (j).toString()
+    //       break
+    //     }else if(j === 1) str += '0'
+    //   }
+    // }
+    // for(let i = 0;i<str.split('').length;i++) ans += parseInt(str.split('')[i])
+    // console.log(ans)
+
 
     // 1725. Number Of Rectangles That Can Form The Largest Square
     // let arr = []
