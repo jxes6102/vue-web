@@ -11,11 +11,11 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 <script>
   // @ is an alias to /src
   import { ref, provide } from 'vue'
-  import ball from '@/components/ballView.vue'
+  import move from '@/components/ballView.vue'
   export default {
     name: 'toolView',
     components: {
-      ball
+      move
     },
     setup() {
       // const data = ref(['ball', 'bg', 'ball', 'bg', 'bg', 'ball'])
