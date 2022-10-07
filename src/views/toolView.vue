@@ -19,7 +19,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     },
     setup() {
       // const data = ref(['ball', 'bg', 'ball', 'bg', 'bg', 'ball'])
-      const data = ref(['ball'])
+      const data = ref(['move'])
       const choseItem = ref('')
 
       const action = (name) => {
