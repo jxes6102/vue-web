@@ -40,24 +40,8 @@ export default {
     msg: String
   },
   setup() {
-    const n = 34, k = 6
-    let temp = n
-    let arr = []
-    let str = ''
-    let ans = 0
-    for(let i = 0;i<8;i++) arr.push(Math.pow(k, i))
-    arr.reverse()
-    for(let i = 0;i<8;i++) {
-      for(let j = k-1;j > 0;j--) {
-        if(temp >= arr[i]*(j)){
-          temp -= arr[i]*(j)
-          str += (j).toString()
-          break
-        }else if(j === 1) str += '0'
-      }
-    }
-    for(let i = 0;i<str.split('').length;i++) ans += parseInt(str.split('')[i])
-    console.log(ans)
+    let n = 34, k = 6
+
 
 
     // 1837. Sum of Digits in Base K
