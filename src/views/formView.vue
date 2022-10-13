@@ -145,9 +145,11 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 
         reader.readAsDataURL(file);
         reader.onload = () => {
+          fileDiv.value.style.backgroundImage = `url('${reader.result}')`
           // thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
         };
       } else {
+        fileDiv.value.style.backgroundImage = null
         // thumbnailElement.style.backgroundImage = null;
       }
     }
