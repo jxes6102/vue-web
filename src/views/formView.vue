@@ -1,10 +1,18 @@
 <template lang='pug'>
 div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
   div.drop-zone(
+    ref="fileDiv"
     class="w-full md:w-[600px] h-[200px] md:h-[400px] flex flex-col items-center justify-center cursor-pointer border-dashed border-[#009578] border-4 rounded-2xl bg-[#e0ffb5]"
+    @click="choseFile"
+    @drop="dropFile"
+    @dragover="dragover"
   )
     span.drop-zone__prompt Drop file here or click to upload
-    input.drop-zone__input(type='file' name='myFile')
+    input.drop-zone__input(
+      ref="fileInput"
+      type='file' name='myFile'
+      @change="changeFile"
+    )
   div(
     class="w-full md:w-[80%] h-auto px-1"
   )
@@ -68,65 +76,68 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 
       }
 
-      const loadFile = () => {
-        document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-        const dropZoneElement = inputElement.closest(".drop-zone");
-
-        dropZoneElement.addEventListener("click", (e) => {
-          inputElement.click();
-        });
-
-        inputElement.addEventListener("change", (e) => {
-          if (inputElement.files.length) {
-            updateThumbnail(dropZoneElement, inputElement.files[0]);
-          }
-        });
-
-        dropZoneElement.addEventListener("dragover", (e) => {
-          e.preventDefault();
-          dropZoneElement.classList.add("drop-zone--over");
-        });
-
-        ["dragleave", "dragend"].forEach((type) => {
-          dropZoneElement.addEventListener(type, (e) => {
-            dropZoneElement.classList.remove("drop-zone--over");
-          });
-        });
-
-        dropZoneElement.addEventListener("drop", (e) => {
-          e.preventDefault();
-
-          if (e.dataTransfer.files.length) {
-            inputElement.files = e.dataTransfer.files;
-            updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-          }
-
-          dropZoneElement.classList.remove("drop-zone--over");
-        });
-      });
-    }
-    /**
-     * Updates the thumbnail on a drop zone element.
-     *
-     * @param {HTMLElement} dropZoneElement
-     * @param {File} file
-     */
-      const updateThumbnail = (dropZoneElement, file) => {
-      let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-
-      // First time - remove the prompt
-      if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-        dropZoneElement.querySelector(".drop-zone__prompt").remove();
+      const fileInput = ref(null)
+      const fileDiv = ref(null)
+      const choseFile = () => {
+        fileInput.value.click()
+      }
+      const changeFile = () => {
+        if(fileInput.value.files.length === 1) {
+          console.log('changeFile', fileInput.value.files)
+          updateThumbnail(fileDiv.value, fileInput.value.files[0])
+        }
+      }
+      const dropFile = (e) => {
+        e.preventDefault()
+        if (e.dataTransfer.files.length === 1) {
+          console.log('dropFile', e.dataTransfer.files)
+          fileInput.value.files = e.dataTransfer.files
+          updateThumbnail(fileDiv.value, e.dataTransfer.files[0])
+        }
+      }
+      const dragover = (e) => {
+        // 未知 未用時會另開頁面
+        e.preventDefault()
       }
 
-      // First time - there is no thumbnail element, so lets create it
-      if (!thumbnailElement) {
-        thumbnailElement = document.createElement("div");
-        thumbnailElement.classList.add("drop-zone__thumb");
-        dropZoneElement.appendChild(thumbnailElement);
-      }
+    //   const loadFile = () => {
+    //     document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+    //     const dropZoneElement = inputElement.closest(".drop-zone")
 
-      thumbnailElement.dataset.label = file.name;
+    //     dropZoneElement.addEventListener("dragover", (e) => {
+    //       e.preventDefault();
+    //       dropZoneElement.classList.add("drop-zone--over")
+    //     });
+
+    //     ['dragleave', 'dragend'].forEach((type) => {
+    //       dropZoneElement.addEventListener(type, (e) => {
+    //         dropZoneElement.classList.remove("drop-zone--over");
+    //       })
+    //     })
+
+    //     dropZoneElement.addEventListener("drop", (e) => {
+    //       e.preventDefault()
+    //       dropZoneElement.classList.remove("drop-zone--over")
+    //     })
+    //   })
+    // }
+
+    const updateThumbnail = (dropZoneElement, file) => {
+      // let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+      // // First time - remove the prompt
+      // if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+      //   dropZoneElement.querySelector(".drop-zone__prompt").remove();
+      // }
+
+      // // First time - there is no thumbnail element, so lets create it
+      // if (!thumbnailElement) {
+      //   thumbnailElement = document.createElement("div");
+      //   thumbnailElement.classList.add("drop-zone__thumb");
+      //   dropZoneElement.appendChild(thumbnailElement);
+      // }
+
+      // thumbnailElement.dataset.label = file.name;
 
       // Show thumbnail for image files
       if (file.type.startsWith("image/")) {
@@ -134,22 +145,29 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 
         reader.readAsDataURL(file);
         reader.onload = () => {
-          thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+          // thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
         };
       } else {
-        thumbnailElement.style.backgroundImage = null;
+        // thumbnailElement.style.backgroundImage = null;
       }
     }
-    // init()
+
 
     onMounted(() => {
-      loadFile()
+      // init()
+      // loadFile()
     })
 
 
       return {
         isMobile,
         tableData,
+        fileInput,
+        changeFile,
+        fileDiv,
+        dropFile,
+        dragover,
+        choseFile,
       }
     }
   }
