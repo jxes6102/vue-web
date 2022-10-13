@@ -33,6 +33,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 <script>
   // @ is an alias to /src
   import { ref,computed,onMounted } from 'vue'
+  import * as XLSX from 'xlsx/xlsx.mjs'
   import store from '@/store'
   export default {
     name: 'formView',
@@ -60,21 +61,6 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
         },
         {
           date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-08',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-06',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-07',
           name: 'Tom',
           address: 'No. 189, Grove St, Los Angeles',
         },
@@ -113,22 +99,39 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       }
 
     const dealFile = (file) => {
-      if (file.type.startsWith("image/")) {
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => {
-          fileDiv.value.style.backgroundImage = `url('${reader.result}')`
-        }
-      } else {
-        fileDiv.value.style.backgroundImage = null
-      }
-    }
+      // is img
+      // if (file.type.startsWith("image/")) {
+      //   const reader = new FileReader()
+      //   reader.readAsDataURL(file)
+      //   reader.onload = () => {
+      //     fileDiv.value.style.backgroundImage = `url('${reader.result}')`
+      //   }
+      // } else {
+      //   fileDiv.value.style.backgroundImage = null
+      // }
 
+      // is excel
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(file)
+
+      reader.addEventListener("loadend", function() {
+          const data = new Uint8Array(reader.result);
+          const wb = XLSX.read(data, {type:'array'});
+          console.log('wb', wb)
+          // process_wb(wb);
+      });
+}
 
     onMounted(() => {
       // init()
       // loadFile()
     })
+
+
+    function process_wb(wb) {
+      XLSX.utils.sheet_to_html(wb.Sheets[wb.SheetNames[0]], {editable:true}).replace("<table", '<table id="table" border="1"');
+    }
+
 
 
       return {
