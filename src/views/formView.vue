@@ -1,6 +1,7 @@
 <template lang='pug'>
 div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
   div.drop-zone(
+    v-if="!tableData.length"
     ref="fileDiv"
     :class="[ \
       borderStyle ? 'border-solid' : 'border-dashed', \
@@ -20,15 +21,20 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       @change="changeFile"
     )
   div(
-    class="w-full md:w-[80%] h-auto px-1"
+    v-else
+    class="w-full h-auto px-1"
   )
     el-table(
-      v-if="tableData.length"
-      :data='tableData' :height='isMobile ? 300 : 500' style='width: 100%'
+      :data='tableData' :height='isMobile ? 400 : 500' style='width: 100%'
     )
-      el-table-column(prop='A1' label='Date' width='200')
-      el-table-column(prop='B1' label='Name' width='200')
-      el-table-column(prop='C1' label='Address' width='200')
+      el-table-column(prop='A1' label='Date' fit="true")
+      el-table-column(prop='B1' label='Name' fit="true")
+      el-table-column(prop='C1' label='Address' fit="true")
+    button(
+      class='bg-green-500 text-white my-2 py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'
+      @click="clear"
+    ) 清除
+
 </template>
 <script>
   // @ is an alias to /src
@@ -44,28 +50,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       const tableTitle = ref([])
       const tableData = ref([])
       const init = () => {
-        tableData.value = [
-        {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-04',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-      ]
+
       }
 
       const fileInput = ref(null)
@@ -138,16 +123,16 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
             } else {
               console.log('有合併儲存格或超出範圍(only A~C)')
             }
-
         }
       }
+    }
 
-}
+    const clear = () => {
+      location.reload()
+    }
 
     onMounted(() => {
-
       // init()
-
     })
 
       return {
@@ -161,6 +146,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
         setBorder,
         borderStyle,
         choseFile,
+        clear,
       }
     }
   }
