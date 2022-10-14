@@ -22,10 +22,10 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     )
   div(
     v-else
-    class="w-full md:w-3/4 h-auto px-1"
+    class="w-full md:w-3/4 h-auto px-1 flex flex-col items-center justify-center"
   )
     el-table(
-      :data='tableData' :height='isMobile ? 400 : 500' style='width: 100%'
+      :data='nowData' style='width: 100%'
     )
       el-table-column(
         v-for="(item, index) of tableTitle" :key="index"
@@ -35,6 +35,16 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       //- el-table-column(prop='A1' label='Date')
       //- el-table-column(prop='B1' label='Name')
       //- el-table-column(prop='C1' label='Address')
+    el-pagination(
+      small
+      background
+      layout="prev, pager, next"
+      :total="tableData.length"
+      :page-size="isMobile ? 8 : 10"
+      class="mt-2"
+      @current-change="changePage"
+      :current-page="nowPage"
+    )
     button(
       class='bg-green-500 text-white my-2 py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'
       @click="clear"
@@ -43,7 +53,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
 </template>
 <script>
   // @ is an alias to /src
-  import { ref,computed,onMounted } from 'vue'
+  import { ref,computed,onMounted,watch } from 'vue'
   import * as XLSX from 'xlsx/xlsx.mjs'
   import store from '@/store'
   export default {
@@ -54,10 +64,14 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       const isMobile = computed(() => store.state.isMobile)
       const tableTitle = ref([])
       const tableData = ref([])
-
       const fileInput = ref(null)
       const fileDiv = ref(null)
       const borderStyle = ref(false)
+      const nowPage = ref(1)
+      const nowData = computed(() => {
+        let count = isMobile.value ? 8 : 10
+        return tableData.value.slice((nowPage.value - 1)*count, nowPage.value*count)
+      })
       const choseFile = () => {
         fileInput.value.click()
       }
@@ -82,6 +96,8 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       }
 
     const dealFile = (file) => {
+      if(store.state.loading) return false
+      store.commit('setLoad', true)
       // console.log('type',file.type)
       const reader = new FileReader()
       if (file.type.startsWith("image/")) {
@@ -89,29 +105,22 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
         reader.onload = () => {
           fileDiv.value.style.backgroundImage = `url('${reader.result}')`
           // fileDiv.value.style.backgroundImage = null
+          store.commit('setLoad', false)
         }
       } else if (file.type.includes('spreadsheetml.sheet')) {
         reader.readAsArrayBuffer(file)
         reader.onload = () => {
             const data = new Uint8Array(reader.result)
             const wb = XLSX.read(data, {type:'array'})
-            // console.log('wb', wb)
             if(!wb.Sheets[wb.SheetNames[0]]['!merges'] && wb.Sheets[wb.SheetNames[0]]['!ref'].includes(':C')) {
-              console.log('成功',wb.Sheets[wb.SheetNames[0]])
               let range = parseInt(wb.Sheets[wb.SheetNames[0]]['!ref'].split(':C')[1])
-              // console.log('range', range)
               let data = []
-
-              // console.log('values',Object.values(wb.Sheets[wb.SheetNames[0]]))
-              // console.log('keys',Object.keys(wb.Sheets[wb.SheetNames[0]]))
               for(let item of Object.keys(wb.Sheets[wb.SheetNames[0]])) {
                 let index = parseInt(item.replace(/[^0-9']/g, ''))
                 if (!index) continue
                 if(!data[index]) data[index] = {}
                 data[index][item] = wb.Sheets[wb.SheetNames[0]][item]?.w
               }
-              // console.log('data',data)
-
               let tatget = []
               for(let i = 1;i<=range;i++) {
                 tatget.push({
@@ -120,27 +129,34 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
                   C1:data[i]['C'+i],
                 })
               }
-              // console.log('tatget',tatget)
               for(let index in tatget[0]) {
                 tableTitle.value.push({
                   prop:index,
                   label:tatget[0][index],
                 })
               }
-              // console.log(tableTitle.value)
               tatget.splice(0, 1)
               tableData.value = tatget
             } else {
               console.log('有合併儲存格或超出範圍(only A~C)')
             }
+            store.commit('setLoad', false)
         }
       }
+    }
+    const changePage = (val) => {
+      nowPage.value = val
     }
 
     const clear = () => {
       tableData.value = []
       tableTitle.value = []
+      nowPage.value = 1
     }
+
+    watch(() => isMobile.value,() => {
+      nowPage.value = 1
+    })
 
     onMounted(() => {
 
@@ -153,12 +169,15 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
         fileDiv,
         borderStyle,
         tableTitle,
+        nowData,
+        nowPage,
         changeFile,
         dropFile,
         dragOver,
         setBorder,
         choseFile,
         clear,
+        changePage,
       }
     }
   }
