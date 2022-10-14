@@ -6,7 +6,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     :class="[ \
       borderStyle ? 'border-solid' : 'border-dashed', \
     ]"
-    class="w-full md:w-[600px] h-[200px] md:h-[400px] flex flex-col items-center justify-center cursor-pointer border-[#009578] border-4 rounded-2xl bg-[#e0ffb5]"
+    class="w-[300px] md:w-[500px] h-[300px] md:h-[500px] flex flex-col items-center justify-center cursor-pointer border-[#009578] border-4 rounded-2xl bg-[#e0ffb5]"
     @click="choseFile"
     @drop="dropFile"
     @dragover="dragOver"
@@ -22,14 +22,19 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     )
   div(
     v-else
-    class="w-full h-auto px-1"
+    class="w-full md:w-3/4 h-auto px-1"
   )
     el-table(
       :data='tableData' :height='isMobile ? 400 : 500' style='width: 100%'
     )
-      el-table-column(prop='A1' label='Date' fit="true")
-      el-table-column(prop='B1' label='Name' fit="true")
-      el-table-column(prop='C1' label='Address' fit="true")
+      el-table-column(
+        v-for="(item, index) of tableTitle" :key="index"
+        :prop='item.prop' :label='item.label'
+        show-overflow-tooltip
+      )
+      //- el-table-column(prop='A1' label='Date')
+      //- el-table-column(prop='B1' label='Name')
+      //- el-table-column(prop='C1' label='Address')
     button(
       class='bg-green-500 text-white my-2 py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'
       @click="clear"
@@ -49,9 +54,6 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       const isMobile = computed(() => store.state.isMobile)
       const tableTitle = ref([])
       const tableData = ref([])
-      const init = () => {
-
-      }
 
       const fileInput = ref(null)
       const fileDiv = ref(null)
@@ -80,7 +82,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       }
 
     const dealFile = (file) => {
-      console.log('type',file.type)
+      // console.log('type',file.type)
       const reader = new FileReader()
       if (file.type.startsWith("image/")) {
         reader.readAsDataURL(file)
@@ -118,8 +120,16 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
                   C1:data[i]['C'+i],
                 })
               }
-              tableData.value = tatget
               // console.log('tatget',tatget)
+              for(let index in tatget[0]) {
+                tableTitle.value.push({
+                  prop:index,
+                  label:tatget[0][index],
+                })
+              }
+              // console.log(tableTitle.value)
+              tatget.splice(0, 1)
+              tableData.value = tatget
             } else {
               console.log('有合併儲存格或超出範圍(only A~C)')
             }
@@ -128,23 +138,25 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     }
 
     const clear = () => {
-      location.reload()
+      tableData.value = []
+      tableTitle.value = []
     }
 
     onMounted(() => {
-      // init()
+
     })
 
       return {
         isMobile,
         tableData,
         fileInput,
-        changeFile,
         fileDiv,
+        borderStyle,
+        tableTitle,
+        changeFile,
         dropFile,
         dragOver,
         setBorder,
-        borderStyle,
         choseFile,
         clear,
       }
