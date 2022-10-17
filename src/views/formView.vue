@@ -13,7 +13,8 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     @dragleave="setBorder"
     @dragend="setBorder"
   )
-    span.drop-zone__prompt Drop file here or click to upload
+    span 匯入檔案
+    span xlsx檔(剛好三欄且無合併儲存格)
     input.drop-zone__input(
       class="hidden"
       ref="fileInput"
@@ -137,8 +138,6 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
               }
               tatget.splice(0, 1)
               tableData.value = tatget
-            } else {
-              console.log('有合併儲存格或超出範圍(only A~C)')
             }
             store.commit('setLoad', false)
         }
