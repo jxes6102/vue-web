@@ -40,7 +40,16 @@ export default {
     msg: String
   },
   setup() {
-    let n = 34, k = 6
+    let word1 = "ab", word2 = "pqrs"
+    let len = Math.max(word1.length,word2.length)
+    let ans = ''
+    for(let i = 0;i<len;i++) {
+      if(word1.charAt(i)) ans+=word1.charAt(i)
+      if(word2.charAt(i)) ans+=word2.charAt(i)
+    }
+
+
+    console.log(ans)
 
 
 
@@ -63,7 +72,6 @@ export default {
     // }
     // for(let i = 0;i<str.split('').length;i++) ans += parseInt(str.split('')[i])
     // console.log(ans)
-
 
     // 1725. Number Of Rectangles That Can Form The Largest Square
     // let arr = []

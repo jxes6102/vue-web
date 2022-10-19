@@ -28,9 +28,9 @@ div(class="w-[100vw] md:w-[50vw] h-[80vh] md:h-[90vh] flex flex-col items-center
     class="w-full h-auto max-h-[45vh] md:max-h-[55vh] mt-2 overflow-auto"
   )
     div(v-for="item in data" class="w-full flex p-2 justify-around items-center")
-      div {{item.guessNum}}
-      div {{item.AB}}
-      div(v-if="tipStatus") {{item.tip}}
+      div(class="w-1/3") {{item.guessNum}}
+      div(class="w-1/3") {{item.AB}}
+      div(class="w-1/3" v-if="tipStatus") {{item.tip}}
   div(v-if="endStatus" class="w-full h-auto overflow-auto flex flex-col")
     div(class="my-1 text-xl text-red-700") 猜中了 共猜了{{times}}次
     div()

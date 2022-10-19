@@ -13,7 +13,7 @@ const routes = [
     component: mainView,
   },
   {
-    path: '/home',
+    path: '/test',
     component: HomeView,
   },
   {

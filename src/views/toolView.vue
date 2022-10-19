@@ -13,14 +13,16 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
   import { ref, provide } from 'vue'
   import move from '@/components/ballView.vue'
   import scroll from '@/components/scrollView.vue'
+  import square from '@/components/squareView.vue'
   export default {
     name: 'toolView',
     components: {
       move,
-      scroll
+      scroll,
+      square
     },
     setup() {
-      const data = ref(['move','scroll'])
+      const data = ref(['move','scroll','square'])
       const choseItem = ref('')
 
       const action = (name) => {
