@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
+div(class="w-full h-[100vh] flex flex-wrap items-center justify-center overflow-auto")
   div(class="w-auto h-auto flex flex-wrap items-center justify-center")
     div(
       class="w-[150px] h-[150px] bg-[#66CCCC] m-3 rounded-lg hover:opacity-[0.8] hover:scale-105 flex items-center justify-center"
@@ -22,7 +22,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
       square
     },
     setup() {
-      const data = ref(['move','scroll','square'])
+      const data = ref(['move','scroll','square','move','scroll','square'])
       const choseItem = ref('')
 
       const action = (name) => {

@@ -14,20 +14,27 @@ div(
 </template>
 <script>
   // @ is an alias to /src
-  import { ref,inject,computed } from 'vue'
+  import { ref,inject,computed,onMounted } from 'vue'
+  import store from '@/store'
   export default {
     name: 'squareView',
     components: {
     },
     setup() {
+      store.commit('setLoad', true)
       const close = inject('close')
       const colNum = ref(23)
-      const rowNum = ref(50)
+      const rowNum = ref(25)
       const count = computed(() => colNum.value*rowNum.value)
       const arr = ref([1,12,8,6,4,18,5,2,3,11,14,22,3,27,21,15,16,2,22,7,21,10,20])
       const getRandom = () => {
         return '--i:' + arr.value[Math.floor(Math.random() * 23)]
       }
+
+      onMounted(async() => {
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        store.commit('setLoad', false)
+      })
 
       return {
         close,
