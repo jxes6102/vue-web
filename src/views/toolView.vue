@@ -14,19 +14,22 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center overflow-
   import move from '@/components/ballView.vue'
   import scroll from '@/components/scrollView.vue'
   import square from '@/components/squareView.vue'
+  import cube from '@/components/cubeView.vue'
   import store from '@/store'
   export default {
     name: 'toolView',
     components: {
       move,
       scroll,
-      square
+      square,
+      cube
     },
     setup() {
       const data = ref([
         { name:'move',isLoad:false},
         { name:'scroll',isLoad:false},
         { name:'square',isLoad:true},
+        { name:'cube',isLoad:false},
       ])
       const loadStatus = ref(false)
       provide('loadStatus', loadStatus)
