@@ -7,57 +7,20 @@ div(
     .wrap(
       class=""
     )
-      .cube(
-        class=""
-      )
-        div(
-          class=""
-          style="--x:-1;--y:0;"
-        )
-          span(
-            class=""
-            style="--i:3"
-          )
-          span(
-            class=""
-            style="--i:2"
-          )
-          span(
-            class=""
-            style="--i:1"
-          )
-        div(
-          class=""
-          style="--x:0;--y:0;"
-        )
-          span(
-            class=""
-            style="--i:3"
-          )
-          span(
-            class=""
-            style="--i:2"
-          )
-          span(
-            class=""
-            style="--i:1"
-          )
-        div(
-          class=""
-          style="--x:1;--y:0;"
-        )
-          span(
-            class=""
-            style="--i:3"
-          )
-          span(
-            class=""
-            style="--i:2"
-          )
-          span(
-            class=""
-            style="--i:1"
-          )
+      .cube(class="")
+        div(class="" style="--x:-1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:0;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+
 </template>
 <script>
   // @ is an alias to /src
@@ -96,6 +59,14 @@ div(
 .wrap .cube {
   z-index: 2;
 }
+.wrap .cube:nth-child(2) {
+  z-index: 1;
+  translate: -60px -60px;
+}
+.wrap .cube:nth-child(3) {
+  z-index: 3;
+  translate: 60px 60px;
+}
 .wrap .cube div {
   position: absolute;
   display: flex;
@@ -110,5 +81,6 @@ div(
   height: 50px;
   background-color: #dcdcdc;
   z-index: calc(1*var(--i));
+  transition: 1.5s;
 }
 </style>
