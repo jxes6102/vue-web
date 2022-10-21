@@ -3,49 +3,26 @@ div(
   class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90 flex items-center justify-center"
   @click.self="close"
 )
-  .body
+  .body(
+    class="min-h-[100vh] flex items-center justify-center bg-[#25335b]"
+  )
     .wrap(
       class=""
     )
-      .cube(class="")
-        div(class="" style="--x:-1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:0;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-      .cube(class="")
-        div(class="" style="--x:-1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:0;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-      .cube(class="")
-        div(class="" style="--x:-1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:0;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
-        div(class="" style="--x:1;--y:0;")
-          span(class="" style="--i:3")
-          span(class="" style="--i:2")
-          span(class="" style="--i:1")
+      .cube(
+        class=""
+        v-for="item in cubeCount"
+      )
+        div(
+          class=""
+          v-for="divVal in divData"
+          :style="setDivData(divVal)"
+        )
+          span(
+            v-for="spanVal in spanData"
+            class=""
+            :style="setSpanData(spanVal)"
+          )
 
 </template>
 <script>
@@ -57,9 +34,19 @@ div(
     },
     setup() {
       const close = inject('close')
+      const cubeCount = ref(3)
+      const divData = ref([-1,0,1])
+      const spanData = ref([3,2,1])
+      const setDivData = (val) => '--x:'+ val +';--y:0'
+      const setSpanData = (val) => '--i:'+val
 
       return {
         close,
+        divData,
+        spanData,
+        cubeCount,
+        setDivData,
+        setSpanData
       }
     }
   }
@@ -69,13 +56,6 @@ div(
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #25335b;
 }
 .wrap {
   position: relative;
