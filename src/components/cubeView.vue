@@ -20,6 +20,32 @@ div(
           span(class="" style="--i:3")
           span(class="" style="--i:2")
           span(class="" style="--i:1")
+      .cube(class="")
+        div(class="" style="--x:-1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:0;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+      .cube(class="")
+        div(class="" style="--x:-1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:0;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
+        div(class="" style="--x:1;--y:0;")
+          span(class="" style="--i:3")
+          span(class="" style="--i:2")
+          span(class="" style="--i:1")
 
 </template>
 <script>
@@ -55,8 +81,18 @@ div(
   position: relative;
   top: -80px;
   transform: skewY(-20deg);
+  animation: colorchange 5s linear infinite;
+}
+@keyframes colorchange {
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 .wrap .cube {
+  position: relative;
   z-index: 2;
 }
 .wrap .cube:nth-child(2) {
@@ -82,5 +118,41 @@ div(
   background-color: #dcdcdc;
   z-index: calc(1*var(--i));
   transition: 1.5s;
+}
+.wrap .cube div span:hover {
+  background-color: #ef4149;
+  transition: 0s;
+  filter: drop-shadow(0 0 30px #ef4149);
+}
+.wrap .cube div span::before {
+  content: '';
+  position: absolute;
+  left:-40px;
+  width: 40px;
+  height: 100%;
+  background-color: #fff;
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: 1.5s;
+}
+.wrap .cube div span:hover:before {
+  background-color: #f75d64;
+  transition: 0s;
+}
+.wrap .cube div span::after {
+  content: '';
+  position: absolute;
+  top:-40px;
+  left:0px;
+  width: 100%;
+  height: 40px;
+  background-color: #f2f2f2;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 1.5s;
+}
+.wrap .cube div span:hover::after {
+  background-color: #f14155;
+  transition: 0s;
 }
 </style>
