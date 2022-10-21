@@ -4,7 +4,7 @@ div(
   @click.self="close"
 )
   .body(
-    class="min-h-[100vh] flex items-center justify-center bg-[#25335b]"
+    class="min-h-[] flex items-center justify-center bg-[#25335b]"
   )
     .wrap(
       class=""
@@ -14,16 +14,15 @@ div(
         v-for="item in cubeCount"
       )
         div(
-          class=""
+          class="absolute flex flex-col gap-[30px]"
           v-for="divVal in divData"
           :style="setDivData(divVal)"
         )
           span(
             v-for="spanVal in spanData"
-            class=""
+            class="relative inline-block w-[50px] h-[50px] bg-[#dcdcdc]"
             :style="setSpanData(spanVal)"
           )
-
 </template>
 <script>
   // @ is an alias to /src
@@ -84,18 +83,9 @@ div(
   translate: 60px 60px;
 }
 .wrap .cube div {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
   translate: calc(-70px *var(--x)) calc(-60px*var(--y));
 }
 .wrap .cube div span {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: #dcdcdc;
   z-index: calc(1*var(--i));
   transition: 1.5s;
 }
