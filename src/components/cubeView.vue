@@ -1,13 +1,13 @@
 <template lang='pug'>
 div(
-  class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90 flex items-center justify-center"
+  class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90 mine-flex-center"
   @click.self="close"
 )
   .body(
-    class="min-h-[] flex items-center justify-center bg-[#25335b]"
+    class="min-h-[] mine-flex-center bg-[#25335b] scale-75 md:scale-100"
   )
     .wrap(
-      class=""
+      class="relative top-[-80px] skew-y-[-20deg]"
     )
       .cube(
         class=""
@@ -57,9 +57,6 @@ div(
   box-sizing: border-box;
 }
 .wrap {
-  position: relative;
-  top: -80px;
-  transform: skewY(-20deg);
   animation: colorchange 5s linear infinite;
 }
 @keyframes colorchange {

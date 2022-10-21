@@ -1,8 +1,8 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-wrap items-center justify-center overflow-auto")
-  div(class="w-auto h-auto flex flex-wrap items-center justify-center")
+div(class="w-full h-[100vh] flex-wrap mine-flex-center overflow-auto")
+  div(class="w-auto h-auto flex-wrap mine-flex-center")
     div(
-      class="w-[150px] h-[150px] bg-[#66CCCC] m-3 rounded-lg hover:opacity-[0.8] hover:scale-105 flex items-center justify-center"
+      class="w-[150px] h-[150px] bg-[#66CCCC] m-3 rounded-lg hover:opacity-[0.8] hover:scale-105 mine-flex-center"
       v-for="(item, index) in data"
       @click="action(item)"
     ) {{item.name}}

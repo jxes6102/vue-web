@@ -1,9 +1,9 @@
 <template lang='pug'>
 div(class="w-[350px] md:w-[500px] h-[80vh] md:h-[90vh] mt-[-10px] flex flex-col items-center justify-start")
-  div(class="flex flex-wrap justify-center items-center")
+  div(class="flex-wrap mine-flex-center")
     div(
       v-if="viewStatus && !endText"
-      class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] m-1 flex items-center justify-center text-5xl bg-green-400"
+      class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] m-1 mine-flex-center text-5xl bg-green-400"
       v-for="(item,index) in data" :key="index"
       @click="action(item)"
       v-text="displayStatus ? item : ''"
@@ -12,7 +12,7 @@ div(class="w-[350px] md:w-[500px] h-[80vh] md:h-[90vh] mt-[-10px] flex flex-col 
       v-else
       class="flex justify-end items-end text-4xl mt-10"
     ) {{endText}}
-  div(class="flex justify-center items-center mt-10")
+  div(class="mine-flex-center mt-10")
     div(
       v-if="!viewStatus"
       class="text-4xl"

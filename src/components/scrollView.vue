@@ -1,6 +1,6 @@
 <template lang='pug'>
 div(
-  class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90 overflow-x-hidden overflow-y-auto flex items-center justify-center"
+  class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90 overflow-x-hidden overflow-y-auto mine-flex-center"
   @click.self="close"
   @scroll="handleScroll"
 )

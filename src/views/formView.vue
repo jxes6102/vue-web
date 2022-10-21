@@ -1,12 +1,12 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
+div(class="w-full h-[100vh] flex-wrap mine-flex-center")
   div.drop-zone(
     v-if="!tableData.length"
     ref="fileDiv"
     :class="[ \
       borderStyle ? 'border-solid' : 'border-dashed', \
     ]"
-    class="w-[300px] md:w-[500px] h-[300px] md:h-[500px] flex flex-col items-center justify-center cursor-pointer border-[#009578] border-4 rounded-2xl bg-[#e0ffb5]"
+    class="w-[300px] md:w-[500px] h-[300px] md:h-[500px] flex-col mine-flex-center cursor-pointer border-[#009578] border-4 rounded-2xl bg-[#e0ffb5]"
     @click="choseFile"
     @drop="dropFile"
     @dragover="dragOver"
@@ -23,7 +23,7 @@ div(class="w-full h-[100vh] flex flex-wrap items-center justify-center")
     )
   div(
     v-else
-    class="w-full md:w-3/4 h-auto px-1 flex flex-col items-center justify-center"
+    class="w-full md:w-3/4 h-auto px-1 flex-col mine-flex-center"
   )
     el-table(
       :data='nowData' style='width: 100%'

@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="overflow-auto w-screen h-[100vh] min-h-[100vh] flex flex-col items-center justify-center")
+div(class="overflow-auto w-screen h-[100vh] min-h-[100vh] flex-col mine-flex-center")
   swiper(
     @swiper="onSwiper"
     class="w-[80vw] md:w-[35vw]"

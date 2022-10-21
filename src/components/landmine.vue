@@ -1,15 +1,15 @@
 <template lang='pug'>
 div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-start")
-  div(class="flex flex-wrap justify-center items-center")
+  div(class="flex-wrap mine-flex-center")
     div(v-for="(item, index) in land[0].length")
       div(
         v-for="(items, indexs) in land"
         :class="[land[indexs][index].check ? 'bg-[#fcfccf]' : 'bg-[#79fcac]']"
-        class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] border-2 border-[#b59ec2] flex justify-center items-center "
+        class="w-[30px] h-[30px] md:w-[40px] md:h-[40px] border-2 border-[#b59ec2] mine-flex-center "
         @click="action(indexs,index)"
       ) {{land[indexs][index].display}}
   div(
-    class="flex flex-col justify-center items-center m-1"
+    class="flex-col mine-flex-center m-1"
   )
     div(
       class="my-1"
@@ -22,12 +22,12 @@ div(class="w-[310px] md:w-[400px] h-auto flex flex-col items-center justify-star
     ) 切換 點擊/標記
   div(
     v-if="endStatus"
-    class="flex flex-col justify-center items-center"
+    class="flex-col mine-flex-centerr"
   )
     div(
       v-text="isWin ? '贏了' : '暴了'"
       :class="[isWin ? 'text-green-500' : 'text-red-500']"
-      class="flex flex-col justify-center items-center text-2xl my-1"
+      class="flex-col mine-flex-center text-2xl my-1"
     )
     button(
       class='bg-green-500 text-white py-2 px-4 font-medium rounded-xl transition-all duration-300 hover:bg-green-400'

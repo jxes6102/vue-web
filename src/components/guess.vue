@@ -1,6 +1,6 @@
 <template lang='pug'>
 div(class="w-[100vw] md:w-[50vw] h-[80vh] md:h-[90vh] flex flex-col items-center justify-start")
-  div(class="flex p-1 justify-center items-center")
+  div(class="p-1 mine-flex-center")
     input(
       v-model="guessNum"
       :class="[ \

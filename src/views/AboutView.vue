@@ -8,7 +8,7 @@ div(class="about")
       isOpen ? 'text-sm' : 'text-xl', \
     ]"
   ) ref css test
-  div(class="flex items-center justify-center")
+  div(class="mine-flex-center")
     button(class="rounded-full h-auto w-auto bg-teal-300 block p-2" @click="changeLang") changeLang
 </template>
 <script>

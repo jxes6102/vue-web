@@ -1,10 +1,10 @@
 <template lang='pug'>
-div(class="w-full h-[100vh] flex flex-col md:flex-row items-center justify-center overflow-hidden")
-  div(class="w-auto md:w-auot h-auto mt-[-150px] md:mt-0 flex items-center justify-center md:justify-end md:p-5 scale-[0.625] md:scale-100")
+div(class="w-full h-[100vh] flex-col md:flex-row mine-flex-center overflow-hidden")
+  div(class="w-auto md:w-auot h-auto mt-[-150px] md:mt-0 mine-flex-center md:justify-end md:p-5 scale-[0.625] md:scale-100")
     canvas(ref="drawItem" id="canvas")
-  div(class="w-full md:w-auto h-auto mt-[-60px] md:mt-0 flex flex-col items-center justify-center px-2")
-    div(class="w-full h-auto flex flex-col items-center justify-center py-2 px-4 border-2 border-dashed border-green-400 rounded-lg")
-      div(class="w-full h-auto flex flex-wrap items-center justify-center md:my-5")
+  div(class="w-full md:w-auto h-auto mt-[-60px] md:mt-0 flex-col mine-flex-center px-2")
+    div(class="w-full h-auto flex-col mine-flex-center py-2 px-4 border-2 border-dashed border-green-400 rounded-lg")
+      div(class="w-full h-auto flex-wrap mine-flex-center md:my-5")
         input(
           :class="[ \
             errorMessage ? 'border border-red-500' : 'border border-gray-500', \
