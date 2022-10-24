@@ -76,8 +76,16 @@ section {
   transform-style: preserve-3d;
 }
 .box .cube div span {
-  background: radial-gradient(#fb6200,#fb6200,#c3300f);
+  background: linear-gradient(
+    135deg,
+    hsl(170deg, 80%, 70%),
+    hsl(190deg, 80%, 70%),
+    hsl(250deg, 80%, 70%),
+    hsl(320deg, 80%, 70%)
+  );
+  background-size: 200% 200%;
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  animation: colorchange 7s infinite;
 }
 .box .cube .top {
   transform: rotateX(90deg) translateZ(100px);
@@ -98,5 +106,16 @@ section {
   0 0 300px rgb(251,98,0,0.6),
   0 0 400px rgb(251,98,0,0.8),
   0 0 500px rgb(251,98,0,1);
+}
+@keyframes colorchange {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 </style>

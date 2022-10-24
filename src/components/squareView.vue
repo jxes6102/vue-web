@@ -14,7 +14,7 @@ div(
 </template>
 <script>
   // @ is an alias to /src
-  import { ref,inject,computed,onMounted } from 'vue'
+  import { ref,inject,onMounted } from 'vue'
   import store from '@/store'
   export default {
     name: 'squareView',
