@@ -1,0 +1,102 @@
+<template lang='pug'>
+div(
+  class="fixed top-0 left-0 w-screen h-[100vh] bg-zinc-700 opacity-90"
+)
+  .body(
+    class="min-h-[100vh] overflow-hidden bg-[#1d0035]"
+  )
+    section(
+      class="absolute w-full h-full mine-flex-center"
+      @click.self="close"
+    )
+      .box(
+        class="absolute top-[150px] scale-75 md:scale-100"
+      )
+        .cube(
+          class="relative w-[200px] h-[200px]"
+        )
+          .top(
+            class="absolute top-0 left-0 w-[200px] h-[200px] bg-[#b22708]"
+          )
+          div(
+            class="absolute top-0 left-0 w-full h-full"
+          )
+            span(
+              class="absolute top-0 left-0 w-full h-full"
+              v-for="item in data"
+              :style="setSpanData(item)"
+            )
+</template>
+<script>
+  // @ is an alias to /src
+  import { ref,inject } from 'vue'
+  export default {
+    name: 'rotateView',
+    components: {
+    },
+    setup() {
+      const close = inject('close')
+      const data = ref([0,1,2,3])
+      const setSpanData = (val) => '--i:'+val
+
+      return {
+        data,
+        close,
+        setSpanData,
+      }
+    }
+  }
+</script>
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+section {
+  transform-style: preserve-3d;
+  transform: perspective(700px);
+}
+.box {
+  transform-style: preserve-3d;
+}
+.box .cube {
+  transform-style: preserve-3d;
+  animation: rotateCube 20s linear infinite;
+}
+@keyframes rotateCube {
+  0%{
+    transform: rotateY(0deg)
+  }
+  100% {
+    transform: rotateY(360deg)
+  }
+}
+.box .cube div {
+  transform-style: preserve-3d;
+}
+.box .cube div span {
+  background: radial-gradient(#fb6200,#fb6200,#c3300f);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+}
+.box .cube .top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.box .cube .top::before{
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: #fb6200;
+  filter: blur(50px);
+  transform: translateZ(-300px);
+  box-shadow:
+  0 0 120px rgb(251,98,0,0.2),
+  0 0 200px rgb(251,98,0,0.4),
+  0 0 300px rgb(251,98,0,0.6),
+  0 0 400px rgb(251,98,0,0.8),
+  0 0 500px rgb(251,98,0,1);
+}
+</style>

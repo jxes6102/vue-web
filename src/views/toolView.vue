@@ -15,6 +15,7 @@ div(class="w-full h-[100vh] flex-wrap mine-flex-center overflow-auto")
   import scroll from '@/components/scrollView.vue'
   import square from '@/components/squareView.vue'
   import cube from '@/components/cubeView.vue'
+  import rotate from '@/components/rotateView.vue'
   import store from '@/store'
   export default {
     name: 'toolView',
@@ -22,7 +23,8 @@ div(class="w-full h-[100vh] flex-wrap mine-flex-center overflow-auto")
       move,
       scroll,
       square,
-      cube
+      cube,
+      rotate
     },
     setup() {
       const data = ref([
@@ -30,6 +32,7 @@ div(class="w-full h-[100vh] flex-wrap mine-flex-center overflow-auto")
         { name:'scroll',isLoad:false},
         { name:'square',isLoad:true},
         { name:'cube',isLoad:false},
+        { name:'rotate',isLoad:false},
       ])
       const loadStatus = ref(false)
       provide('loadStatus', loadStatus)

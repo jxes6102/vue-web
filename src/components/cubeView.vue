@@ -4,7 +4,7 @@ div(
   @click.self="close"
 )
   .body(
-    class="min-h-[] mine-flex-center bg-[#25335b] scale-75 md:scale-100"
+    class="min-h-[100vh] mine-flex-center bg-[#25335b] scale-75 md:scale-100"
   )
     .wrap(
       class="relative top-[-80px] skew-y-[-20deg]"

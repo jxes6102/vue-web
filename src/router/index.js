@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import mainView from '../views/mainView'
 import formView from '../views/formView.vue'
@@ -11,10 +11,6 @@ const routes = [
   {
     path: '/',
     component: mainView,
-  },
-  {
-    path: '/test',
-    component: HomeView,
   },
   {
     path: '/form',
@@ -35,6 +31,10 @@ const routes = [
   {
     path: '/about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+  },
+  {
+    path: '/test',
+    component: HomeView,
   },
   {
     // todo notfound component
