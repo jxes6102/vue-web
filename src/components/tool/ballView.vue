@@ -17,7 +17,7 @@ div(
     img(
       :class="[!dargStatus || 'opacity-0']"
       class="w-full h-full"
-      src="./images/ball2.png" alt="ball"
+      src="../images/ball2.png" alt="ball"
     )
 </template>
 <script>

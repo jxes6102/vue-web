@@ -11,11 +11,11 @@ div(class="w-full h-[100vh] flex-wrap mine-flex-center overflow-auto")
 <script>
   // @ is an alias to /src
   import { ref, provide } from 'vue'
-  import move from '@/components/ballView.vue'
-  import scroll from '@/components/scrollView.vue'
-  import square from '@/components/squareView.vue'
-  import cube from '@/components/cubeView.vue'
-  import rotate from '@/components/rotateView.vue'
+  import move from '@/components/tool/ballView.vue'
+  import scroll from '@/components/tool/scrollView.vue'
+  import square from '@/components/tool/squareView.vue'
+  import cube from '@/components/tool/cubeView.vue'
+  import rotate from '@/components/tool/rotateView.vue'
   import store from '@/store'
   export default {
     name: 'toolView',

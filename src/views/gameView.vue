@@ -6,9 +6,9 @@ div(class="w-full h-[100vh] flex flex-col items-center justify-start")
 <script>
   import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
-  import guess from '@/components/guess.vue'
-  import landmine from '@/components/landmine.vue'
-  import memory from '@/components/memory.vue'
+  import guess from '@/components/game/guess.vue'
+  import landmine from '@/components/game/landmine.vue'
+  import memory from '@/components/game/memory.vue'
   // @ is an alias to /src
   export default {
     name: 'gameView',
