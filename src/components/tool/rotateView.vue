@@ -85,7 +85,7 @@ section {
   );
   background-size: 200% 200%;
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  animation: colorchange 7s infinite;
+  animation: colorChange 7s infinite;
 }
 .box .cube .top {
   transform: rotateX(90deg) translateZ(100px);
@@ -100,14 +100,10 @@ section {
   background: #fb6200;
   filter: blur(50px);
   transform: translateZ(-300px);
-  box-shadow:
-  0 0 120px rgb(251,98,0,0.2),
-  0 0 200px rgb(251,98,0,0.4),
-  0 0 300px rgb(251,98,0,0.6),
-  0 0 400px rgb(251,98,0,0.8),
-  0 0 500px rgb(251,98,0,1);
+  box-shadow: 0 0 500px rgb(251,98,0,1);
+  animation: shadowChange 7s infinite;
 }
-@keyframes colorchange {
+@keyframes colorChange {
   0% {
     background-position: 0% 0%;
   }
@@ -116,6 +112,20 @@ section {
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+@keyframes shadowChange {
+  0% {
+    box-shadow: 0 0 100px rgba(243, 239, 237, 0.2);
+    background: rgb(251,98,0,0.2)
+  }
+  50% {
+    box-shadow: 0 0 1000px rgb(251,98,0,1);
+    background: #fb6200;
+  }
+  100% {
+    box-shadow: 0 0 100px rgba(249, 245, 243, 0.2);
+    background: rgb(251,98,0,0.2);
   }
 }
 </style>
