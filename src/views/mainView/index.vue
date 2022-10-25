@@ -46,7 +46,7 @@ div(class="overflow-auto w-screen h-[100vh] min-h-[100vh] flex-col mine-flex-cen
 <script>
   // @ is an alias to /src
   import { ref } from 'vue'
-  import SwiperCore, { Autoplay } from 'swiper'
+  // import SwiperCore, { Autoplay } from 'swiper'
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import 'swiper/css';
   export default {
