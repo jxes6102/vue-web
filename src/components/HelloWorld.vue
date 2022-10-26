@@ -40,16 +40,18 @@ export default {
     msg: String
   },
   setup() {
-    let word1 = "ab", word2 = "pqrs"
-    let len = Math.max(word1.length,word2.length)
+    let nums = [1,5,5,2,5,3,5,4]
     let ans = ''
-    for(let i = 0;i<len;i++) {
-      if(word1.charAt(i)) ans+=word1.charAt(i)
-      if(word2.charAt(i)) ans+=word2.charAt(i)
+    let map = {}
+    for(let i = 0;i<nums.length;i++) {
+      if(!map[nums[i]]) map[nums[i]] = 0
+      map[nums[i]] ++
+    }
+    for(let key in map) {
+      if(map[key] === (nums.length / 2)) console.log(key)
     }
 
 
-    console.log(ans)
 
 
 
@@ -73,16 +75,18 @@ export default {
     // for(let i = 0;i<str.split('').length;i++) ans += parseInt(str.split('')[i])
     // console.log(ans)
 
-    // 1725. Number Of Rectangles That Can Form The Largest Square
-    // let arr = []
+    // 961. N-Repeated Element in Size 2N Array
+    // let nums = [1,5,5,2,5,3,5,4]
+    // let ans = ''
     // let map = {}
-    // for(let i = 0;i<rectangles.length;i++) {
-    //   arr[i] = Math.min(...rectangles[i])
-    //   if (Object.keys(map).map(item => parseInt(item)).includes(arr[i])) map[arr[i]]++
-    //   else map[arr[i]] = 1
+    // for(let i = 0;i<nums.length;i++) {
+    //   if(!map[nums[i]]) map[nums[i]] = 0
+    //   map[nums[i]] ++
     // }
-    // console.log(Math.max(...Object.values(map)))
-    // console.log(map[Math.max(...arr)])
+    // for(let key in map) {
+    //   if(map[key] === (nums.length / 2)) console.log(key)
+    // }
+
     // 1266. Minimum Time Visiting All Points
     // let ans = 0
     // for(let i = 0;i<points.length - 1;i++) ans += Math.max(...[Math.abs(points[i][0] - points[i + 1][0]), Math.abs(points[i][1] - points[i + 1][1])])
