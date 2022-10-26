@@ -5,7 +5,7 @@ div(
 )
   div(
     :class="[!transitionStatus || 'transition-all duration-200 ease-in-out']"
-    class="absolute w-[100px] h-[100px] left-0 bottom-[40px] md:bottom-0"
+    class="absolute w-[100px] h-[100px] left-0 bottom-[50px] md:bottom-0"
     ref="flyItem"
     draggable="true"
     @touchstart.prevent="touchStart"
