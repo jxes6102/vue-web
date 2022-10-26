@@ -40,16 +40,18 @@ export default {
     msg: String
   },
   setup() {
-    let nums = [1,5,5,2,5,3,5,4]
-    let ans = ''
-    let map = {}
-    for(let i = 0;i<nums.length;i++) {
-      if(!map[nums[i]]) map[nums[i]] = 0
-      map[nums[i]] ++
+    // 2363. Merge Similar Items
+    let items1 = [[5,1],[4,2],[3,3],[2,4],[1,5]], items2 = [[7,1],[6,2],[5,3],[4,4]]
+    let ans = []
+    let all = items1.concat(items2)
+    let arr = []
+    for(let i = 0;i<all.length;i++) {
+      if(!arr[all[i][0]]) arr[all[i][0]] = all[i]
+      else arr[all[i][0]][1] += all[i][1]
     }
-    for(let key in map) {
-      if(map[key] === (nums.length / 2)) console.log(key)
-    }
+    for (let item of arr) if(item) ans.push(item)
+    console.log(ans)
+
 
 
 
@@ -86,11 +88,25 @@ export default {
     // for(let key in map) {
     //   if(map[key] === (nums.length / 2)) console.log(key)
     // }
+    // console.log(ans)
 
     // 1266. Minimum Time Visiting All Points
     // let ans = 0
     // for(let i = 0;i<points.length - 1;i++) ans += Math.max(...[Math.abs(points[i][0] - points[i + 1][0]), Math.abs(points[i][1] - points[i + 1][1])])
     // console.log(ans)
+
+    // 2363. Merge Similar Items
+    // let items1 = [[5,1],[4,2],[3,3],[2,4],[1,5]], items2 = [[7,1],[6,2],[5,3],[4,4]]
+    // let ans = []
+    // let all = items1.concat(items2)
+    // let arr = []
+    // for(let i = 0;i<all.length;i++) {
+    //   if(!arr[all[i][0]]) arr[all[i][0]] = all[i]
+    //   else arr[all[i][0]][1] += all[i][1]
+    // }
+    // for (let item of arr) if(item) ans.push(item)
+    // console.log(ans)
+
 
   }
 }
