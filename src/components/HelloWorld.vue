@@ -40,17 +40,21 @@ export default {
     msg: String
   },
   setup() {
-    // 2363. Merge Similar Items
-    let items1 = [[5,1],[4,2],[3,3],[2,4],[1,5]], items2 = [[7,1],[6,2],[5,3],[4,4]]
+    // 1710. Maximum Units on a Truck
+    let nums1 = [3,1], nums2 = [2,3], nums3 = [1,2]
     let ans = []
-    let all = items1.concat(items2)
-    let arr = []
-    for(let i = 0;i<all.length;i++) {
-      if(!arr[all[i][0]]) arr[all[i][0]] = all[i]
-      else arr[all[i][0]][1] += all[i][1]
+    let arr = [...nums1,...nums2,...nums3]
+    let all = []
+    let thing = [nums1,nums2,nums3]
+    for(let i = 0;i<arr.length;i++) if(!all.includes(arr[i])) all.push(arr[i])
+    for(let num of all) {
+      let count = 0
+      for(let item of thing) if(item.includes(num)) count++
+      if(count>=2) ans.push(num)
     }
-    for (let item of arr) if(item) ans.push(item)
     console.log(ans)
+
+
 
 
 
@@ -105,6 +109,21 @@ export default {
     //   else arr[all[i][0]][1] += all[i][1]
     // }
     // for (let item of arr) if(item) ans.push(item)
+    // console.log(ans)
+
+    // 1710. Maximum Units on a Truck
+    // let boxTypes = [[2,1],[4,4],[3,1],[4,1],[2,4],[3,4],[1,3],[4,3],[5,3],[5,3]], truckSize = 13
+    // let ans = 0
+    // boxTypes.sort((x, y) => y[1] - x[1])
+    // for(let i = 0;i<boxTypes.length;i++) {
+    //   if(truckSize - boxTypes[i][0] >= 0){
+    //     ans+= boxTypes[i][0]*boxTypes[i][1]
+    //     truckSize-=boxTypes[i][0]
+    //   } else if(truckSize - boxTypes[i][0] < 0) {
+    //     ans+= truckSize*boxTypes[i][1]
+    //     break
+    //   }
+    // }
     // console.log(ans)
 
 
