@@ -40,18 +40,14 @@ export default {
     msg: String
   },
   setup() {
-    // 1710. Maximum Units on a Truck
-    let nums1 = [3,1], nums2 = [2,3], nums3 = [1,2]
-    let ans = []
-    let arr = [...nums1,...nums2,...nums3]
-    let all = []
-    let thing = [nums1,nums2,nums3]
-    for(let i = 0;i<arr.length;i++) if(!all.includes(arr[i])) all.push(arr[i])
-    for(let num of all) {
-      let count = 0
-      for(let item of thing) if(item.includes(num)) count++
-      if(count>=2) ans.push(num)
+    // 1356. Sort Integers by The Number of 1 Bits
+    let arr = [0,1,2,3,4,5,6,7,8]
+    const count = (str) => {
+      let target = 0
+      for(let i = 0;i<str.length;i++) if(str.charAt(i) === '1') target++
+      return target
     }
+    let ans = arr.sort((a,b) => count(a.toString(2)) - count(b.toString(2)) || (a - b))
     console.log(ans)
 
 
@@ -126,6 +122,15 @@ export default {
     // }
     // console.log(ans)
 
+    // 1356. Sort Integers by The Number of 1 Bits
+    // let arr = [0,1,2,3,4,5,6,7,8]
+    // const count = (str) => {
+    //   let target = 0
+    //   for(let i = 0;i<str.length;i++) if(str.charAt(i) === '1') target++
+    //   return target
+    // }
+    // let ans = arr.sort((a,b) => count(a.toString(2)) - count(b.toString(2)) || (a - b))
+    // console.log(ans)
 
   }
 }
