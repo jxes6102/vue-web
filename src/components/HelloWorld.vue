@@ -40,20 +40,8 @@ export default {
     msg: String
   },
   setup() {
-    // 1356. Sort Integers by The Number of 1 Bits
-    let arr = [0,1,2,3,4,5,6,7,8]
-    const count = (str) => {
-      let target = 0
-      for(let i = 0;i<str.length;i++) if(str.charAt(i) === '1') target++
-      return target
-    }
-    let ans = arr.sort((a,b) => count(a.toString(2)) - count(b.toString(2)) || (a - b))
-    console.log(ans)
-
-
-
-
-
+    let arr = []
+    let ans = 0
 
 
 
