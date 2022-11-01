@@ -42,22 +42,7 @@ export default {
   setup() {
     // job
     // let arr = []
-    // let ans = 0
-    // const test = (n) => {
-    //   // for(let i = 0;i<n; i++) {
-    //   //   if(i === 0 || i === 1) ans[i] = 1
-    //   //   else ans[i] = ans[i- 2]+ans[i - 1]
-    //   // }
-
-    //   for(let i = 0;i<n; i++) {
-    //     let temp
-    //     if((i + 1)% 2 === 1) temp = (i + 1)
-    //     else temp = -(i + 1)
-    //     ans+=temp
-    //   }
-    // }
-    // test(6)
-    // console.log(ans)
+    // let ans
 
 
 
@@ -150,6 +135,41 @@ export default {
     // }
     // let ans = arr.sort((a,b) => count(a.toString(2)) - count(b.toString(2)) || (a - b))
     // console.log(ans)
+
+    // job
+    // let arr = []
+    // let ans
+    // const test = (n) => {
+    //   // ans = []
+    //   // for(let i = 0;i<n; i++) {
+    //   //   if(i === 0 || i === 1) ans[i] = 1
+    //   //   else ans[i] = ans[i- 2]+ans[i - 1]
+    //   // }
+
+    //   // if (n < 2) {
+    //   //   return n;
+    //   // }
+    //   // return test(n - 1) + test(n - 2);
+
+    //   // ans = 0
+    //   // for(let i = 0;i<n; i++) {
+    //   //   if((i + 1)% 2 === 1) {
+    //   //     arr.push((i + 1))
+    //   //     ans+=(i + 1)
+    //   //   }else {
+    //   //     arr.push(-(i + 1))
+    //   //     ans+= -(i + 1)
+    //   //   }
+    //   // }
+
+    //   // if((n%2) === 1) console.log((n + 1)/2)
+    //   // else console.log(-(n/2))
+    // }
+    // // test(10)
+    // // console.log('ans:',ans)
+    // // console.log(test(10))
+    // // console.log(arr)
+
 
   }
 }
