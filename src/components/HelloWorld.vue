@@ -40,10 +40,41 @@ export default {
     msg: String
   },
   setup() {
-    let arr = []
-    let ans = 0
+    // job
+    // let arr = []
+    // let ans = 0
+    // const test = (n) => {
+    //   // for(let i = 0;i<n; i++) {
+    //   //   if(i === 0 || i === 1) ans[i] = 1
+    //   //   else ans[i] = ans[i- 2]+ans[i - 1]
+    //   // }
+
+    //   for(let i = 0;i<n; i++) {
+    //     let temp
+    //     if((i + 1)% 2 === 1) temp = (i + 1)
+    //     else temp = -(i + 1)
+    //     ans+=temp
+    //   }
+    // }
+    // test(6)
+    // console.log(ans)
 
 
+
+
+
+
+
+
+    // const array1 = [1, 2, 3, 4];
+    // const initialValue = 0;
+    // const sumWithInitial = array1.reduce(
+    //   (previousValue, currentValue) => {
+    //     return previousValue + currentValue
+    //   },
+    //   initialValue
+    // );
+    // console.log(sumWithInitial);
 
     // 1837. Sum of Digits in Base K
     // const n = 34, k = 6
