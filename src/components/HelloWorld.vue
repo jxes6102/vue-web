@@ -41,8 +41,6 @@ export default {
   },
   setup() {
     // job
-    // let arr = []
-    // let ans
 
 
 
@@ -139,17 +137,27 @@ export default {
     // job
     // let arr = []
     // let ans
+    // let last1 = 1,last2 = 1,now = 1
     // const test = (n) => {
-    //   // ans = []
-    //   // for(let i = 0;i<n; i++) {
-    //   //   if(i === 0 || i === 1) ans[i] = 1
-    //   //   else ans[i] = ans[i- 2]+ans[i - 1]
-    //   // }
+    //   ans = []
+    //   for(let i = 0;i<n; i++) {
+    //     if(i === 0 || i === 1) ans[i] = 1
+    //     else ans[i] = ans[i- 2]+ans[i - 1]
+    //   }
 
     //   // if (n < 2) {
     //   //   return n;
     //   // }
     //   // return test(n - 1) + test(n - 2);
+
+
+    //   for(let i = 0;i<n; i++) {
+    //     if(i >= 2) {
+    //       last2 = last1
+    //       last1 = now
+    //       now = last1 + last2
+    //     }
+    //   }
 
     //   // ans = 0
     //   // for(let i = 0;i<n; i++) {
@@ -165,11 +173,9 @@ export default {
     //   // if((n%2) === 1) console.log((n + 1)/2)
     //   // else console.log(-(n/2))
     // }
-    // // test(10)
-    // // console.log('ans:',ans)
-    // // console.log(test(10))
-    // // console.log(arr)
-
+    // test(6)
+    // console.log(ans)
+    // console.log(now)
 
   }
 }
