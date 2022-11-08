@@ -177,6 +177,84 @@ export default {
     // console.log(ans)
     // console.log(now)
 
+    // class
+    // class User {
+    //     constructor(name) {
+    //       this.name = name;
+    //     }
+
+    //     sayHi() {
+    //       console.log('Hi~~ '+this.name);
+    //     }
+
+    //     sayOK() {
+    //       console.log('It,s OK!?!?');
+    //     }
+
+    //     static sayHello(name) {
+    //       console.log('Hello!! ' + name)
+    //       // return 'Hello!!' + name;
+    //     }
+    //   }
+    //   class Users extends User {}
+
+    //   class UserData extends User {
+    //     constructor(name,old) {
+    //       super(name)
+    //       this.name = 'local: ' + name
+    //       this.year = old
+    //     }
+
+    //     sayHi() {
+    //       console.log('Hi~~ '+this.name,' age:' +this.year);
+    //     }
+    //   }
+
+    //   class UserLike extends UserData {
+    //     constructor(name,old,thing) {
+    //       super(name,old)
+    //       this.thing = thing
+    //     }
+
+    //     sayHi() {
+    //       super.sayOK()
+    //       console.log('Hi~~ ' + this.name + ' age:' +this.year + ' like ' + this.thing);
+    //     }
+    //   }
+
+    //   let obj1 = new User('deeper')
+    //   let obj2 = new Users('darker')
+    //   let obj3 = new UserData('fantisiser',16)
+    //   let obj4 = new UserLike('boier',18,'doge')
+    //   obj1.sayHi()
+    //   obj2.sayHi()
+    //   obj3.sayHi()
+    //   obj4.sayHi()
+    //   obj4.sayOK()
+    //   // obj4.sayHello('coke')
+    //   UserLike.sayHello('coke')
+    //   console.log(obj1,obj2,obj3,obj4)
+
+    // sort
+    // let arr = [1,4,23,9,57,34,9,82,5,3]
+    // let count = 0
+    // const sortMax = (arr) => {
+    //   let temp
+    //   for(let index = 0;index < arr.length; index++) {
+    //     if(index <= 0) continue
+    //     if(arr[index-1]>arr[index]) {
+    //       temp = arr[index - 1]
+    //       arr[index - 1] = arr[index]
+    //       arr[index] = temp
+    //       index = index - 2
+    //     }
+    //     count++
+    //   }
+    // }
+    // sortMax(arr)
+    // console.log(arr)
+    // console.log(count)
+
   }
 }
 </script>
