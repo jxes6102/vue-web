@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { getData } from '@/api/api'
+import store from '@/store'
 export default {
   name: 'HelloWorld',
   props: {
@@ -41,8 +43,17 @@ export default {
   },
   setup() {
     // job
+    const inputData = {
+      Authorization: 'CWB-391D3550-2FAB-43F0-AA4D-06929689EB22',
+    }
 
-
+    const getWeather = async() => {
+      // store.commit('setLoad', true)
+      const data = await getData(inputData)
+      // store.commit('setLoad', false)
+      console.log(data.data.records)
+    }
+    getWeather()
 
 
 
