@@ -285,24 +285,24 @@ export default {
     // }
     // SelectionSort(arr)
 
-    const InsertionSort = (arr) => {
-      let target = arr
-      let result = []
-      let temp = 0
-      for(let i = 0;i<target.length;i++) {
-        temp = target[i]
-        result.splice(findPlace(temp,result),0,temp)
-        count++
-      }
-      target.splice(target.indexOf(temp),1)
-      
-      console.log('InsertionSort',result)
-      console.log('count',count)
-    }
-    const findPlace = (temp,result) => {
-      for(let i = 0;i<result.length;i++) if(temp>result[i]) return i
-    }
-    InsertionSort(arr)
+    // const InsertionSort = (arr) => {
+    //   let target = arr
+    //   let result = []
+    //   let temp = 0
+    //   for(let i = 0;i<target.length;i++) {
+    //     temp = target[i]
+    //     result.splice(findPlace(temp,result),0,temp)
+    //     count++
+    //   }
+    //   target.splice(target.indexOf(temp),1)
+
+    //   console.log('InsertionSort',result)
+    //   console.log('count',count)
+    // }
+    // const findPlace = (temp,result) => {
+    //   for(let i = 0;i<result.length;i++) if(temp>result[i]) return i
+    // }
+    // InsertionSort(arr)
 
   }
 }
