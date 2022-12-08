@@ -51,7 +51,7 @@ export default {
       // store.commit('setLoad', true)
       const data = await getData(inputData)
       // store.commit('setLoad', false)
-      console.log(data.data.records)
+      // console.log(data.data.records)
     }
     getWeather()
 
