@@ -246,10 +246,12 @@ export default {
     //   UserLike.sayHello('coke')
     //   console.log(obj1,obj2,obj3,obj4)
 
-    // sort
-    // let arr = [1,4,23,9,57,34,9,82,5,3]
-    // let count = 0
-    // const sortMax = (arr) => {
+
+    // all Sort test
+    let count = 0
+    let arr = [1,4,23,9,57,8,6,56,44,5,6,534,834,9,82,5,3]
+    console.log(arr)
+    // const Bubblesort = (arr) => {
     //   let temp
     //   for(let index = 0;index < arr.length; index++) {
     //     if(index <= 0) continue
@@ -261,10 +263,45 @@ export default {
     //     }
     //     count++
     //   }
+    //   console.log('Bubblesort',arr)
+    //   console.log('count',count)
     // }
-    // sortMax(arr)
-    // console.log(arr)
-    // console.log(count)
+    // Bubblesort(arr)
+
+    // const SelectionSort = (arr) => {
+    //   let target = arr
+    //   let result = []
+    //   while (target.length > 0) {
+    //     let big = arr[0]
+    //     for(let i = 0;i<target.length;i++) {
+    //       if(big<arr[i]) big = arr[i]
+    //     }
+    //     result.unshift(big)
+    //     target.splice(target.indexOf(big),1)
+    //     count++
+    //   }
+    //   console.log('SelectionSort',result)
+    //   console.log('count',count)
+    // }
+    // SelectionSort(arr)
+
+    const InsertionSort = (arr) => {
+      let target = arr
+      let result = []
+      while (target.length > 0) {
+        
+        let temp = 0
+        for(let i = 0;i<target.length;i++) {
+          temp = target[i]
+          result.push(temp)
+        }
+        target.splice(target.indexOf(temp),1)
+        count++
+      }
+      console.log('InsertionSort',result)
+      console.log('count',count)
+    }
+    InsertionSort(arr)
 
   }
 }
