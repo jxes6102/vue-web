@@ -251,7 +251,8 @@ export default {
     let count = 0
     let arr = [1,4,23,9,57,8,6,56,44,5,6,534,834,9,82,5,3]
     console.log(arr)
-    // const Bubblesort = (arr) => {
+
+    // const myBubblesort = (arr) => {
     //   let temp
     //   for(let index = 0;index < arr.length; index++) {
     //     if(index <= 0) continue
@@ -263,10 +264,27 @@ export default {
     //     }
     //     count++
     //   }
-    //   console.log('Bubblesort',arr)
+    //   console.log('myBubblesort',arr)
     //   console.log('count',count)
     // }
-    // Bubblesort(arr)
+    // myBubblesort(arr)
+
+    // function bubbleSort(array) {
+    //     const length = array.length;
+    //     for (let i = 0; i < length; i++) {
+    //         for (let j = 0; j < length; j++) {
+    //             if(array[j] > array[j+1]) {
+    //                 let temp = array[j]
+    //                 array[j] = array[j+1];
+    //                 array[j+1] = temp;
+    //             }
+    //             count++
+    //         }
+    //     }
+    //     return array
+    // }
+    // console.log('bubbleSort',bubbleSort(arr))
+    // console.log('count',count)
 
     // const SelectionSort = (arr) => {
     //   let target = arr
@@ -275,10 +293,10 @@ export default {
     //     let big = arr[0]
     //     for(let i = 0;i<target.length;i++) {
     //       if(big<arr[i]) big = arr[i]
+    //       count++
     //     }
     //     result.unshift(big)
     //     target.splice(target.indexOf(big),1)
-    //     count++
     //   }
     //   console.log('SelectionSort',result)
     //   console.log('count',count)
