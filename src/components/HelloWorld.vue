@@ -1,37 +1,21 @@
 <template>
   <div class="hello">
     QQQ
+    <leet></leet>
   </div>
 </template>
 
 <script>
 import { getData } from '@/api/api'
 import store from '@/store'
+import leet from "./leet.vue"
 export default {
   name: 'HelloWorld',
+  components:{leet},
   props: {
     msg: String
   },
   setup() {
-    let boxes = "110"
-    let boxArr = boxes.split('').map((item)=> parseInt(item))
-    let ans = []
-    // console.log('boxArr',boxArr)
-    for(let i = 0;i<boxArr.length;i++) {
-      // console.log(typeof boxArr[i])
-      let temp = 0
-      for(let j = 0;j<boxArr.length;j++) {
-        if(i != j) {
-          if(boxArr[j] === 1) console.log(Math.abs(j - i))
-        }
-      }
-
-    }
-    // console.log(ans)
-
-
-
-
 
     // api test
     const inputData = {
@@ -169,6 +153,19 @@ export default {
 
     //     ans+= Math.min(Math.max(...tempArr),Math.max(...grid[i])) - grid[i][j]
     //   }
+    // }
+    // console.log('ans',ans)
+
+    // 1769. Minimum Number of Operations to Move All Balls to Each Box
+    // let boxes = "001011"
+    // let boxArr = boxes.split('')
+    // let ans = []
+    // for(let i = 0;i<boxArr.length;i++) {
+    //   let temp = 0
+    //   for(let j = 0;j<boxArr.length;j++) {
+    //     if((i != j) && (boxArr[j] === '1')) temp+= Math.abs(j - i)
+    //   }
+    //   ans.push(temp)
     // }
     // console.log('ans',ans)
 
