@@ -13,7 +13,21 @@ export default {
     msg: String
   },
   setup() {
-    let grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+    let boxes = "110"
+    let boxArr = boxes.split('').map((item)=> parseInt(item))
+    let ans = []
+    // console.log('boxArr',boxArr)
+    for(let i = 0;i<boxArr.length;i++) {
+      // console.log(typeof boxArr[i])
+      let temp = 0
+      for(let j = 0;j<boxArr.length;j++) {
+        if(i != j) {
+          if(boxArr[j] === 1) console.log(Math.abs(j - i))
+        }
+      }
+
+    }
+    // console.log(ans)
 
 
 
@@ -34,11 +48,7 @@ export default {
     }
     // getWeather()
 
-
-
-
-
-
+    // reduce
     // const array1 = [1, 2, 3, 4];
     // const initialValue = 0;
     // const sumWithInitial = array1.reduce(
@@ -147,6 +157,21 @@ export default {
     //   } else i++
     // }
     // console.log('score',score)
+
+    // 807. Max Increase to Keep City Skyline
+    // let grid = [[0,0,0],[0,0,0],[0,0,0]]
+    // let ans = 0
+
+    // for(let i = 0;i<grid.length;i++) {
+    //   for(let j = 0;j<grid[i].length;j++) {
+    //     let tempArr = []
+    //     for(let k = 0;k<grid.length;k++) tempArr.push(grid[k][j])
+
+    //     ans+= Math.min(Math.max(...tempArr),Math.max(...grid[i])) - grid[i][j]
+    //   }
+    // }
+    // console.log('ans',ans)
+
 
 
     // job
