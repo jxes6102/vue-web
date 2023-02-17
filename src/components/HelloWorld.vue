@@ -16,6 +16,34 @@ export default {
     msg: String
   },
   setup() {
+    // test Proxy
+    // let data = {
+    //   firstName:'nice ',
+    //   lastName:'dog ',
+    // }
+    // let testProxy = new Proxy(data,{
+    //   get:function(target,property){
+    //     if(property==="allName") {
+    //       return target.firstName + target.lastName
+    //     }else {
+    //       return target[property]
+    //     }
+    //   },
+    //   set: function(target,property,value) {
+    //     if (property === "lastName") {
+    //       console.log('不能修改私有變數！',value)
+    //       return false;
+    //     }else {
+    //       return target[property] = value;
+    //     }
+    //   },
+    // })
+    // console.log(testProxy.allName)
+    // console.log(testProxy.lastName)
+    // testProxy.firstName = 'is firstName'
+    // testProxy.lastName = 'is lastName'
+    // console.log('testProxy',testProxy)
+
 
     // api test
     const inputData = {
