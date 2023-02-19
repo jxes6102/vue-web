@@ -17,6 +17,96 @@ export default {
 
 
 
+
+    // 2485. Find the Pivot Integer
+    // let n = 8
+    // for(let i = 1;i<n;i++){
+    //   let sumA = 0
+    //   let sumB = 0
+    //   for(let j = 1;j<=n-i;j++){
+    //     sumA+=j
+    //   }
+    //   for(let j = n;j>=n-i;j--){
+    //     sumB+=j
+    //   }
+    //   if(sumA === sumB) {
+    //     return n - i
+    //   }
+    // }
+    // return n === 1 ? 1 : -1;
+
+
+
+    // 1614. Maximum Nesting Depth of the Parentheses
+    // let s = "(1)+((2))+(((3)))"
+    // let arr = s.split('')
+    // let count = 0
+    // let ans = 0
+
+    // for(let i = 0;i<arr.length;i++){
+    //   if(arr[i] === '(')count++
+    //   else if(arr[i] === ')') count--
+
+    //   if(ans<count) ans = count
+    // }
+    // console.log('ans',ans)
+
+
+
+    // 804. Unique Morse Code Words
+    // let words = ["gin","zen","gig","msg"]
+    // let arr = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+    // let eng = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    // let convenienceArr = []
+    // for(let i = 0;i<words.length;i++){
+    //   let strArr = words[i].split('')
+    //   let str = ''
+    //   for(let j = 0;j<strArr.length;j++) {
+    //     str+=arr[eng.indexOf(strArr[j])]
+    //   }
+    //   convenienceArr.push(str)
+    // }
+    // let map = {}
+    // for(let i = 0;i<convenienceArr.length;i++) {
+    //   if(!map[convenienceArr[i]]) map[convenienceArr[i]] = 0
+    //   map[convenienceArr[i]] ++
+    // }
+    // console.log('ans',Object.keys(map).length)
+
+
+
+    // 2120. Execution of All Suffix Instructions Staying in a Grid
+    // let n = 1, startPos = [0,0], s = "LRUD"
+    // let ans = []
+    // let postion = [startPos[0],startPos[1]]
+    // for(let i = 0;i<s.length;i++) {
+    //   let can = 0
+    //   let script = s.substring(i,s.length).split('')
+    //   for(let j = 0;j<script.length;j++){
+    //     if(script[j] === "L" && postion[1] - 1 >= 0) {
+    //       can++
+    //       postion[1]--
+    //     }else if((script[j] === "R" && postion[1] + 1 < n)) {
+    //       can++
+    //       postion[1]++
+    //     }else if((script[j] === "D" && postion[0] + 1 < n)) {
+    //       can++
+    //       postion[0]++
+    //     }else if((script[j] === "U" && postion[0] - 1 >= 0)) {
+    //       can++
+    //       postion[0]--
+    //     }else {
+    //       break
+    //     }
+    //   }
+    //   ans.push(can)
+    //   postion = [startPos[0],startPos[1]]
+    // }
+
+    // console.log('ans',ans)
+
+
+
     // 2373. Largest Local Values in a Matrix
     // let grid = [[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]
     // let ans = []
