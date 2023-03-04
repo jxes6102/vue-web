@@ -16,6 +16,23 @@ export default {
 
 
 
+    // 2079. Watering Plants
+    // let plants = [2,2,3,3], capacity = 5
+    // let ans = 0
+    // let temp = capacity
+    // for(let i = 0;i<plants.length;){
+    //   if(temp - plants[i] >= 0){
+    //     temp -= plants[i]
+    //     ans++
+    //   } else {
+    //     temp = capacity
+    //     ans += i + i
+    //     continue
+    //   }
+    //   i++
+    // }
+    // console.log('ans',ans)
+
 
 
     // 2485. Find the Pivot Integer
