@@ -15,6 +15,58 @@ export default {
 
 
 
+    
+    // 1704. Determine if String Halves Are Alike
+    // let s = "gfLpdQfBhLSNWKBvRWpNlRWTSMQYTSyPFTwWHptvnJHFWQDQLdYyHzKJjYrpHbNQyPFWpKhChZXsvYfPBVMpRSfLZwHMBqsbPhZBhwfmjDqgXVkZrtyXbpXWVLRnpGPWjvKNHmxqxPSlvxxsxsnbQvKJDwKtWgFDrjsgvTScXYPsMBgkWktkdthwsQdCpddrgksxlZMYDcPyvMLqztnYGQbrKcKPWqtjdklXZBvNbZfNdNRmbDGpxybGdzghpSmGvmZGpJlfwTbLhQXZSfgSJTNvrQGdWyQgJjngKLXNpkMtFWgpcrYHZHJdgDfmkfplDYjWRmBNyFNzgGbRcGBQXWcskPpXPlBkdsVwRMNZCLvkdXwDrlcTTNPPMvjPChWHQPJMPSLSzQLlkQWrmLLnknVdWKrYZRymTQTRDbsgtFjZQjMNdrZVqQdBdywVqSWkkHHmbrwnlzXwYCpbfJSxBPdwDjKQFgYPChQWdJTHRVYRDrLtswMnTNQCjZNsqZBpXjZxWKblqZFxtZgHCjYsbqJZFjQJZlFptgMXVDykQpHlmPzxpKnQNtYDJNhHZkMLVCXJjgRGYwCbNGmkqgRkYjzpBMJHRLkbsgXpMkMWCDncmGXBxzZsSrGshcYKClqTyZPcGBJthqXjVlJWNYtPgXkFQSxXxGwsvbgPQQZQfllFfQbXMCkqXtTxDlSkgBGfVSSfWCwbzgFnLlMKLQgccrQSyxRyqyXvCzCBGdzPhxLnvJMyDhpWXWNFXwcwHCCMsccvrxbtsjcThqsLMrgkxlLLGKCbtdHqvBKjxlmntDrvCKxwpMrWZycsvDjCRjPXQPZxmvHnxGWpBqkJCkcqfmyRHPSgGxxkHgSLXNsfVxQRwbftyCxvzHrCzXKXfghSwTMpDzBhmjXLdxFCfpSggVkTVFPQTJCrCwfyVLNQGSLJKVRKtHCwHMNyclLNHHZTzbLJdtkQRzrPVgXSLhJKVZlqYVzPsmwZYPmqKhQC"
+    // s = s.toLowerCase()
+    // let arr = [s.substring(0,s.length/2).match(/[aeiou]/g),s.substring(s.length/2,s.length).match(/[aeiou]/g)]
+    // if(arr[0] && arr[1]) console.log( arr[1].length === arr[0].length)
+    // else if((!arr[0] && arr[1])||(arr[0] && !arr[1])) console.log(false)
+    // else console.log(true)
+    
+
+    // 1812. Determine Color of a Chessboard Square
+    // let coordinates = "c7"
+    // let eng = ['a','b','c','d','e','f','g','h']
+    // let num = ['1','2','3','4','5','6','7','8']
+    // let obj = {}
+    
+    // for(let i = 0;i<eng.length;i++) {
+    //   let color = (i%2 === 0) ? false :true
+    //   for(let j = 0;j<num.length;j++) {
+    //     obj[eng[i]+num[j]] = color
+    //     color = !color
+    //   }
+    // }
+    // console.log(obj[coordinates])
+    
+
+    // 1827. Minimum Operations to Make the Array Increasing
+    // let nums = [1,5,2,4,1]
+    // let ans = 0
+    // for(let i = 1;i<nums.length;i++) {
+    //   if(nums[i-1]>=nums[i]) {
+    //     ans+=(nums[i-1]+1) - nums[i]
+    //     nums[i] = (nums[i-1]+1)
+    //   }
+    // }
+    // console.log(ans)
+
+
+    // 2442. Count Number of Distinct Integers After Reverse Operations
+    // let arr = []
+    // let map = {}
+    // for(let i = 0;i<nums.length;i++) {
+    //   arr.push(parseInt(nums[i].toString().split('').reverse().join('')))
+    // }
+    // arr = arr.concat(nums)
+    // for(let i = 0;i<arr.length;i++) {
+    //   if(!map[arr[i]]) map[arr[i]] = 0
+    //   map[arr[i]] ++
+    // }
+    // console.log('ans',Object.keys(map).length)
+
+
 
     // 2079. Watering Plants
     // let plants = [2,2,3,3], capacity = 5
