@@ -12,9 +12,73 @@ export default {
   },
   setup() {
     console.log('leet now')
+    // 1061. Lexicographically Smallest Equivalent String
+    // let s1 = "cgokcgerolkgksgbhgmaaealacnsshofjinidiigbjerdnkolc", s2 = "rjjlkbmnprkslilqmbnlasardrossiogrcboomrbcmgmglsrsj", baseStr = "bxbwjlbdazfejdsaacsjgrlxqhiddwaeguxhqoupicyzfeupcn"
+    // let eng = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    // let arr1 = s1.split('')
+    // let arr2 = s2.split('')
+    // let allArr = []
+    // let deleteKey = []
+    // let baseArr = baseStr.split('')
+    // let ans = ''
+
+    // const findAndPush = (data1,data2) => {
+    //   for(let i = 0;i<allArr.length;i++){
+    //     if(allArr[i].includes(data1) || allArr[i].includes(data2)){
+    //       allArr[i].push(data1,data2)
+    //       return false
+    //     }
+    //   }
+    //   if(!allArr[allArr.length]) allArr[allArr.length] = []
+    //   allArr[allArr.length - 1].push(data1,data2)
+    // }
+
+    // const sortArr = () => {
+    //   for(let i = 0;i<allArr.length;i++){
+    //     allArr[i] = allArr[i].filter((item,index)=> allArr[i].indexOf(item) === index).sort((a,b)=> eng.indexOf(a) - eng.indexOf(b))
+    //   }
+    // }
+
+    // const checkArr = (arr,index) => {
+    //   for(let i = 0;i<allArr.length;i++){
+    //     for(let j = 0;j<arr.length;j++){
+    //       if(allArr[i].includes(arr[j])) {
+    //         allArr[i] = allArr[i].concat(arr)
+    //         return false
+    //       }
+    //     }
+    //   }
+    // }
+
+    // const findStr = (data) => {
+    //   for(let i = 0;i<allArr.length;i++) {
+    //     if(allArr[i].indexOf(data) !== -1) {
+    //       return allArr[i][0]
+    //     } 
+    //   }
+    //   return data
+    // }
+    // for(let i = 0;i<arr1.length;i++){
+    //   findAndPush(arr1[i],arr2[i])
+    // }
+    // sortArr()
+    // for(let i = 0;i<allArr.length;i++){
+    //   checkArr(allArr[i],i)
+    // }
+    // sortArr()
+    // for(let  i = 0;i<baseArr.length;i++){
+    //   ans += findStr(baseArr[i])
+    // }
+    // console.log('allArr',allArr)
+    // console.log('deleteKey',deleteKey)
+    // console.log('ans',ans)
 
 
 
+    // 1295. Find Numbers with Even Number of Digits
+    // let nums = [12,345,2,6,7896]
+    // let arr = nums.map((item)=> item.toString().length).filter((item)=>item%2 === 0).length
+    // console.log(arr)
     
     // 1704. Determine if String Halves Are Alike
     // let s = "gfLpdQfBhLSNWKBvRWpNlRWTSMQYTSyPFTwWHptvnJHFWQDQLdYyHzKJjYrpHbNQyPFWpKhChZXsvYfPBVMpRSfLZwHMBqsbPhZBhwfmjDqgXVkZrtyXbpXWVLRnpGPWjvKNHmxqxPSlvxxsxsnbQvKJDwKtWgFDrjsgvTScXYPsMBgkWktkdthwsQdCpddrgksxlZMYDcPyvMLqztnYGQbrKcKPWqtjdklXZBvNbZfNdNRmbDGpxybGdzghpSmGvmZGpJlfwTbLhQXZSfgSJTNvrQGdWyQgJjngKLXNpkMtFWgpcrYHZHJdgDfmkfplDYjWRmBNyFNzgGbRcGBQXWcskPpXPlBkdsVwRMNZCLvkdXwDrlcTTNPPMvjPChWHQPJMPSLSzQLlkQWrmLLnknVdWKrYZRymTQTRDbsgtFjZQjMNdrZVqQdBdywVqSWkkHHmbrwnlzXwYCpbfJSxBPdwDjKQFgYPChQWdJTHRVYRDrLtswMnTNQCjZNsqZBpXjZxWKblqZFxtZgHCjYsbqJZFjQJZlFptgMXVDykQpHlmPzxpKnQNtYDJNhHZkMLVCXJjgRGYwCbNGmkqgRkYjzpBMJHRLkbsgXpMkMWCDncmGXBxzZsSrGshcYKClqTyZPcGBJthqXjVlJWNYtPgXkFQSxXxGwsvbgPQQZQfllFfQbXMCkqXtTxDlSkgBGfVSSfWCwbzgFnLlMKLQgccrQSyxRyqyXvCzCBGdzPhxLnvJMyDhpWXWNFXwcwHCCMsccvrxbtsjcThqsLMrgkxlLLGKCbtdHqvBKjxlmntDrvCKxwpMrWZycsvDjCRjPXQPZxmvHnxGWpBqkJCkcqfmyRHPSgGxxkHgSLXNsfVxQRwbftyCxvzHrCzXKXfghSwTMpDzBhmjXLdxFCfpSggVkTVFPQTJCrCwfyVLNQGSLJKVRKtHCwHMNyclLNHHZTzbLJdtkQRzrPVgXSLhJKVZlqYVzPsmwZYPmqKhQC"
