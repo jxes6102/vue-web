@@ -12,6 +12,66 @@ export default {
   },
   setup() {
     console.log('leet now')
+
+
+
+
+
+
+
+
+
+
+    // 1436. Destination City
+    // let paths = [["A","Z"]]
+    // let arr = paths.flat()
+    // let map = {}
+    // let mainArr = []
+    // for(let i = 0;i<arr.length;i++) {
+    //   if(!map[arr[i]]) map[arr[i]] = 0
+    //   map[arr[i]]++
+    // }
+
+    // for(let key in map){
+    //   if(map[key]%2 === 1) {
+    //     mainArr.push(key)
+    //   }
+    // }
+
+    // for(let i = 0;i<mainArr.length;i++) {
+    //   if((arr.indexOf(mainArr[i]) % 2) === 1) console.log(mainArr[i])
+    // }
+    
+
+
+    // 2341. Maximum Number of Pairs in Array
+    // let nums = [1,2,3,4,5]
+    // let map = {}
+    // let arr = []
+    // let ans = [0,0]
+    // for(let i = 0;i<nums.length;i++) {
+    //   if(!map[nums[i]]) map[nums[i]] = 0
+    //   map[nums[i]]++
+    // }
+    // arr = Object.values(map)
+    // for(let i = 0;i<arr.length;i++){
+    //   while(arr[i] > 0) {
+
+    //     if(arr[i] >= 2) {
+    //       arr[i]-=2
+    //       ans[0]++
+    //     }else {
+    //       arr[i]-=1
+    //       ans[1]++
+    //     }
+        
+    //   }
+    // }
+
+    // console.log(ans)
+
+
+
     // 1061. Lexicographically Smallest Equivalent String
     // let s1 = "cgokcgerolkgksgbhgmaaealacnsshofjinidiigbjerdnkolc", s2 = "rjjlkbmnprkslilqmbnlasardrossiogrcboomrbcmgmglsrsj", baseStr = "bxbwjlbdazfejdsaacsjgrlxqhiddwaeguxhqoupicyzfeupcn"
     // let eng = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -34,6 +94,7 @@ export default {
     // }
 
     // const sortArr = () => {
+    //   if(deleteKey.length) allArr = allArr.filter((item,index)=> !deleteKey.includes(index))
     //   for(let i = 0;i<allArr.length;i++){
     //     allArr[i] = allArr[i].filter((item,index)=> allArr[i].indexOf(item) === index).sort((a,b)=> eng.indexOf(a) - eng.indexOf(b))
     //   }
@@ -43,6 +104,7 @@ export default {
     //   for(let i = 0;i<allArr.length;i++){
     //     for(let j = 0;j<arr.length;j++){
     //       if(allArr[i].includes(arr[j])) {
+    //         if(index !== i) deleteKey.push(index)
     //         allArr[i] = allArr[i].concat(arr)
     //         return false
     //       }
@@ -69,8 +131,6 @@ export default {
     // for(let  i = 0;i<baseArr.length;i++){
     //   ans += findStr(baseArr[i])
     // }
-    // console.log('allArr',allArr)
-    // console.log('deleteKey',deleteKey)
     // console.log('ans',ans)
 
 
