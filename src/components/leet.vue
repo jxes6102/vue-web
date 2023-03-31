@@ -17,10 +17,45 @@ export default {
 
 
 
+    
+    // 2428. Maximum Sum of an Hourglass
+    // let grid = [[6,2,1,3],[4,2,1,5],[9,2,8,7],[4,1,2,9]]
+    // let sum = 0
+    // for(let i = 0;i<grid.length;i++) {
+    //   for(let j = 0;j<grid[i].length;j++) {
+    //     if((i - 1>=0)&&(i + 1<grid.length)&&(j - 1>=0)&&(j + 1<grid[i].length)){
+    //       let temp = (grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1] + grid[i][j] + grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1])
+    //       if(sum < temp) sum = temp
+    //     }
+    //   }
+    // }
+    // console.log(sum)
+    
 
 
+    // 811. Subdomain Visit Count
+    // let cpdomains = ["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
+    // let map = {}
+    // let ans = []
 
-
+    // const check = (num,str) => {
+    //   let strArr = str.split('.')
+    //   for(let i = 0;i<strArr.length;i++){
+    //     let key = strArr.slice(strArr.length - (i+1),strArr.length).join('.')
+    //     if(!map[key])map[key] = num
+    //     else map[key] += num
+    //   }
+    // }
+    // for(let i = 0;i<cpdomains.length;i++) {
+    //   let arr = cpdomains[i].split(' ')
+    //   arr[0] = parseInt(arr[0])
+    //   check(arr[0],arr[1])
+    // }
+    // for(let key in map){
+    //   ans.push(map[key] + ' '+ key) 
+    // }
+    // console.log('ans',ans)
+    
 
     // 1436. Destination City
     // let paths = [["A","Z"]]
