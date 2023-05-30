@@ -5,18 +5,55 @@
 </template>
 
 <script>
+
 export default {
   name: 'leetCode',
   props: {
     msg: String
   },
   setup() {
-    console.log('leet now')
+    console.log('====leet now====')
+    // let nums = [19, 10, 3, 7, 9, 8, 5, 2, 1, 17, 16, 14, 12, 18, 6, 13, 11, 20, 4, 15],rowsCount = 5,colsCount = 4
+    // if(rowsCount*colsCount !== nums.length) console.log([])
+    // let ans = []
+    // for(let i = 0;i<rowsCount;i++){
+    //   ans.push(new Array(colsCount))
+    // }
+    // let temp = 0
+    // for(let i = 0;i<colsCount;i++){
+    //   for(let j = 0;j<rowsCount;j++){
+    //     if(i%2 === 0) {
+    //       ans[j][i] = nums[temp]
+    //     }else {
+    //       ans[rowsCount -j - 1][i] = nums[temp]
+    //     }
+    //     temp++
+    //   }
+    // }
+    // console.log(ans)
 
+    
 
-
-
-
+    // // find flower num
+    // let ans = []
+    // const check = (val,powNum = 3) => {
+    //   if(powNum < 0) return null
+    //   let target = val.toString().split('').map((item)=>parseInt(item))
+    //   const count = target.reduce(
+    //     (accumulator, currentValue) => {
+    //       currentValue = Math.pow(currentValue, powNum)
+    //       return accumulator + currentValue
+    //     },0);
+    //   if(val === count) return count
+    //   else return null
+    // }
+    // for(let i = -10000;i<=10000;i++){
+    //   let num = check(i,5)
+    //   if(num !== null){
+    //     ans.push(num)
+    //   }
+    // }
+    // console.log('ans',ans)
     
     // 2428. Maximum Sum of an Hourglass
     // let grid = [[6,2,1,3],[4,2,1,5],[9,2,8,7],[4,1,2,9]]
