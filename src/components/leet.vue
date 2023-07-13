@@ -13,7 +13,52 @@ export default {
   },
   setup() {
     console.log('leet now')
+    // 2221. Find Triangular Sum of an Array
+    // let nums = [5]
+    // let arr = nums
+    // for(let i = 0;i<nums.length;i++){
+    //   let temp = []
+    //   if(arr.length === 1) break
+    //   for(let j = 0;j<arr.length - 1;j++){
+    //     temp[j] = (arr[j] + arr[j+1])%10
+    //   }
+    //   arr = temp
+    // }
+    // console.log(arr[0])
 
+
+    // 2482. Difference Between Ones and Zeros in Row and Column
+    // let grid = [[1,1,1],[1,1,1]]
+    // let ans = []
+
+    // let counts = (arr) => {
+    //   let num = 0
+    //   for(let i = 0;i<arr.length;i++){
+    //     if(arr[i]===1) num++
+    //     else num--
+    //   }
+    //   return num
+    // }
+
+    // let colSpace = []
+    // for(let row = 0;row<grid.length;row++) {
+    //   let rowEle = counts(grid[row])
+    //   for(let col = 0;col<grid[row].length;col++) {
+    //     if(!colSpace[col]) {
+    //       let colArr = []
+    //       for(let num = 0;num<grid.length;num++) {
+    //         colArr.push(grid[num][col])
+    //       }
+    //       colSpace[col] = counts(colArr)
+    //     }
+
+    //     let allEle = rowEle+colSpace[col]
+
+    //     if(!ans[row]) ans[row] = []
+    //     ans[row].push(allEle)
+    //   }
+    // }
+    // console.log('ans',ans)
 
 
     // 2341. Maximum Number of Pairs in Array
