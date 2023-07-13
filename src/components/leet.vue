@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'leetCode',
   props: {
@@ -12,52 +13,154 @@ export default {
   },
   setup() {
     console.log('leet now')
-    // 2221. Find Triangular Sum of an Array
-    // let nums = [5]
-    // let arr = nums
-    // for(let i = 0;i<nums.length;i++){
-    //   let temp = []
-    //   if(arr.length === 1) break
-    //   for(let j = 0;j<arr.length - 1;j++){
-    //     temp[j] = (arr[j] + arr[j+1])%10
-    //   }
-    //   arr = temp
+
+
+
+    // 2341. Maximum Number of Pairs in Array
+    // let nums = [1,2,3,4,5]
+    // let map = {}
+    // let arr = []
+    // let ans = [0,0]
+    // for(let i = 0;i<nums.length;i++) {
+    //   if(!map[nums[i]]) map[nums[i]] = 0
+    //   map[nums[i]]++
     // }
-    // console.log(arr[0])
+    // arr = Object.values(map)
+    // for(let i = 0;i<arr.length;i++){
+    //   while(arr[i] > 0) {
 
-
-    // 2482. Difference Between Ones and Zeros in Row and Column
-    // let grid = [[1,1,1],[1,1,1]]
-    // let ans = []
-
-    // let counts = (arr) => {
-    //   let num = 0
-    //   for(let i = 0;i<arr.length;i++){
-    //     if(arr[i]===1) num++
-    //     else num--
-    //   }
-    //   return num
-    // }
-
-    // let colSpace = []
-    // for(let row = 0;row<grid.length;row++) {
-    //   let rowEle = counts(grid[row])
-    //   for(let col = 0;col<grid[row].length;col++) {
-    //     if(!colSpace[col]) {
-    //       let colArr = []
-    //       for(let num = 0;num<grid.length;num++) {
-    //         colArr.push(grid[num][col])
-    //       }
-    //       colSpace[col] = counts(colArr)
+    //     if(arr[i] >= 2) {
+    //       arr[i]-=2
+    //       ans[0]++
+    //     }else {
+    //       arr[i]-=1
+    //       ans[1]++
     //     }
 
-    //     let allEle = rowEle+colSpace[col]
-
-    //     if(!ans[row]) ans[row] = []
-    //     ans[row].push(allEle)
     //   }
     // }
+
+    // console.log(ans)
+
+
+
+    // 1061. Lexicographically Smallest Equivalent String
+    // let s1 = "cgokcgerolkgksgbhgmaaealacnsshofjinidiigbjerdnkolc", s2 = "rjjlkbmnprkslilqmbnlasardrossiogrcboomrbcmgmglsrsj", baseStr = "bxbwjlbdazfejdsaacsjgrlxqhiddwaeguxhqoupicyzfeupcn"
+    // let eng = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    // let arr1 = s1.split('')
+    // let arr2 = s2.split('')
+    // let allArr = []
+    // let deleteKey = []
+    // let baseArr = baseStr.split('')
+    // let ans = ''
+
+    // const findAndPush = (data1,data2) => {
+    //   for(let i = 0;i<allArr.length;i++){
+    //     if(allArr[i].includes(data1) || allArr[i].includes(data2)){
+    //       allArr[i].push(data1,data2)
+    //       return false
+    //     }
+    //   }
+    //   if(!allArr[allArr.length]) allArr[allArr.length] = []
+    //   allArr[allArr.length - 1].push(data1,data2)
+    // }
+
+    // const sortArr = () => {
+    //   if(deleteKey.length) allArr = allArr.filter((item,index)=> !deleteKey.includes(index))
+    //   for(let i = 0;i<allArr.length;i++){
+    //     allArr[i] = allArr[i].filter((item,index)=> allArr[i].indexOf(item) === index).sort((a,b)=> eng.indexOf(a) - eng.indexOf(b))
+    //   }
+    // }
+
+    // const checkArr = (arr,index) => {
+    //   for(let i = 0;i<allArr.length;i++){
+    //     for(let j = 0;j<arr.length;j++){
+    //       if(allArr[i].includes(arr[j])) {
+    //         if(index !== i) deleteKey.push(index)
+    //         allArr[i] = allArr[i].concat(arr)
+    //         return false
+    //       }
+    //     }
+    //   }
+    // }
+
+    // const findStr = (data) => {
+    //   for(let i = 0;i<allArr.length;i++) {
+    //     if(allArr[i].indexOf(data) !== -1) {
+    //       return allArr[i][0]
+    //     }
+    //   }
+    //   return data
+    // }
+    // for(let i = 0;i<arr1.length;i++){
+    //   findAndPush(arr1[i],arr2[i])
+    // }
+    // sortArr()
+    // for(let i = 0;i<allArr.length;i++){
+    //   checkArr(allArr[i],i)
+    // }
+    // sortArr()
+    // for(let  i = 0;i<baseArr.length;i++){
+    //   ans += findStr(baseArr[i])
+    // }
     // console.log('ans',ans)
+
+
+
+    // 1295. Find Numbers with Even Number of Digits
+    // let nums = [12,345,2,6,7896]
+    // let arr = nums.map((item)=> item.toString().length).filter((item)=>item%2 === 0).length
+    // console.log(arr)
+
+    // 1704. Determine if String Halves Are Alike
+    // let s = "gfLpdQfBhLSNWKBvRWpNlRWTSMQYTSyPFTwWHptvnJHFWQDQLdYyHzKJjYrpHbNQyPFWpKhChZXsvYfPBVMpRSfLZwHMBqsbPhZBhwfmjDqgXVkZrtyXbpXWVLRnpGPWjvKNHmxqxPSlvxxsxsnbQvKJDwKtWgFDrjsgvTScXYPsMBgkWktkdthwsQdCpddrgksxlZMYDcPyvMLqztnYGQbrKcKPWqtjdklXZBvNbZfNdNRmbDGpxybGdzghpSmGvmZGpJlfwTbLhQXZSfgSJTNvrQGdWyQgJjngKLXNpkMtFWgpcrYHZHJdgDfmkfplDYjWRmBNyFNzgGbRcGBQXWcskPpXPlBkdsVwRMNZCLvkdXwDrlcTTNPPMvjPChWHQPJMPSLSzQLlkQWrmLLnknVdWKrYZRymTQTRDbsgtFjZQjMNdrZVqQdBdywVqSWkkHHmbrwnlzXwYCpbfJSxBPdwDjKQFgYPChQWdJTHRVYRDrLtswMnTNQCjZNsqZBpXjZxWKblqZFxtZgHCjYsbqJZFjQJZlFptgMXVDykQpHlmPzxpKnQNtYDJNhHZkMLVCXJjgRGYwCbNGmkqgRkYjzpBMJHRLkbsgXpMkMWCDncmGXBxzZsSrGshcYKClqTyZPcGBJthqXjVlJWNYtPgXkFQSxXxGwsvbgPQQZQfllFfQbXMCkqXtTxDlSkgBGfVSSfWCwbzgFnLlMKLQgccrQSyxRyqyXvCzCBGdzPhxLnvJMyDhpWXWNFXwcwHCCMsccvrxbtsjcThqsLMrgkxlLLGKCbtdHqvBKjxlmntDrvCKxwpMrWZycsvDjCRjPXQPZxmvHnxGWpBqkJCkcqfmyRHPSgGxxkHgSLXNsfVxQRwbftyCxvzHrCzXKXfghSwTMpDzBhmjXLdxFCfpSggVkTVFPQTJCrCwfyVLNQGSLJKVRKtHCwHMNyclLNHHZTzbLJdtkQRzrPVgXSLhJKVZlqYVzPsmwZYPmqKhQC"
+    // s = s.toLowerCase()
+    // let arr = [s.substring(0,s.length/2).match(/[aeiou]/g),s.substring(s.length/2,s.length).match(/[aeiou]/g)]
+    // if(arr[0] && arr[1]) console.log( arr[1].length === arr[0].length)
+    // else if((!arr[0] && arr[1])||(arr[0] && !arr[1])) console.log(false)
+    // else console.log(true)
+
+
+    // 1812. Determine Color of a Chessboard Square
+    // let coordinates = "c7"
+    // let eng = ['a','b','c','d','e','f','g','h']
+    // let num = ['1','2','3','4','5','6','7','8']
+    // let obj = {}
+
+    // for(let i = 0;i<eng.length;i++) {
+    //   let color = (i%2 === 0) ? false :true
+    //   for(let j = 0;j<num.length;j++) {
+    //     obj[eng[i]+num[j]] = color
+    //     color = !color
+    //   }
+    // }
+    // console.log(obj[coordinates])
+
+
+    // 1827. Minimum Operations to Make the Array Increasing
+    // let nums = [1,5,2,4,1]
+    // let ans = 0
+    // for(let i = 1;i<nums.length;i++) {
+    //   if(nums[i-1]>=nums[i]) {
+    //     ans+=(nums[i-1]+1) - nums[i]
+    //     nums[i] = (nums[i-1]+1)
+    //   }
+    // }
+    // console.log(ans)
+
+
+    // 2442. Count Number of Distinct Integers After Reverse Operations
+    // let arr = []
+    // let map = {}
+    // for(let i = 0;i<nums.length;i++) {
+    //   arr.push(parseInt(nums[i].toString().split('').reverse().join('')))
+    // }
+    // arr = arr.concat(nums)
+    // for(let i = 0;i<arr.length;i++) {
+    //   if(!map[arr[i]]) map[arr[i]] = 0
+    //   map[arr[i]] ++
+    // }
+    // console.log('ans',Object.keys(map).length)
 
 
 
