@@ -14,45 +14,71 @@ export default {
   setup() {
     console.log('leet now')
 
-    // count page nice
-    /**
-     * count 資料筆數
-     * nowPage 現在頁數
-     * maxCount 每頁最大筆數
-     * ans 頁數陣列
-     * num 最大頁數
-     */
-    let count = 588
-    let nowPage = 7
-    let maxCount = 10
-    let test = (count,nowPage) => {
-      let ans = []
-      let num = Math.ceil(count / maxCount)
-      if(num>10){
-        console.log('many')
-        for(let i = nowPage;i<=nowPage+2;i++){
-          ans.push(i)
-        }
-        for(let i = nowPage-1;i>=nowPage-2;i--){
-          if(i<=0) break
-          ans.unshift(i)
-        }
-        if(!ans.includes(num)){
-          ans.push('next',num)
-        }
-        if(!ans.includes(1)){
-          ans.unshift(1,'last')
-        }
-      }else{
-        console.log('few')
-        for(let i=1 ; i<=num ; i++){
-          ans.push(i)
-        }
-      }
-      return ans;
-    }
 
-    console.log('ans',test(count,nowPage))
+
+    // 2610. Convert an Array Into a 2D Array With Conditions
+    // let nums = [1,2,3,4]
+    // let map = {}
+    // for(let i = 0;i<nums.length;i++) {
+    //   if(!map[nums[i]]) map[nums[i]] = 0
+    //   map[nums[i]]++
+    // }
+    // let max = Math.max(...Object.values(map))
+    // let ans = new Array(max)
+    // for(let i = 0;i<max;i++) {
+    //   ans[i] = []
+    // }
+    // for(let i = 0;i<nums.length;i++) {
+    //   for(let j = 0;j<max;) {
+    //     if(!ans[j].includes(nums[i])){
+    //       ans[j].push(nums[i])
+    //       break
+    //     }else{
+    //       j++
+    //     }
+    //   }
+    // }
+    // console.log(ans)
+
+
+    // count page nice
+    // /**
+    //  * count 資料筆數
+    //  * nowPage 現在頁數
+    //  * maxCount 每頁最大筆數
+    //  * ans 頁數陣列
+    //  * num 最大頁數
+    //  */
+    // let count = 588
+    // let nowPage = 7
+    // let maxCount = 10
+    // let test = (count,nowPage) => {
+    //   let ans = []
+    //   let num = Math.ceil(count / maxCount)
+    //   if(num>10){
+    //     console.log('many')
+    //     for(let i = nowPage;i<=nowPage+2;i++){
+    //       ans.push(i)
+    //     }
+    //     for(let i = nowPage-1;i>=nowPage-2;i--){
+    //       if(i<=0) break
+    //       ans.unshift(i)
+    //     }
+    //     if(!ans.includes(num)){
+    //       ans.push('next',num)
+    //     }
+    //     if(!ans.includes(1)){
+    //       ans.unshift(1,'last')
+    //     }
+    //   }else{
+    //     console.log('few')
+    //     for(let i=1 ; i<=num ; i++){
+    //       ans.push(i)
+    //     }
+    //   }
+    //   return ans;
+    // }
+    // console.log('ans',test(count,nowPage))
 
 
 
