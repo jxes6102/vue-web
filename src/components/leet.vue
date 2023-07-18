@@ -15,44 +15,44 @@ export default {
     console.log('leet now')
 
     // count page nice
-    // /**
-    //  * count 資料筆數
-    //  * nowPage 現在頁數
-    //  * maxCount 每頁最大筆數
-    //  * ans 頁數陣列
-    //  * num 最大頁數
-    //  */
-    // let count = 88
-    // let nowPage = 22
-    // let maxCount = 10
-    // let test = (count,nowPage) => {
-    //   let ans = []
-    //   let num = Math.ceil(count / maxCount)
-    //   if(num>10){
-    //     console.log('many')
-    //     for(let i = nowPage;i<=nowPage+2;i++){
-    //       ans.push(i)
-    //     }
-    //     for(let i = nowPage-1;i>=nowPage-2;i--){
-    //       if(i<=0) break
-    //       ans.unshift(i)
-    //     }
-    //     if(!ans.includes(num)){
-    //       ans.push('next',num)
-    //     }
-    //     if(!ans.includes(1)){
-    //       ans.unshift(1,'last')
-    //     }
-    //   }else{
-    //     console.log('few')
-    //     for(let i=1 ; i<=num ; i++){
-    //       ans.push(i)
-    //     }
-    //   }
-    //   return ans;
-    // }
+    /**
+     * count 資料筆數
+     * nowPage 現在頁數
+     * maxCount 每頁最大筆數
+     * ans 頁數陣列
+     * num 最大頁數
+     */
+    let count = 588
+    let nowPage = 7
+    let maxCount = 10
+    let test = (count,nowPage) => {
+      let ans = []
+      let num = Math.ceil(count / maxCount)
+      if(num>10){
+        console.log('many')
+        for(let i = nowPage;i<=nowPage+2;i++){
+          ans.push(i)
+        }
+        for(let i = nowPage-1;i>=nowPage-2;i--){
+          if(i<=0) break
+          ans.unshift(i)
+        }
+        if(!ans.includes(num)){
+          ans.push('next',num)
+        }
+        if(!ans.includes(1)){
+          ans.unshift(1,'last')
+        }
+      }else{
+        console.log('few')
+        for(let i=1 ; i<=num ; i++){
+          ans.push(i)
+        }
+      }
+      return ans;
+    }
 
-    // console.log('ans',test(count,nowPage))
+    console.log('ans',test(count,nowPage))
 
 
 
