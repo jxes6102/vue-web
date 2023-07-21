@@ -15,6 +15,60 @@ export default {
     console.log('leet now')
 
 
+    // 1630. Arithmetic Subarrays
+    // let nums = [-12,-9,-3,-12,-6,15,20,-25,-20,-15,-10], l = [0,1,6,4,8,7], r = [4,4,9,7,9,10]
+    // let ans = []
+    // const isArithmetic = (arr) => {
+    //   arr.sort((a,b)=> a-b)
+    //   let diff = arr[1]-arr[0]
+    //   for(let i = 2;i<arr.length;i++){
+    //     if(!((arr[i]-arr[i-1]) === diff)) {
+    //       return false
+    //     }
+    //   }
+    //   return true
+    // }
+    // for(let i = 0;i<l.length;i++){
+    //   ans.push(isArithmetic(nums.slice(l[i],r[i]+1)))
+    // }
+    // console.log('ans',ans)
+
+
+    // 2103. Rings and Rods
+    // let rings = "G4"
+    // let arr = new Array(rings.length/2)
+    // let ans = 0
+    // for(let i = 0;i<rings.length;i++){
+    //   if(i%2===1){
+    //     if(!arr[parseInt(rings.charAt(i))]) {
+    //       arr[parseInt(rings.charAt(i))] = []
+    //     }
+    //     arr[parseInt(rings.charAt(i))].push(rings.charAt(i-1))
+    //   }
+    // }
+    // for(let i = 0;i<arr.length;i++){
+    //   if(arr[i] && arr[i].length >=3){
+    //     if(arr[i].includes('R')&&arr[i].includes('G')&&arr[i].includes('B')) ans++
+    //   }
+    // }
+    // console.log('ans',ans)
+
+    // 1409. Queries on a Permutation With Key
+    // let queries = [7,5,5,8,3], m = 8
+    // let arr = []
+    // let ans = []
+    // for(let i = 1;i<=m;i++){
+    //   arr.push(i)
+    // }
+    // for(let i = 0;i<queries.length;i++){
+    //   let key = queries[i]
+    //   let index = arr.findIndex((item)=>item===key)
+    //   arr.splice(index,1)
+    //   ans.push(index)
+    //   arr.unshift(key)
+    // }
+    // console.log('ans',ans)
+
 
     // 2610. Convert an Array Into a 2D Array With Conditions
     // let nums = [1,2,3,4]
