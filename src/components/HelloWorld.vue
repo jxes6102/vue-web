@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    QQQ
+    <input v-test="directiveData" type="text" value="QQQ">
     <leet></leet>
   </div>
 </template>
@@ -9,6 +9,7 @@
 import { getData } from '@/api/api'
 import store from '@/store'
 import leet from "./leet.vue"
+import { ref } from 'vue'
 export default {
   name: 'HelloWorld',
   components:{leet},
@@ -16,6 +17,8 @@ export default {
     msg: String
   },
   setup() {
+    const directiveData = ref('directiveData')
+
     // test Proxy
     // let data = {
     //   firstName:'nice ',
@@ -375,7 +378,9 @@ export default {
     //   for(let i = 0;i<result.length;i++) if(temp>result[i]) return i
     // }
     // InsertionSort(arr)
-
+    return {
+      directiveData
+    }
   }
 }
 </script>
