@@ -15,6 +15,60 @@ export default {
     console.log('leet now')
 
 
+    // 890. Find and Replace Pattern
+    // let words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+    // let rule = []
+    // let ans = []
+
+    // const checkDiff = (data) => {
+    //   let map = {}
+    //   for(let i = 0;i<data.length;i++) {
+    //     if(!map[data[i]]) map[data[i]] = 0
+    //     map[data[i]]++
+    //   }
+    //   return Object.keys(map).length
+    // }
+    // let patterndiff = checkDiff(pattern)
+
+    // const createdRule = (pattern) => {
+    //   let arr = pattern.split('')
+    //   for(let i = 0;i<arr.length;i++){
+    //     rule[i] = []
+    //     for(let j = 0;j<arr.length;j++){
+    //       if((i!==j) && (arr[i] === arr[j])){
+    //         rule[i].push(j)
+    //       }
+    //     }
+    //   }
+    // }
+    // createdRule(pattern)
+
+    // const checkData = (data) => {
+    //   if(patterndiff !== checkDiff(data)){
+    //     return false
+    //   }
+
+    //   const target = data.split('')
+    //   for(let i = 0;i<target.length;i++){
+    //     if(rule[i].length){
+    //       let compareArr = rule[i].map((item)=>data.charAt(item))
+    //       if(!compareArr.includes(target[i])){
+    //         return false
+    //       }
+    //     }
+    //   }
+
+    //   return true
+    // }
+
+    // for(let i = 0;i<words.length;i++){
+    //   if(checkData(words[i])){
+    //     ans.push(words[i])
+    //   }
+    // }
+    // console.log(ans)
+
+
     // 1630. Arithmetic Subarrays
     // let nums = [-12,-9,-3,-12,-6,15,20,-25,-20,-15,-10], l = [0,1,6,4,8,7], r = [4,4,9,7,9,10]
     // let ans = []

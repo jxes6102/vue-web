@@ -2,6 +2,14 @@
   <div class="hello">
     <input v-test="directiveData" type="text" value="QQQ">
     <leet></leet>
+    <table style="border-collapse:separate; border-spacing:50px 100px;">
+      <tr>
+       <td>那片笑聲躺我想起我的那些花兒</td>
+      </tr>
+      <tr>
+       <td>在我生命每個角落靜靜為我開著</td>
+      </tr>
+   </table>
   </div>
 </template>
 
