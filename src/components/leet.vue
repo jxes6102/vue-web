@@ -15,6 +15,23 @@ export default {
     console.log('leet now')
 
 
+
+
+    // 1561. Maximum Number of Coins You Can Get
+    // let piles = [2,4,5]
+    // piles.sort((a,b)=> a-b)
+    // let times = piles.length/3
+    // let ans = 0
+    // for(let i = piles.length - 2;i > 0;i-=2){
+    //   if(times==0){
+    //     break
+    //   }
+    //   ans+=piles[i]
+    //   times--
+    // }
+    // console.log('ans',ans)
+
+
     // 890. Find and Replace Pattern
     // let words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
     // let rule = []
