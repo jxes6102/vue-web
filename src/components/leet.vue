@@ -16,6 +16,47 @@ export default {
 
 
 
+    // 2722. Join Two Arrays by ID
+    // let arr1 = [
+    //     {"id": 1, "x": 2, "y": 3},
+    //     {"id": 2, "x": 3, "y": 6}
+    // ],
+    // arr2 = [
+    //     {"id": 2, "x": 10, "y": 20},
+    //     {"id": 3, "x": 0, "y": 0}
+    // ]
+    // let target = arr1.concat(arr2)
+    // target.sort((a,b)=>{
+    //   return a.id-b.id
+    // })
+    // let index = 0
+    // while(index<target.length-1){
+    //   if(target[index].id==target[index+1].id){
+    //     let objKeyArr = Object.keys(target[index+1])
+    //     for(let j = 0;j<objKeyArr.length;j++) {
+    //       target[index][objKeyArr[j]] = target[index+1][objKeyArr[j]]
+    //     }
+    //     target.splice(index+1,1)
+    //     continue
+    //   }else{
+    //     index++
+    //   }
+    // }
+    // console.log('target',target)
+
+
+    // 2677. Chunk Array
+    // let arr = [], size = 1
+    // let target = []
+    // for(let i = 0;i<arr.length;i+=size) {
+    //   if((i+size)>arr.length-1){
+    //     target.push(arr.slice(i,(arr.length)))
+    //   }else{
+    //     target.push(arr.slice(i,(i+size)))
+    //   }
+    // }
+    // console.log(target)
+
 
     // 1561. Maximum Number of Coins You Can Get
     // let piles = [2,4,5]
