@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { includes } from 'lodash'
+
 
 export default {
   name: 'leetCode',
@@ -14,6 +16,38 @@ export default {
   setup() {
     console.log('leet now')
 
+
+
+
+
+
+
+
+
+
+
+
+
+    // 1817. Finding the Users Active Minutes
+    // let logs = [[0,5],[1,2],[0,2],[0,5],[1,3]],k = 5
+    // let temp = {}
+    // let ans = []
+    // for(let i = 0;i<k;i++){
+    //   ans[i] = 0
+    // }
+    // for(let i = 0;i<logs.length;i++){
+    //   if(!temp[logs[i][0]]){
+    //     temp[logs[i][0]] = []
+    //   }
+    //   if(!temp[logs[i][0]].includes(logs[i][1])){
+    //     temp[logs[i][0]].push(logs[i][1])
+    //   }
+    // }
+    // let arr = Object.values(temp)
+    // for(let i = 0;i<arr.length;i++){
+    //   ans[arr[i].length - 1]++
+    // }
+    // console.log('ans',ans)
 
 
     // 2722. Join Two Arrays by ID
