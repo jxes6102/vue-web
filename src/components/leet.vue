@@ -15,6 +15,61 @@ export default {
   },
   setup() {
     console.log('leet now')
+    //let mat = [[11,25,66,1,69,7],[23,55,17,45,15,52],[75,31,36,44,58,8],[22,27,33,25,68,4],[84,28,14,11,5,50]]
+    let mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
+    let limit = [mat.length-1,mat[0].length - 1]
+    let arr = []
+    let allArr = []
+    let ans = []
+
+    for(let i = 0;i<mat.length;i++){
+      for(let j = 0;j<mat[0].length;j++){
+        if(j==0 || i==0){
+          arr.push([{
+            row:i,
+            col:j,
+            value:mat[i][j]
+          }])
+        }
+      }
+    }
+
+    for(let i = 0;i<arr.length;i++){
+      let row = arr[i][0].row
+      let col = arr[i][0].col
+      allArr[i] = []
+
+      while((row <= limit[0]) && (col <= limit[1])){
+        allArr[i].push({
+          row:row,
+          col:col,
+          value:mat[row][col]
+        })
+        row++
+        col++
+      }
+    }
+
+    for(let i = 0;i<allArr.length;i++){
+      let sortArr = allArr[i].map((item)=> item.value).sort((a,b)=> {
+        return (a - b)
+      })
+
+      for(let j = 0;j<allArr[i].length;j++){
+        allArr[i][j].value = sortArr[j]
+      }
+    }
+
+    for(let i = 0;i<allArr.length;i++){
+      for(let j = 0;j<allArr[i].length;j++){
+        if(!Array.isArray(ans[allArr[i][j].row])){
+          ans[allArr[i][j].row] = []
+        }
+        ans[allArr[i][j].row][allArr[i][j].col] = allArr[i][j].value
+      }
+    }
+
+    console.log('ans',ans)
 
 
 
@@ -26,6 +81,63 @@ export default {
 
 
 
+
+    // 1329. Sort the Matrix Diagonally
+    // //let mat = [[11,25,66,1,69,7],[23,55,17,45,15,52],[75,31,36,44,58,8],[22,27,33,25,68,4],[84,28,14,11,5,50]]
+    // let mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
+    // let limit = [mat.length-1,mat[0].length - 1]
+    // let arr = []
+    // let allArr = []
+    // let ans = []
+
+    // for(let i = 0;i<mat.length;i++){
+    //   for(let j = 0;j<mat[0].length;j++){
+    //     if(j==0 || i==0){
+    //       arr.push([{
+    //         row:i,
+    //         col:j,
+    //         value:mat[i][j]
+    //       }])
+    //     }
+    //   }
+    // }
+
+    // for(let i = 0;i<arr.length;i++){
+    //   let row = arr[i][0].row
+    //   let col = arr[i][0].col
+    //   allArr[i] = []
+
+    //   while((row <= limit[0]) && (col <= limit[1])){
+    //     allArr[i].push({
+    //       row:row,
+    //       col:col,
+    //       value:mat[row][col]
+    //     })
+    //     row++
+    //     col++
+    //   }
+    // }
+
+    // for(let i = 0;i<allArr.length;i++){
+    //   let sortArr = allArr[i].map((item)=> item.value).sort((a,b)=> {
+    //     return (a - b)
+    //   })
+
+    //   for(let j = 0;j<allArr[i].length;j++){
+    //     allArr[i][j].value = sortArr[j]
+    //   }
+    // }
+
+    // for(let i = 0;i<allArr.length;i++){
+    //   for(let j = 0;j<allArr[i].length;j++){
+    //     if(!Array.isArray(ans[allArr[i][j].row])){
+    //       ans[allArr[i][j].row] = []
+    //     }
+    //     ans[allArr[i][j].row][allArr[i][j].col] = allArr[i][j].value
+    //   }
+    // }
+
+    // console.log('ans',ans)
 
 
     // 1817. Finding the Users Active Minutes
