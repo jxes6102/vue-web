@@ -15,61 +15,6 @@ export default {
   },
   setup() {
     console.log('leet now')
-    //let mat = [[11,25,66,1,69,7],[23,55,17,45,15,52],[75,31,36,44,58,8],[22,27,33,25,68,4],[84,28,14,11,5,50]]
-    let mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
-    let limit = [mat.length-1,mat[0].length - 1]
-    let arr = []
-    let allArr = []
-    let ans = []
-
-    for(let i = 0;i<mat.length;i++){
-      for(let j = 0;j<mat[0].length;j++){
-        if(j==0 || i==0){
-          arr.push([{
-            row:i,
-            col:j,
-            value:mat[i][j]
-          }])
-        }
-      }
-    }
-
-    for(let i = 0;i<arr.length;i++){
-      let row = arr[i][0].row
-      let col = arr[i][0].col
-      allArr[i] = []
-
-      while((row <= limit[0]) && (col <= limit[1])){
-        allArr[i].push({
-          row:row,
-          col:col,
-          value:mat[row][col]
-        })
-        row++
-        col++
-      }
-    }
-
-    for(let i = 0;i<allArr.length;i++){
-      let sortArr = allArr[i].map((item)=> item.value).sort((a,b)=> {
-        return (a - b)
-      })
-
-      for(let j = 0;j<allArr[i].length;j++){
-        allArr[i][j].value = sortArr[j]
-      }
-    }
-
-    for(let i = 0;i<allArr.length;i++){
-      for(let j = 0;j<allArr[i].length;j++){
-        if(!Array.isArray(ans[allArr[i][j].row])){
-          ans[allArr[i][j].row] = []
-        }
-        ans[allArr[i][j].row][allArr[i][j].col] = allArr[i][j].value
-      }
-    }
-
-    console.log('ans',ans)
 
 
 
@@ -80,6 +25,87 @@ export default {
 
 
 
+
+
+
+
+    // 2225. Find Players With Zero or One Losses
+    // let matches = [[2,3],[1,3],[5,4],[6,4]]
+    // let ans = [[],[]]
+    // let userMap = {}
+    // for(let i = 0;i<matches.length;i++) {
+    //   if(!userMap[matches[i][0]]) {
+    //     userMap[matches[i][0]] = 0
+    //   }
+    //   if(!userMap[matches[i][1]]){
+    //     userMap[matches[i][1]] = 0
+    //   }
+
+    //   userMap[matches[i][1]]++
+    // }
+
+    // for(let key in userMap){
+    //   if(userMap[key] == 0){
+    //     ans[0].push(parseInt(key))
+    //   }else if(userMap[key] == 1){
+    //     ans[1].push(parseInt(key))
+    //   }
+    // }
+    // console.log('ans',ans)
+
+
+    // 2570. Merge Two 2D Arrays by Summing Values
+    // let nums1 = [[2,4],[3,6],[5,5]], nums2 = [[1,3],[4,3]]
+    // let arr = nums1.concat(nums2).sort((a,b)=> {
+    //   return a[0] - b[0]
+    // })
+
+    // for(let i = 1;i<arr.length;i++){
+    //   if(arr[i][0] == arr[i-1][0]){
+    //     arr[i-1][1] = arr[i-1][1] +arr[i][1]
+    //     arr.splice(i,1)
+    //     i--
+    //   }
+    // }
+    // console.log('arr',arr)
+
+
+    // 2928. Distribute Candies Among Children I
+    // let n = 5, limit = 2
+    // let ans = 0
+    // for(let i = 0;i<=limit;i++){
+    //   for(let j = 0;j<=limit;j++){
+    //     for(let k = 0;k<=limit;k++){
+    //       if((i+j+k) == n){
+    //         ans++
+    //       }
+    //     }
+    //   }
+    // }
+    // console.log('ans',ans)
+
+
+    // 118. Pascal's Triangle
+    // let numRows = 5
+    // let ans = []
+    // for(let i = 0;i<numRows;i++){
+    //   if(i==0){
+    //     ans.push([1])
+    //   }else if(i==1){
+    //     ans.push([1,1])
+    //   }else{
+    //     let arr = new Array(i+1)
+    //     for(let j = 0;j<arr.length;j++){
+    //       if((j==0) || (j==arr.length-1)){
+    //         arr[j] = 1
+    //       }else {
+    //         arr[j] = ans[i-1][j-1] + ans[i-1][j]
+    //       }
+    //     }
+    //     ans.push(arr)
+    //   }
+    // }
+    // console.log('ans',ans)
 
 
     // 1329. Sort the Matrix Diagonally
