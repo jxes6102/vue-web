@@ -27,6 +27,37 @@ export default {
 
 
 
+    // 442. Find All Duplicates in an Array
+    // let nums = [1]
+    // let obj = {}
+    // let ans = []
+    // for(let i = 0;i<nums.length;i++){
+    //   if(!obj[nums[i]]){
+    //     obj[nums[i]] = 1
+    //   }else{
+    //     obj[nums[i]]++
+    //     if(obj[nums[i]] == 2){
+    //       ans.push(nums[i])
+    //     }
+    //   }
+    // }
+    // console.log('ans',ans)
+
+
+    // 2023. Number of Pairs of Strings With Concatenation Equal to Target
+    // let nums = ["1","1","1"], target = "11"
+    // let ans = 0
+    // for(let i = 0;i<nums.length;i++){
+    //   for(let j = 0;j<nums.length;j++){
+    //     if(j==i){
+    //       continue
+    //     }
+    //     if(nums[i]+nums[j]==target){
+    //       ans++
+    //     }
+    //   }
+    // }
+    // console.log('ans',ans)
 
 
     // 2225. Find Players With Zero or One Losses
