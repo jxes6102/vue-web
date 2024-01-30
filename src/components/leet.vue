@@ -27,6 +27,34 @@ export default {
 
 
 
+
+
+
+
+
+
+
+    // testmultiplication
+    // const test = (num,value = 2) => {
+    //   if(value < 2) {
+    //     return 1
+    //   }
+    //   let times = value - 1
+    //   let ans = num
+    //   const multiplication = (num) => {
+    //     if(times>0){
+    //       ans*=num
+    //       times--
+    //       multiplication(num)
+    //     }
+    //   }
+    //   multiplication(num)
+
+    //   return ans
+    // }
+    // console.log(test(9,-5))
+
+
     // 442. Find All Duplicates in an Array
     // let nums = [1]
     // let obj = {}
